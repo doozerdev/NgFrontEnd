@@ -44,7 +44,7 @@
 						<li ng-repeat="todo in todos | orderBy:'order'" ng-class="{completed: todo.completed, editing: todo == editedTodo}">
 							<div class="view">
 								<input class="toggle" type="checkbox" ng-model="todo.completed" ng-change="toggleCompleted(todo)">
-								<label ng-dblclick="editTodo(todo)">{{todo.title}}     order_id={{todo.order}}</label>
+								<label ng-dblclick="editTodo(todo)">{{todo.title}}     order={{todo.order}}   item_id={{todos.indexOf(todo)}}</label>
 								<button class="destroy" ng-click="removeTodo(todo)"></button>
 							</div>
 							<form ng-submit="saveEdits(todo, 'submit')">

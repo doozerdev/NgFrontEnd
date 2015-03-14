@@ -12,24 +12,9 @@ angular.module('todomvc')
 		var todos = $scope.todos = store.todos;
         var todos = document.querySelector('ul#todo-list');
 
-		todos.addEventListener('slip:beforereorder', function(e){
-		if (/demo-no-reorder/.test(e.target.className)) {
-		e.preventDefault();
-		}
-		}, false);
-
-		todos.addEventListener('slip:beforeswipe', function(e){
-		if (e.target.nodeName == 'INPUT' || /demo-no-swipe/.test(e.target.className)) {
-		e.preventDefault();
-		}
-		}, false);
-
-		todos.addEventListener('slip:beforewait', function(e){
-		if (e.target.className.indexOf('instant') > -1) e.preventDefault();
-		}, false);
-
 		todos.addEventListener('slip:afterswipe', function(e){
 		e.target.parentNode.appendChild(e.target);
+		console.log ('swiped!!!');
 		}, false);
 
 		todos.addEventListener('slip:reorder', function(e){
@@ -40,10 +25,6 @@ angular.module('todomvc')
 		}, false);
 
 		new Slip(todos);
-
-
-
-
 
 
 		$scope.newTodo = '';
@@ -68,7 +49,7 @@ angular.module('todomvc')
 			var newTodo = {
 				title: $scope.newTodo.trim(),
 				completed: false,
-				order: 1000000 / ($scope.todos.length +1)
+				order: Math.round(1000000 / ($scope.todos.length + 1))
 			};
 
 			if (!newTodo.title) {
@@ -132,16 +113,18 @@ angular.module('todomvc')
 
 		$scope.removeTodo = function (todo) {
 			store.delete(todo);
+			console.log ('deleted with todoctrl');
 		};
 
-		$scope.saveTodo = function (todo) {
-			store.put(todo);
-		};
+
 
 		$scope.toggleCompleted = function (todo, completed) {
+			console.log ('inside toggle before if');
 			if (angular.isDefined(completed)) {
 				todo.completed = completed;
+				console.log ('inside toggle if completed');
 			}
+			console.log ('inside toggle after if');
 			store.put(todo, todos.indexOf(todo))
 				.then(function success() {}, function error() {
 					todo.completed = !todo.completed;
