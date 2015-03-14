@@ -34,6 +34,8 @@ angular.module('todomvc')
 
 		todos.addEventListener('slip:reorder', function(e){
 		e.target.parentNode.insertBefore(e.target, e.detail.insertBefore);
+		console.log ('moved an item!');
+
 		return false;
 		}, false);
 

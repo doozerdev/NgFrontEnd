@@ -148,6 +148,8 @@ angular.module('todomvc')
 				store._saveToLocalStorage(store.todos);
 				deferred.resolve(store.todos);
 
+				console.log ('deleted an item!');
+
 				return deferred.promise;
 			},
 
@@ -156,6 +158,8 @@ angular.module('todomvc')
 
 				angular.copy(store._getFromLocalStorage(), store.todos);
 				deferred.resolve(store.todos);
+
+				console.log ('retrieved items!');
 
 				return deferred.promise;
 			},
@@ -168,6 +172,8 @@ angular.module('todomvc')
 				store._saveToLocalStorage(store.todos);
 				deferred.resolve(store.todos);
 
+				console.log ('created an item!');
+
 				return deferred.promise;
 			},
 
@@ -178,6 +184,8 @@ angular.module('todomvc')
 
 				store._saveToLocalStorage(store.todos);
 				deferred.resolve(store.todos);
+
+				console.log ('saved an item!');
 
 				return deferred.promise;
 			}
