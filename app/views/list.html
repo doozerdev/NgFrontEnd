@@ -1,0 +1,19 @@
+<h1>{{list.title}}</h1>
+        <form id="new-item-form" ng-submit="addItem()" class='input-group input-group'>
+            <input id="new-item" placeholder="New Item" ng-model="newItem" ng-disabled="saving" autofocus class='form-control'>
+        </form>
+        
+<ul ui-sortable="sortableOptions" style='list-group' ng-model="items">
+    <li class='list-group-item item' ng-repeat="item in items | orderBy:'order'">
+        <div ng-class="item == editedItem  ? 'hidden' : 'show'">
+            <input class='check' type='checkbox' ng-model='item.done' ng-change="toggle(item)">
+            <label ng-dblclick="editItem(item)">{{item.title + ': ' + item.order}}</label>
+            <span class='pull-right'><button class="destroy" ng-click="removeItem($index, item)">X</button></span>
+        </div>
+        <div ng-class="item == editedItem  ? 'show' : 'hidden'">
+            <form ng-submit="saveEdits(item, 'submit')" class='input-group input-group'>
+                <input class="edit" ng-trim="false" ng-model="item.title" item-escape="revertEdits(item)" ng-blur="saveEdits(item, 'blur')" item-focus="item == editedItem" class='form-control'>
+            </form>
+        </div>
+    </li>
+</ul>

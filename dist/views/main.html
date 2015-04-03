@@ -1,0 +1,10 @@
+<div class="row">
+
+<h1>Lists for {{username}}</h1>
+  <h4>Lists</h4>
+  <ul class='list-unstyled'>
+    <li ng-repeat="list in lists">
+    <input type='checkbox' ng-model='list.done'>
+    <a ng-href='#/{{list.id}}'>{{list.title}}</a>
+  </ul>
+</div>

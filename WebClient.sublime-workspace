@@ -1,0 +1,970 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"new",
+				"new_item"
+			],
+			[
+				"end",
+				"end_time"
+			],
+			[
+				"json",
+				"json_response"
+			],
+			[
+				"test",
+				"test_item_id"
+			],
+			[
+				"parent",
+				"parent_id"
+			],
+			[
+				"second",
+				"second_item"
+			],
+			[
+				"sed",
+				"second_item"
+			],
+			[
+				"secon",
+				"second_item"
+			],
+			[
+				"first",
+				"first_item"
+			],
+			[
+				"par",
+				"parent"
+			],
+			[
+				"due",
+				"due_date"
+			],
+			[
+				"se",
+				"session_id"
+			],
+			[
+				"newly_create",
+				"newly_created_list_ids"
+			],
+			[
+				"employ",
+				"employee"
+			],
+			[
+				"log",
+				"log_lines"
+			],
+			[
+				"is",
+				"is_reviewer_for"
+			],
+			[
+				"empl",
+				"employee_review_id"
+			],
+			[
+				"reviewer",
+				"reviewer_id"
+			],
+			[
+				"employee",
+				"employee_review"
+			],
+			[
+				"project",
+				"project_reviews"
+			],
+			[
+				"engage",
+				"engagements"
+			],
+			[
+				"pra",
+				"params"
+			],
+			[
+				"btn",
+				"btn-primary"
+			],
+			[
+				"en",
+				"engagement_id"
+			],
+			[
+				"proje",
+				"project_review"
+			],
+			[
+				"p",
+				"project"
+			],
+			[
+				"start",
+				"start_period"
+			],
+			[
+				"st",
+				"start_period"
+			],
+			[
+				"is_",
+				"is_admin"
+			],
+			[
+				"engagem",
+				"engagements"
+			],
+			[
+				"proj",
+				"project_review"
+			],
+			[
+				"pro",
+				"project_review"
+			],
+			[
+				"cu",
+				"current_user"
+			],
+			[
+				"user",
+				"user_id"
+			],
+			[
+				"form",
+				"form-control"
+			],
+			[
+				"show",
+				"show_closed"
+			],
+			[
+				"emp",
+				"employee_review"
+			],
+			[
+				"Emply",
+				"EmployeeReview"
+			],
+			[
+				"curr",
+				"current_user"
+			],
+			[
+				"style",
+				"stylesheet_link_tag"
+			],
+			[
+				"cur",
+				"current_review"
+			],
+			[
+				"currne",
+				"current_user"
+			],
+			[
+				"currr",
+				"current_user"
+			],
+			[
+				"html",
+				"html_options"
+			],
+			[
+				"bgc",
+				"background-color"
+			],
+			[
+				"review",
+				"reviewer_overall_rating"
+			],
+			[
+				"curre",
+				"current_user"
+			],
+			[
+				"Employ",
+				"EmployeeReview"
+			],
+			[
+				"emplo",
+				"employee_reviews"
+			],
+			[
+				"vulnera",
+				"vulnerabilities"
+			],
+			[
+				"fon",
+				"font-family"
+			],
+			[
+				"padding",
+				"padding-right"
+			],
+			[
+				"margin",
+				"margin-right"
+			],
+			[
+				"text-",
+				"text-decoration"
+			],
+			[
+				"padd",
+				"padding"
+			],
+			[
+				"fade",
+				"fadeIn"
+			],
+			[
+				"to",
+				"to_i"
+			],
+			[
+				"vulner",
+				"vulnerability"
+			],
+			[
+				"vulnerabilities",
+				"vulnerabilities_path"
+			],
+			[
+				"login",
+				"login_path"
+			],
+			[
+				"runnin",
+				"running_exam_instances"
+			],
+			[
+				"exam",
+				"exam_is_starting"
+			],
+			[
+				"has",
+				"has_current_exam"
+			],
+			[
+				"vuln",
+				"vulnerability"
+			],
+			[
+				"score",
+				"high_score"
+			],
+			[
+				"text",
+				"text-align"
+			],
+			[
+				"v",
+				"vertical-align"
+			],
+			[
+				"font",
+				"font-style"
+			],
+			[
+				"ba",
+				"background-color"
+			],
+			[
+				"ima",
+				"image_id"
+			],
+			[
+				"instance",
+				"instance_id"
+			],
+			[
+				"backgrou",
+				"background-color"
+			],
+			[
+				"border",
+				"border-bottom"
+			],
+			[
+				"tex",
+				"text-align"
+			],
+			[
+				"rese",
+				"rescue"
+			],
+			[
+				"current",
+				"current_user"
+			],
+			[
+				"break",
+				"break_timer"
+			],
+			[
+				"url",
+				"url"
+			],
+			[
+				"ec2",
+				"ec2_dns_name"
+			],
+			[
+				"uni",
+				"uniqueVulns"
+			],
+			[
+				"instn",
+				"instances"
+			],
+			[
+				"image",
+				"image_id"
+			],
+			[
+				"has_",
+				"has_many  (function)"
+			],
+			[
+				"Product",
+				"ProductID"
+			],
+			[
+				"wi",
+				"width"
+			],
+			[
+				"com",
+				"commentID"
+			],
+			[
+				"Acc",
+				"AccountTypes"
+			],
+			[
+				"deskto",
+				"desktopJoinedIds"
+			],
+			[
+				"min",
+				"min-width"
+			],
+			[
+				"hex",
+				"hex_crypt"
+			],
+			[
+				"back",
+				"background	background-image: url"
+			],
+			[
+				"shado",
+				"box-shadow"
+			],
+			[
+				"try",
+				"try	Try/Except"
+			],
+			[
+				"e",
+				"end-date"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 47.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"packa",
+				"Package Control: Remove Package"
+			],
+			[
+				"upda",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"",
+				"BeautifyRuby"
+			],
+			[
+				"package",
+				"Package Control: Install Package"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"xml",
+				"Indent XML"
+			],
+			[
+				"inden",
+				"Indent XML"
+			],
+			[
+				"indent",
+				"Indent XML"
+			],
+			[
+				"sssq",
+				"Set Syntax: SQL"
+			],
+			[
+				"packaga",
+				"Package Control: List Packages"
+			],
+			[
+				"install ",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control:",
+				"Package Control: Discover Packages"
+			]
+		],
+		"width": 575.0
+	},
+	"console":
+	{
+		"height": 330.0,
+		"history":
+		[
+			"import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/joe/Documents/Desktop/Learn Stuff/WebClient"
+	],
+	"file_history":
+	[
+		"/Users/joe/github/Doozer/coreAPI/config/routes.rb",
+		"/Users/joe/github/Doozer/coreAPI/app/controllers/cors_controller.rb",
+		"/Users/joe/github/Doozer/coreAPI/app/controllers/application_controller.rb",
+		"/Users/joe/github/Doozer/coreAPI/app/controllers/base_api_controller.rb",
+		"/Users/joe/github/Doozer/coreAPI/app/assets/javascripts/authentication.js",
+		"/Users/joe/github/Doozer/coreAPI/app/assets/javascripts/application.js",
+		"/Users/joe/github/Doozer/coreAPI/app/assets/javascripts/users.js",
+		"/Users/joe/github/Doozer/coreAPI/app/assets/javascripts/lists.js",
+		"/Users/joe/github/Doozer/coreAPI/app/models/user.rb",
+		"/Users/joe/github/Doozer/coreAPI/dataGen/perf_test.rb",
+		"/Users/joe/github/Doozer/coreAPI/app/views/welcome/apireference.html",
+		"/Users/joe/github/Doozer/coreAPI/dataGen/main.rb",
+		"/Users/joe/github/Doozer/coreAPI/app/controllers/sessions_controller.rb",
+		"/Users/joe/github/Doozer/coreAPI/app/views/cors/preflight.html.erb",
+		"/Users/joe/github/Doozer/coreAPI/app/views/welcome/index.html",
+		"/Users/joe/github/Doozer/coreAPI/app/models/item.rb",
+		"/Users/joe/github/Doozer/coreAPI/spec/rails_helper.rb",
+		"/Users/joe/github/Doozer/coreAPI/app/controllers/items_controller.rb",
+		"/Users/joe/github/Doozer/coreAPI/spec/requests/lists_spec.rb",
+		"/Users/joe/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/Users/joe/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/joe/github/Doozer/coreAPI/config/application.rb",
+		"/Users/joe/github/Doozer/coreAPI/spec/requests/AuthN_spec.rb",
+		"/Users/joe/github/Doozer/coreAPI/app/controllers/users_controller.rb",
+		"/Users/joe/Library/Application Support/Sublime Text 3/Packages/HTML-CSS-JS Prettify/.jsbeautifyrc",
+		"/Users/joe/github/Doozer/coreAPI/spec/spec_helper.rb",
+		"/Users/joe/github/Doozer/coreAPI/Gemfile",
+		"/Users/joe/github/Doozer/coreAPI/.rspec",
+		"/Users/joe/github/Doozer/coreAPI/dataGen/api.rb",
+		"/Users/joe/github/Doozer/coreAPI/app/views/layouts/application.html.erb",
+		"/Users/joe/github/Doozer/coreAPI/spec/requests/login_spec.rb",
+		"/Users/joe/github/Doozer/coreAPI/spec/controllers/login_spec.rb",
+		"/Users/joe/github/Doozer/coreAPI/bin/spring",
+		"/Users/joe/github/Doozer/coreAPI/.gitignore",
+		"/Users/joe/github/Doozer/coreAPI/config/initializers/session_store.rb",
+		"/Users/joe/github/Doozer/coreAPI/config/initializers/to_bool_monkey_patch.rb",
+		"/Users/joe/github/Doozer/coreAPI/app/assets/stylesheets/bootstrap.css",
+		"/Users/joe/github/Doozer/coreAPI/app/assets/stylesheets/bootstrap-theme.css",
+		"/Users/joe/github/Doozer/coreAPI/log/development.log",
+		"/Users/joe/github/Doozer/coreAPI/app/assets/javascripts/jquery.js",
+		"/Users/joe/github/Doozer/coreAPI/app/assets/javascripts/jquery.cookie.js",
+		"/Users/joe/github/Doozer/coreAPI/app/assets/javascripts/get_lists.js",
+		"/Users/joe/github/Doozer/coreAPI/app/assets/javascripts/login.js",
+		"/Users/joe/github/Doozer/coreAPI/app/assets/javascripts/logout.js",
+		"/Users/joe/github/Doozer/coreAPI/app/controllers/item_controller.rb",
+		"/Users/jbasirico/github/whetstone/app/views/employee_reviews/index.html.erb",
+		"/Users/jbasirico/github/whetstone/app/views/employee_reviews/_employee_review_template_short.html.erb",
+		"/Users/jbasirico/github/whetstone/Gemfile",
+		"/Users/jbasirico/Desktop/TeamComs.txt",
+		"/Users/jbasirico/github/whetstone/app/views/users/show.html.erb",
+		"/Users/jbasirico/github/whetstone/config/config.yml",
+		"/Users/jbasirico/github/whetstone/app/views/employee_reviews/to_review.html.erb",
+		"/Users/jbasirico/github/whetstone/app/views/goals/_show_legacy_short.html.erb",
+		"/Users/jbasirico/github/whetstone/app/views/employee_reviews/show.html.erb",
+		"/Users/jbasirico/github/whetstone/app/views/goals/_show_okr_short.html.erb",
+		"/Users/jbasirico/github/whetstone/app/views/goals/_okr_form.html.erb",
+		"/Users/jbasirico/github/whetstone/app/assets/javascripts/application.js",
+		"/Users/jbasirico/github/whetstone/app/assets/javascripts/project_reviews.js.coffee",
+		"/Users/jbasirico/github/whetstone/app/assets/stylesheets/scaffolds.css.scss",
+		"/Users/jbasirico/github/whetstone/app/assets/javascripts/jquery.remember-state.js",
+		"/Users/jbasirico/Downloads/markdown-browser-0.6.0-beta1/default.html",
+		"/Users/jbasirico/github/whetstone/app/views/project_reviews/review.html.erb",
+		"/Users/jbasirico/github/whetstone/app/assets/stylesheets/project_reviews.css.scss",
+		"/Users/jbasirico/Downloads/markdown-js-master/default.html",
+		"/Users/jbasirico/github/whetstone/app/assets/stylesheets/application.css",
+		"/Users/jbasirico/github/whetstone/app/views/employee_reviews/_current_review_period.html.erb",
+		"/Users/jbasirico/github/whetstone/app/views/employee_reviews/_last_review_period.html.erb",
+		"/Users/jbasirico/github/whetstone/app/views/devise/sessions/new.html.erb",
+		"/Users/jbasirico/github/whetstone/app/controllers/welcome_controller.rb",
+		"/Users/jbasirico/github/whetstone/app/views/goals/past.html.erb",
+		"/Users/jbasirico/github/whetstone/app/views/project_reviews/_project_template.html.erb",
+		"/Users/jbasirico/github/whetstone/app/controllers/goals_controller.rb",
+		"/Users/jbasirico/github/whetstone/app/controllers/employee_reviews_controller.rb",
+		"/Users/jbasirico/github/whetstone/app/views/welcome/okr.html.md",
+		"/Users/jbasirico/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/jbasirico/github/whetstone/app/views/welcome/logs.html.erb",
+		"/Users/jbasirico/github/whetstone/app/helpers/welcome_helper.rb",
+		"/Users/jbasirico/github/whetstone/app/views/users/index.html.erb",
+		"/Users/jbasirico/github/whetstone/app/views/employee_reviews/_current_review_period",
+		"/Users/jbasirico/github/whetstone/app/models/user.rb",
+		"/Users/jbasirico/github/whetstone/app/views/employee_reviews/_most_recent_reviews.html.erb",
+		"/Users/jbasirico/github/whetstone/app/views/layouts/application.html.erb",
+		"/Users/jbasirico/github/whetstone/app/views/employee_reviews/_employee_review_template.html.erb",
+		"/Users/jbasirico/github/whetstone/app/views/employee_reviews/review.html.erb",
+		"/Users/jbasirico/github/whetstone/app/models/employee_review.rb",
+		"/Users/jbasirico/github/whetstone/app/assets/stylesheets/welcome.css.scss",
+		"/Users/jbasirico/github/whetstone/app/views/welcome/change_log.html.md",
+		"/Users/jbasirico/github/whetstone/app/views/goals/_goal_buttons.html.erb",
+		"/Users/jbasirico/github/whetstone/app/assets/stylesheets/logs.css.scss",
+		"/Users/jbasirico/github/whetstone/config/routes.rb",
+		"/Users/jbasirico/github/whetstone/app/views/goals/review_past.html.erb",
+		"/Users/jbasirico/github/whetstone/app/views/goals/show.html.erb",
+		"/Users/jbasirico/github/whetstone/app/views/project_reviews/show.html.erb",
+		"/Users/jbasirico/github/whetstone/app/views/goals/_show_okr.html.erb",
+		"/Users/jbasirico/github/whetstone/app/views/goals/_show_legacy.html.erb",
+		"/Users/jbasirico/github/whetstone/app/views/welcome/index.html.erb",
+		"/Users/jbasirico/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/Users/jbasirico/github/whetstone/app/views/goals/review.html.erb",
+		"/Users/jbasirico/github/whetstone/app/views/goals/_show_rating.html.erb",
+		"/Users/jbasirico/github/whetstone/app/views/employee_reviews/_form.html.erb",
+		"/Users/jbasirico/github/whetstone/app/controllers/project_reviews_controller.rb",
+		"/Users/jbasirico/github/whetstone/app/views/project_reviews/_form.html.erb",
+		"/Users/jbasirico/github/whetstone/app/views/goals/index.html.erb",
+		"/Users/jbasirico/github/whetstone/app/views/goals/edit.html.erb",
+		"/Users/jbasirico/github/whetstone/app/views/goals/_show_okr_short.erb",
+		"/Users/jbasirico/github/whetstone/app/views/goals/_show_short.html.erb",
+		"/Users/jbasirico/github/whetstone/app/views/goals/_show_reviewer_comments.html.erb",
+		"/Users/jbasirico/github/whetstone/app/views/goals/new.html.erb",
+		"/Users/jbasirico/github/whetstone/app/views/goals/_legacy_form.html.erb",
+		"/Users/jbasirico/github/whetstone/app/views/goals/_show_legacy_goal.html.erb",
+		"/Users/jbasirico/github/whetstone/app/views/goals/_form.html.erb",
+		"/Users/jbasirico/github/whetstone/app/views/goals/_goal_template.html.erb",
+		"/Users/jbasirico/github/whetstone/db/migrate/20140711192712_add_goal_type_to_goals.rb",
+		"/Users/jbasirico/github/whetstone/db/migrate/20140711192712_add_type_to_goals.rb",
+		"/Users/jbasirico/Library/Application Support/Sublime Text 3/Packages/BeautifyRuby/BeautifyRuby.sublime-settings",
+		"/Users/jbasirico/github/whetstone/config/initializers/inflections.rb",
+		"/Users/jbasirico/github/whetstone/app/views/devise/mailer/confirmation_instructions.html.erb",
+		"/Users/jbasirico/github/whetstone/bin/sass-convert",
+		"/Users/jbasirico/github/whetstone/config/initializers/filter_parameter_logging.rb",
+		"/Users/jbasirico/github/whetstone/log/production.log",
+		"/Users/jbasirico/github/whetstone/db/migrate/20140101231759_add_se_sse_pse_act_to_engagements.rb",
+		"/Users/jbasirico/github/whetstone/Rakefile",
+		"/Users/jbasirico/github/whetstone/README.md",
+		"/Users/jbasirico/Library/Application Support/Sublime Text 3/Packages/User/BeautifyRuby.sublime-settings",
+		"/Users/jbasirico/github/whetstone/app/views/welcome/markdown.html.erb",
+		"/Users/jbasirico/github/whetstone/app/controllers/engagements_controller.rb",
+		"/Users/jbasirico/github/whetstone/app/assets/javascripts/employee_reviews.js.coffee",
+		"/Users/jbasirico/github/whetstone/app/views/welcome/change_log.html.erb"
+	],
+	"find":
+	{
+		"height": 25.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			"",
+			"<div",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"session_id",
+			"current_session_id",
+			"session_id:",
+			"session_id",
+			"update_item",
+			"puts",
+			"@session_id",
+			"@second_item",
+			"@first_item",
+			"@new_list",
+			"HTTP_session_id",
+			"HTTP_@session_id",
+			"session_id",
+			"second_item",
+			"first_item",
+			"new_list",
+			"facebook.net",
+			"http://localhost:3000",
+			"&",
+			"css.map",
+			"pluralize",
+			"most_recent_employee_review",
+			"full_name",
+			"end",
+			"Not required for template or sticky footer method",
+			"container",
+			"classname",
+			"goal.status",
+			"'new'",
+			"new_goal_path",
+			"p>",
+			"<p",
+			"overall",
+			"goal",
+			"is_finished?",
+			"employee_finished",
+			"recently_closed",
+			"Goal",
+			"objective",
+			"employee_review_template",
+			"noticeSele",
+			".title",
+			"title",
+			".title",
+			"dates",
+			"\"",
+			"format.json",
+			"employee_review_template",
+			" goal",
+			"png",
+			".png",
+			"goal.status",
+			"status",
+			"goal.status",
+			"text_area",
+			"production",
+			"force_ssl",
+			"goal_params",
+			"crumpetshop",
+			"whetstone_session",
+			"http",
+			"json",
+			"assets",
+			"out",
+			"is_reviewer?",
+			"goal_params",
+			"engagement",
+			"</dd>\n      </dl>",
+			"</dt>\n        <dd>",
+			"<dl class=\"dl-horizontal\">\n        <dt>",
+			"</p>",
+			"</strong>",
+			"<p><strong>",
+			"<br />",
+			"<td>",
+			"</td>",
+			"<td>",
+			"+k",
+			"Description",
+			"importance",
+			"description",
+			"goal_template",
+			"is_reviewer",
+			".is_reviewer",
+			".is_reviewer?",
+			".select(",
+			"file",
+			"data",
+			"sign",
+			"xs",
+			"notice",
+			"class=\"field\"",
+			"<br>",
+			"@employee_review",
+			"goal.",
+			"class=\"field\"",
+			">\n",
+			"class=\"field\"",
+			"field",
+			":class=",
+			"<br>",
+			"f.select",
+			"<br>",
+			"Project",
+			"-",
+			"st-int",
+			"-",
+			"<br>",
+			"clearance",
+			"SawSharpener",
+			"ssb-scoring",
+			"update_passed",
+			"control-group",
+			"<i class=",
+			"<i ",
+			"create",
+			"gly",
+			"120",
+			"url",
+			"font-size",
+			"body",
+			"line-height",
+			"pull",
+			"large",
+			"body",
+			"\\nbody",
+			" body",
+			"body"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"sessionId",
+			"current_sessionId",
+			"sessionId:",
+			"sessionId",
+			"update_user",
+			"session_id",
+			"second_item",
+			"first_item",
+			"new_list",
+			"HTTP_SESSION_ID",
+			"@session_id",
+			"@second_item",
+			"@first_item",
+			"@new_list",
+			"",
+			"&amp;",
+			"current_review",
+			"div>",
+			"employee_review_template_short",
+			".pretty_title",
+			"'",
+			"@engagement",
+			"<br />",
+			": </strong> ",
+			"<strong>",
+			"</dd>\n</dl>",
+			"</dt>\n  <dd>",
+			"<dl class=\"dl-horizontal\">\n  <dt>",
+			"</p>",
+			"<p><strong></strong>",
+			"<br />",
+			"",
+			".number_field ",
+			"md",
+			"class=\"form-group\"",
+			"<br />",
+			"employee_review",
+			"@goal.",
+			"class=\"form-group\"",
+			"form-group",
+			":class=>",
+			"<br />",
+			"_",
+			"<br />",
+			"form-group",
+			"medium",
+			"exam",
+			"@best_exam",
+			"@exam",
+			"'$1',  ",
+			"admin",
+			"@admins",
+			"SSB_Arch",
+			"exam",
+			"exam.",
+			"",
+			"user",
+			"/assets/SSB_arch/",
+			"<p>",
+			"",
+			"<$1>",
+			"<div>",
+			"Write-Up",
+			"e",
+			"<li>",
+			"e",
+			"\\r",
+			"VALUES \\(",
+			"\\[Pages\\] \\(",
+			"Values \\(",
+			"\\[News\\] \\(",
+			"",
+			"/img/",
+			"assets",
+			"sp",
+			"aa",
+			"id",
+			"fp",
+			"\\n   - ",
+			"\\n - ",
+			"<a href=\\\"http://en.wikipedia.org/wiki/$1\\\"",
+			"",
+			"NOT NULL AUTO_INCREMENT",
+			"int",
+			"",
+			"\\n",
+			"\\r",
+			"'",
+			"\\n",
+			"",
+			"@highlightColor",
+			"\"",
+			">\\r\\n",
+			">\\r",
+			"url('assets/fonts/",
+			"url('fonts/",
+			"assets/bootstrap/",
+			"bootstrap/",
+			"bootstrap",
+			"/bootstrap",
+			"bootstrap",
+			"''"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 25.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 37.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "WebClient.sublime-project",
+	"replace":
+	{
+		"height": 46.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 392.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 194.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
