@@ -383,6 +383,62 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "app/views/list.html",
+			"settings":
+			{
+				"buffer_size": 1378,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/styles/main.scss",
+			"settings":
+			{
+				"buffer_size": 1655,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/index.html",
+			"settings":
+			{
+				"buffer_size": 3877,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/solution.html",
+			"settings":
+			{
+				"buffer_size": 18,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/app.js",
+			"settings":
+			{
+				"buffer_size": 1751,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/controllers/solution.js",
+			"settings":
+			{
+				"buffer_size": 267,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/controllers/list.js",
+			"settings":
+			{
+				"buffer_size": 5039,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -477,10 +533,27 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/joe/Documents/Desktop/Learn Stuff/WebClient"
+		"/Users/joe/github/Doozer/NgFrontEnd",
+		"/Users/joe/github/Doozer/NgFrontEnd/app",
+		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts",
+		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/controllers",
+		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/services",
+		"/Users/joe/github/Doozer/NgFrontEnd/app/styles",
+		"/Users/joe/github/Doozer/NgFrontEnd/app/views"
 	],
 	"file_history":
 	[
+		"/Users/joe/github/Doozer/NgFrontEnd/app/views/search.html",
+		"/Users/joe/github/Doozer/NgFrontEnd/app/views/solutions.html",
+		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/controllers/search.js",
+		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/services/search.js",
+		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/services/solution.js",
+		"/Users/joe/Desktop/about.js",
+		"/Users/joe/Desktop/about.html",
+		"/Users/joe/github/Doozer/NgFrontEnd/Procfile",
+		"/Users/joe/github/Doozer/NgFrontEnd/web.js",
+		"/Users/joe/github/Doozer/NgFrontEnd/.gitignore",
+		"/Users/joe/github/Doozer/NgFrontEnd/.git_ignore",
 		"/Users/joe/github/Doozer/coreAPI/config/routes.rb",
 		"/Users/joe/github/Doozer/coreAPI/app/controllers/cors_controller.rb",
 		"/Users/joe/github/Doozer/coreAPI/app/controllers/application_controller.rb",
@@ -597,18 +670,7 @@
 		"/Users/jbasirico/github/whetstone/db/migrate/20140711192712_add_type_to_goals.rb",
 		"/Users/jbasirico/Library/Application Support/Sublime Text 3/Packages/BeautifyRuby/BeautifyRuby.sublime-settings",
 		"/Users/jbasirico/github/whetstone/config/initializers/inflections.rb",
-		"/Users/jbasirico/github/whetstone/app/views/devise/mailer/confirmation_instructions.html.erb",
-		"/Users/jbasirico/github/whetstone/bin/sass-convert",
-		"/Users/jbasirico/github/whetstone/config/initializers/filter_parameter_logging.rb",
-		"/Users/jbasirico/github/whetstone/log/production.log",
-		"/Users/jbasirico/github/whetstone/db/migrate/20140101231759_add_se_sse_pse_act_to_engagements.rb",
-		"/Users/jbasirico/github/whetstone/Rakefile",
-		"/Users/jbasirico/github/whetstone/README.md",
-		"/Users/jbasirico/Library/Application Support/Sublime Text 3/Packages/User/BeautifyRuby.sublime-settings",
-		"/Users/jbasirico/github/whetstone/app/views/welcome/markdown.html.erb",
-		"/Users/jbasirico/github/whetstone/app/controllers/engagements_controller.rb",
-		"/Users/jbasirico/github/whetstone/app/assets/javascripts/employee_reviews.js.coffee",
-		"/Users/jbasirico/github/whetstone/app/views/welcome/change_log.html.erb"
+		"/Users/jbasirico/github/whetstone/app/views/devise/mailer/confirmation_instructions.html.erb"
 	],
 	"find":
 	{
@@ -876,8 +938,215 @@
 	"groups":
 	[
 		{
+			"selected": 3,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "app/views/list.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1378,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1207,
+								1207
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/styles/main.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1655,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								335,
+								335
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/SCSS/SCSS.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3877,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1152,
+								1152
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 372.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "app/views/solution.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 18,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								18,
+								18
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "app/scripts/app.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1751,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1026,
+								1026
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 492.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "app/scripts/controllers/solution.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 267,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								267,
+								267
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "app/scripts/controllers/list.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5039,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								244,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				}
 			]
 		}
 	],

@@ -6,12 +6,14 @@
 <ul ui-sortable="sortableOptions" style='list-group' ng-model="items">
     <li class='list-group-item item' ng-repeat="item in items | orderBy:'order'">
         <div ng-class="item == editedItem  ? 'hidden' : 'show'">
-            <input class='check' type='checkbox' ng-model='item.done' ng-change="toggle(item)">
-            <label ng-dblclick="editItem(item)">{{item.title + ': ' + item.order}}</label>
-            <span class='pull-right'><button class="destroy" ng-click="removeItem($index, item)">X</button></span>
+            <span class="glyphicon glyphicon-check" ng-if='item.done' ng-click='toggle(item)'></span>
+            <span class="glyphicon glyphicon-unchecked" ng-if='!item.done' ng-click='toggle(item)'></span>
+            <label ng-dblclick="editItem(item)">{{item.title}}</label>
+            <span class="glyphicon glyphicon-remove pull-right" ng-click='removeItem($index, item)'></span>
         </div>
         <div ng-class="item == editedItem  ? 'show' : 'hidden'">
             <form ng-submit="saveEdits(item, 'submit')" class='input-group input-group'>
+                <span class="glyphicon glyphicon-check text-muted" ng-if='item.done'></span>
                 <input class="edit" ng-trim="false" ng-model="item.title" item-escape="revertEdits(item)" ng-blur="saveEdits(item, 'blur')" item-focus="item == editedItem" class='form-control'>
             </form>
         </div>

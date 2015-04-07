@@ -3,7 +3,8 @@
 angular.module('webClientApp')
   .factory('doozerSession', function($resource, $http, $cookies) {
 
-    var doozerURL = 'https://warm-atoll-6588.herokuapp.com/api/';
+    //var doozerURL = 'https://warm-atoll-6588.herokuapp.com/api/';
+    var doozerURL = 'http://localhost:3000/api/'
 
     var session = {
       login: function(token){

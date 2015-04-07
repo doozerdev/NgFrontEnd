@@ -147,6 +147,7 @@ angular.module('webClientApp')
 
     $scope.toggle = function(item) {
       Item.get({itemId: item.id}, function(toUpdate) {
+        item.done = !item.done;
         toUpdate.done = item.done;
         toUpdate.$update({itemId: item.id});
       });

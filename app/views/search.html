@@ -1,0 +1,52 @@
+<h1>Search</h1>
+<div class="row">
+    <form id="search-form" ng-submit="search()">
+        <div class="col-lg-12">
+            <div class="input-group">
+                <input type="text" ng-model='searchTerm' class="form-control" placeholder="Search" ng-submit="search()">
+                <span class="input-group-btn">
+        <button class="btn btn-default" type="button" ng-click="search()">
+          <span class="glyphicon glyphicon-search"></span>&nbsp;
+                </button>
+                </span>
+            </div>
+        </div>
+    </form>
+</div>
+<div class='row'>
+    <div class="col-lg-12" ng-show='results.length > 0'>
+        <p>Search completed in {{request_time}}.</p>
+        <p>Your Items</p>
+        <ul style='list-group'>
+            <li class='list-group-item item' ng-repeat="item in results | filter: '!'+(userId ===item.user_id)">
+                <div ng-class="show">
+                    <label>{{item.title}}</label>
+                    <span ng-show="item.parent && item.parent!=''">
+                      <a href='#/{{item.parent}}'><span class="pull-right" ng-click='viewInList(item)'>View in List <span class="glyphicon glyphicon-menu-right"></span></span>
+                    </a>
+                    </span>
+                    <span ng-show="!item.parent || item.parent===''">
+                    <a href='#/{{item.id}}'><span class="pull-right" ng-click='viewInList(item)'>View List <span class="glyphicon glyphicon-menu-right"></span></span>
+                    </a>
+                    </span>
+                </div>
+            </li>
+        </ul>
+        <p>Other's Items</p>
+        <ul style='list-group'>
+            <li class='list-group-item item' ng-repeat="item in results | filter:userId===item.user_id">
+                <div ng-class="show">
+                    <label>{{item.title}}</label>
+                    <span ng-hide="item.parent===''">
+                      <a href='#/{{item.parent}}'><span class="pull-right" ng-click='viewInList(item)'>View in List <span class="glyphicon glyphicon-menu-right"></span></span>
+                    </a>
+                    </span>
+                    <span ng-show="item.parent===''">
+                    <a href='#/{{item.id}}'><span class="pull-right" ng-click='viewInList(item)'>View List <span class="glyphicon glyphicon-menu-right"></span></span>
+                    </a>
+                    </span>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
