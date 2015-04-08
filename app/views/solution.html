@@ -1,1 +1,35 @@
 <h1>Solutions</h1>
+<div class="row">
+    <div class="col-sm-6">
+        <div class='well'>
+            <h2>Create Solution</h2>
+            <form id="search-form" ng-submit="search()">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Title" ng-model='solution.title'>
+                    <input type="text" class="form-control" placeholder="Source" ng-model='solution.source'>
+                    <input type="text" class="form-control" placeholder="price" ng-model='solution.price'>
+                    <input type="text" class="form-control" placeholder="Phone Number" ng-model='solution.phoneNumber'>
+                    <input type="text" class="form-control" placeholder="Open Hours" ng-model='solution.openHours'>
+                    <input type="text" class="form-control" placeholder="Link" ng-model='solution.link'>
+                    <input type="text" class="form-control" placeholder="Tags (comma separated)" ng-model='solution.tags'>
+                    <input type="text" class="form-control" placeholder="Expiration Date" ng-model='solution.expireDate'>
+                    <input type="text" class="form-control" placeholder="Image Link" ng-model='solution.imgLink'>
+                    <textarea class="form-control" placeholder="Description" ng-model='solution.description'></textarea>
+                    <textarea class="form-control" placeholder="Address" ng-model='solution.address'></textarea>
+                    <textarea class="form-control" placeholder="Other Notes" ng-model='solution.notes'></textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary pull-right" ng-submit='createSolution()'>Create Solution</button>
+                </div>
+            </form>
+            &nbsp;
+        </div>
+    </div>
+    <div class='col-sm-6'>
+        <ul class='list-group'>
+            <li class='list-group-item item' ng-repeat="solution in solutions | orderBy:'title'">
+            {{solution.title}}
+            </li>
+        </ul>
+    </div>
+</div>
