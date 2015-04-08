@@ -15,8 +15,7 @@
                 <div ng-class="item == editedItem  ? 'hidden' : 'show'">
                     <label ng-dblclick="editItem(item)">{{item.title}}</label>
                     <a ng-href='#/{{item.id}}'>view list &gt; </a>
-                    <span class='pull-right'>
-                        <button class="destroy" ng-click="removeList($index, item)">X</button></span>
+                    <span class="glyphicon glyphicon-remove pull-right" ng-click='removeItem($index, item)'></span>
                 </div>
                 <div ng-class="item == editedItem  ? 'show' : 'hidden'">
                     <form ng-submit="saveEdits(item, 'submit')">

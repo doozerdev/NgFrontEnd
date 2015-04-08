@@ -11,90 +11,107 @@
 
 
 angular.module('webClientApp')
-  .controller('MainCtrl', function ($scope, $cookies, $facebook, session, Item) {
+    .controller('MainCtrl', function($scope, $cookies, $resource, $facebook, Session, Item) {
 
-    var refresh = function(){
-      var listData = Item.query(function() {
-        var lists = listData.items;
-        if(lists)
-        {
-          $facebook.api('/me').then(function(response) {
-            $scope.username = response.name;
-            $scope.loggedIn = true;
-            $scope.lists = lists;
-            $scope.loggedIn = true;
-            $scope.sessionId = $cookies.doozerSession;
-          });
+        $scope.refresh = function() {
+            Item.query(function(listData) {
+                var lists = listData.items;
+                if (lists) {
+                    $facebook.api('/me').then(function(response) {
+                        $scope.username = response.name;
+                        $scope.loggedIn = true;
+                        $scope.lists = lists;
+                        $scope.sessionId = $cookies.get('doozerSession');
+                    });
+                } else {
+                    $scope.loggedIn = false;
+                    $cookies.remove('doozerSession');
+                }
+            });
+        };
+
+        if ($cookies.get('doozerSession')) {
+            $scope.refresh();
         }
-        else
-        {
-          $scope.loggedIn = false;
-          $cookies.doozerSession = '';
-        }
-      });
-    };
 
-    if($cookies.doozerSession)
-    {
-      refresh();
-    }
+        $scope.login = function() {
+            $facebook.login().then(function(response) {
+                Session.login({
+                    token: response.authResponse.accessToken
+                }, function(result) {
+                    $scope.sessionId = result.sessionId;
+                    //console.log(result.sessionId);
+                    $cookies.put('doozerSession', result.sessionId);
+                    var items = $resource('http://localhost:3000/api/items', null, {
+                        query: {
+                            headers: {
+                                'sessionId': result.sessionId
+                            }
+                        }
+                    });
 
-    $scope.login = function() {
-      $facebook.login().then(function(response) {
-        session.login(response.authResponse.accessToken).$promise.then(function (session){
-          $scope.sessionId = session.sessionId;
-          $cookies.doozerSession = session.sessionId;
-          refresh();
-        });
-      });
-    };
+                    items.query(function(listData) {
+                        $scope.lists = listData.items;
+                        $scope.username = response.name;
+                        $scope.loggedIn = true;
+                        $scope.sessionId = result.sessionId;
+                    });
+                });
+            });
+        };
 
-    $scope.logout = function() {
-      $facebook.logout().then(function() {
-        session.logout().$promise.then(function(){
-          $cookies.doozerSession = '';
-          $scope.loggedIn = false;  
-        });
-      });
-    };
+        $scope.logout = function() {
+            $facebook.logout().then(function() {
+                Session.logout(function() {
+                    $cookies.remove('doozerSession');
+                    $scope.loggedIn = false;
+                });
+            });
+        };
 
-    $scope.addList = function () {
-      var newList = {
-        title: $scope.newList.trim(),
-        completed: false
-      };
+        $scope.addList = function() {
+            var newList = {
+                title: $scope.newList.trim(),
+                completed: false
+            };
 
-      if (!newList.title) {
-        return;
-      }
+            if (!newList.title) {
+                return;
+            }
 
-      var item = new Item();
-      item.title = newList.title;
+            var item = new Item();
+            item.title = newList.title;
 
-      Item.save(item, function(savedList){
-        $scope.lists.push(savedList);
-        $scope.newList = '';
-      });
-    };
+            Item.save(item, function(savedList) {
+                $scope.lists.push(savedList);
+                $scope.newList = '';
+            });
+        };
 
-    $scope.removeList = function(idx, item) {
-      Item.delete({itemId: item.id}, function() {
-        $scope.lists.splice(idx, 1);
-      });
-    };
+        $scope.removeList = function(idx, item) {
+            Item.delete({
+                itemId: item.id
+            }, function() {
+                $scope.lists.splice(idx, 1);
+            });
+        };
 
-    $scope.editItem = function (item) {
-      $scope.editedItem = item;
-      // Clone the original item to restore it on demand.
-      $scope.originalItem = angular.extend({}, item);
-    };
+        $scope.editItem = function(item) {
+            $scope.editedItem = item;
+            // Clone the original item to restore it on demand.
+            $scope.originalItem = angular.extend({}, item);
+        };
 
-    $scope.saveEdits = function(item) {
-      Item.get({itemId: item.id}, function(toUpdate) {
-        toUpdate.title = item.title;
-        toUpdate.$update({itemId: item.id});
-        $scope.editedItem = null;
-      });
-    };
+        $scope.saveEdits = function(item) {
+            Item.get({
+                itemId: item.id
+            }, function(toUpdate) {
+                toUpdate.title = item.title;
+                toUpdate.$update({
+                    itemId: item.id
+                });
+                $scope.editedItem = null;
+            });
+        };
 
-  });
+    });

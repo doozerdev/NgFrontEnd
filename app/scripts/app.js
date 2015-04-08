@@ -27,10 +27,10 @@ angular.module('webClientApp', [
                 templateUrl: 'views/main.html',
                 controller: 'MainCtrl',
                 resolve: {
-                    session: function(doozerSession) {
-                        // Get the correct module (API or localStorage).
-                        return doozerSession;
-                    },
+                    // session: function(doozerSession) {
+                    //     // Get the correct module (API or localStorage).
+                    //     return doozerSession;
+                    // },
                     store: function(doozerList) {
                         return doozerList;
                     }

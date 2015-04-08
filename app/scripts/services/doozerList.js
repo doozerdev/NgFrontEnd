@@ -15,10 +15,10 @@ angular.module('webClientApp')
 
     var Item = $resource(doozerURL + 'items/:itemId', { }, {
       query: {
-        headers: {'sessionId': $cookies.doozerSession}
+        headers: {'sessionId': $cookies.get('doozerSession')}
       },
       get: {
-        headers: {'sessionId': $cookies.doozerSession}
+        headers: {'sessionId': $cookies.get('doozerSession')}
       }
     });
 

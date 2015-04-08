@@ -5,7 +5,7 @@ angular.module('webClientApp')
 
     var doozerURL = 'http://localhost:3000/api/'
 
-    $http.defaults.headers.common.sessionId= $cookies.doozerSession;
+    $http.defaults.headers.common.sessionId= $cookies.get('doozerSession');
 
     return $resource(doozerURL + 'items/:searchTerm/search', 
       {searchTerm:'@searchTerm'}, 

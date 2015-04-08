@@ -18,7 +18,7 @@ angular.module('webClientApp')
       	var Session = $resource(doozerURL + 'logout', { }, {
           delete: {
             method: 'DELETE',
-            headers: {'sessionId': $cookies.doozerSession}
+            headers: {'sessionId': $cookies.get('doozerSession')}
           }
         });
         return Session.delete();
