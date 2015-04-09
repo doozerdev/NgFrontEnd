@@ -10,21 +10,33 @@
 angular.module('webClientApp')
   .controller('SolutionCtrl', function ($scope, $routeParams, Solution) {
 
+    var eOV = function(item){
+        return item ? item.trim() : '';
+    };
+
+    Solution.query(function(solutionData){
+        $scope.solutions = solutionData;
+    });
+
     $scope.createSolution = function() {
-      var newSolution = {
-                title: $scope.solution.title.trim(),
-                source: $scope.solution.source.trim(),
-                price: $scope.solution.price.trim(),
-                phoneNumber: $scope.solution.phoneNumber.trim(),
-                openHours: $scope.solution.openHours.trim(),
-                link: $scope.solution.link.trim(),
-                tags: $scope.solution.tags.trim(),
-                expirationDate: $scope.solution.expirationDate.trim(),
-                imgLink: $scope.solution.imgLink.trim(),
-                description: $scope.solution.description.trim(),
-                address: $scope.solution.address.trim(),
-                notes: $scope.solution.notes.trim(),
-            };
-            $scope.solutions.push(newSolution);
+      var newSolution = new Solution({
+                title: eOV($scope.solution.title),
+                source: eOV($scope.solution.source),
+                price: eOV($scope.solution.price),
+                phoneNumber: eOV($scope.solution.phoneNumber),
+                openHours: eOV($scope.solution.openHours),
+                link: eOV($scope.solution.link),
+                tags: eOV($scope.solution.tags),
+                expirationDate: eOV($scope.solution.expirationDate),
+                imgLink: eOV($scope.solution.imgLink),
+                description: eOV($scope.solution.description),
+                address: eOV($scope.solution.address),
+                notes: eOV($scope.solution.notes),
+            });
+
+      Solution.save(newSolution, function(savedSolution){
+        $scope.solutions.push(savedSolution);
+        $scope.solution = angular.copy({}   );
+      });
     };
 });

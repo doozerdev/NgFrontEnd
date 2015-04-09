@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"text",
+				"textarea	Tag"
+			],
+			[
+				"doo",
+				"doozerURL"
+			],
+			[
 				"route",
 				"routeParams	\\$routeParams"
 			],
@@ -268,10 +276,6 @@
 				"high_score"
 			],
 			[
-				"text",
-				"text-align"
-			],
-			[
 				"v",
 				"vertical-align"
 			],
@@ -388,58 +392,26 @@
 	"buffers":
 	[
 		{
-			"file": "app/scripts/app.js",
-			"settings":
-			{
-				"buffer_size": 2010,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/list.html",
-			"settings":
-			{
-				"buffer_size": 1378,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "app/scripts/controllers/solution.js",
 			"settings":
 			{
-				"buffer_size": 267,
+				"buffer_size": 1095,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/scripts/services/doozerSession.js",
+			"file": "app/index.html",
 			"settings":
 			{
-				"buffer_size": 679,
+				"buffer_size": 3871,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/scripts/services/Item.js",
+			"file": "app/scripts/services/solution.js",
 			"settings":
 			{
-				"buffer_size": 901,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/controllers/search.js",
-			"settings":
-			{
-				"buffer_size": 881,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/search.html",
-			"settings":
-			{
-				"buffer_size": 2477,
+				"buffer_size": 869,
 				"line_ending": "Unix"
 			}
 		}
@@ -548,17 +520,25 @@
 	],
 	"file_history":
 	[
-		"/Users/joe/github/Doozer/NgFrontEnd/app/index.html",
-		"/Users/joe/github/Doozer/NgFrontEnd/app/styles/main.scss",
-		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/controllers/list.js",
 		"/Users/joe/github/Doozer/NgFrontEnd/app/views/solution.html",
+		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/services/Item.js",
+		"/Users/joe/github/Doozer/NgFrontEnd/app/views/search.html",
+		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/controllers/solution.js",
+		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/controllers/main.js",
+		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/services/session.js",
+		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/controllers/search.js",
+		"/Users/joe/github/Doozer/NgFrontEnd/bower.json",
+		"/Users/joe/github/Doozer/NgFrontEnd/app/views/main.html",
 		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/services/doozerList.js",
 		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/services/search.js",
-		"/Users/joe/github/Doozer/NgFrontEnd/app/views/list.html",
+		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/services/doozerSession.js",
+		"/Users/joe/github/Doozer/NgFrontEnd/app/index.html",
 		"/Users/joe/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
-		"/Users/joe/github/Doozer/NgFrontEnd/app/views/search.html",
+		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/app.js",
+		"/Users/joe/github/Doozer/NgFrontEnd/app/styles/main.scss",
+		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/controllers/list.js",
+		"/Users/joe/github/Doozer/NgFrontEnd/app/views/list.html",
 		"/Users/joe/github/Doozer/NgFrontEnd/app/views/solutions.html",
-		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/controllers/search.js",
 		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/services/solution.js",
 		"/Users/joe/Desktop/about.js",
 		"/Users/joe/Desktop/about.html",
@@ -667,15 +647,7 @@
 		"/Users/jbasirico/github/whetstone/app/views/employee_reviews/_form.html.erb",
 		"/Users/jbasirico/github/whetstone/app/controllers/project_reviews_controller.rb",
 		"/Users/jbasirico/github/whetstone/app/views/project_reviews/_form.html.erb",
-		"/Users/jbasirico/github/whetstone/app/views/goals/index.html.erb",
-		"/Users/jbasirico/github/whetstone/app/views/goals/edit.html.erb",
-		"/Users/jbasirico/github/whetstone/app/views/goals/_show_okr_short.erb",
-		"/Users/jbasirico/github/whetstone/app/views/goals/_show_short.html.erb",
-		"/Users/jbasirico/github/whetstone/app/views/goals/_show_reviewer_comments.html.erb",
-		"/Users/jbasirico/github/whetstone/app/views/goals/new.html.erb",
-		"/Users/jbasirico/github/whetstone/app/views/goals/_legacy_form.html.erb",
-		"/Users/jbasirico/github/whetstone/app/views/goals/_show_legacy_goal.html.erb",
-		"/Users/jbasirico/github/whetstone/app/views/goals/_form.html.erb"
+		"/Users/jbasirico/github/whetstone/app/views/goals/index.html.erb"
 	],
 	"find":
 	{
@@ -696,6 +668,7 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"$cookies",
 			"session_id",
 			"current_session_id",
 			"session_id:",
@@ -822,8 +795,7 @@
 			"large",
 			"body",
 			"\\nbody",
-			" body",
-			"body"
+			" body"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -943,64 +915,62 @@
 	"groups":
 	[
 		{
-			"selected": 6,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "app/scripts/app.js",
+					"file": "app/scripts/controllers/solution.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2010,
+						"buffer_size": 1095,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2005,
-								2005
+								1076,
+								1076
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 641.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "app/views/list.html",
+					"file": "app/index.html",
 					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 1378,
+						"buffer_size": 3871,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								32,
-								111
+								3633,
+								3633
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
+							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 991.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
@@ -1008,19 +978,19 @@
 				},
 				{
 					"buffer": 2,
-					"file": "app/scripts/controllers/solution.js",
+					"file": "app/scripts/services/solution.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 267,
+						"buffer_size": 869,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								267,
-								267
+								731,
+								731
 							]
 						],
 						"settings":
@@ -1031,123 +1001,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "app/scripts/services/doozerSession.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 679,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								230,
-								230
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "app/scripts/services/Item.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 901,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								607,
-								594
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "app/scripts/controllers/search.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 881,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								599,
-								599
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "app/views/search.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2477,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1537,
-								1537
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 50.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
+					"stack_index": 2,
 					"type": "text"
 				}
 			]

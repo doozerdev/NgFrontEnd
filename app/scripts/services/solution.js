@@ -12,6 +12,7 @@ angular.module('webClientApp')
             id: '@id'
         }, {
             query: {
+                isArray: true
                 // TODO: for some reason this needs to be here, leave for now, debug later
             },
             delete: {

@@ -3,7 +3,7 @@
     <div class="col-sm-6">
         <div class='well'>
             <h2>Create Solution</h2>
-            <form id="search-form" ng-submit="search()">
+            <form id="search-form" ng-submit="createSolution()">
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="Title" ng-model='solution.title'>
                     <input type="text" class="form-control" placeholder="Source" ng-model='solution.source'>
@@ -19,7 +19,7 @@
                     <textarea class="form-control" placeholder="Other Notes" ng-model='solution.notes'></textarea>
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary pull-right" ng-submit='createSolution()'>Create Solution</button>
+                    <button type="submit" class="btn btn-primary pull-right">Create Solution</button>
                 </div>
             </form>
             &nbsp;
