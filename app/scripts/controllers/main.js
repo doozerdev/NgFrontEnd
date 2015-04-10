@@ -91,11 +91,38 @@ angular.module('webClientApp')
         };
 
         $scope.removeList = function(idx, item) {
-            Item.delete({
+
+            console.log('removeList');
+            Item.get({
                 itemId: item.id
-            }, function() {
-                $scope.lists.splice(idx, 1);
+            }, function(toUpdate) {
+                toUpdate.archive = true;
+                toUpdate.$update({
+                    itemId: item.id
+                });
+                Item.children({
+                    itemId: item.id
+                }, function(listData) {
+                    var children = listData.items;
+                    angular.forEach(children, function(child) {
+                        Item.get({
+                            itemId: child.id
+                        }, function(toArchive) {
+                            toArchive.archive = true;
+                            toArchive.$update({
+                                itemId: child.id
+                            });
+                        });
+                    });
+                    $scope.lists.splice(idx, 1);
+                });
             });
+
+            // Item.delete({
+            //     itemId: item.id
+            // }, function() {
+            //     $scope.lists.splice(idx, 1);
+            // });
         };
 
         $scope.editItem = function(item) {

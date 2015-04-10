@@ -13,7 +13,7 @@ angular.module('webClientApp')
     var step = 33554432; //assume about 63 items per list optimally
     var max = 2147483647; //maxIn32
 
-    var listData = Item.children({itemId: $routeParams.id}, function() {
+    Item.children({itemId: $routeParams.id}, function(listData) {
         $scope.items = listData.items;
         $scope.list = Item.get({itemId: $routeParams.id});
 
@@ -140,9 +140,11 @@ angular.module('webClientApp')
     };
 
     $scope.removeItem = function(idx, item) {
-      Item.delete({itemId: item.id}, function() {
-          $scope.items.splice(idx, 1);
-        });
+      Item.get({itemId: item.id}, function(toUpdate){
+        toUpdate.archive = true;
+        toUpdate.$update({itemId: item.id});
+        $scope.items.splice(idx, 1);
+      });
     };
 
     $scope.toggle = function(item) {
