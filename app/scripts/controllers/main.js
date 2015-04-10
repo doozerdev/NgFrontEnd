@@ -17,12 +17,10 @@ angular.module('webClientApp')
             Item.query(function(listData) {
                 var lists = listData.items;
                 if (lists) {
-                    $facebook.api('/me').then(function(response) {
-                        $scope.username = response.name;
-                        $scope.loggedIn = true;
-                        $scope.lists = lists;
-                        $scope.sessionId = $cookies.get('doozerSession');
-                    });
+                    $scope.username = $cookies.get('username');
+                    $scope.loggedIn = true;
+                    $scope.lists = lists;
+                    $scope.sessionId = $cookies.get('doozerSession');
                 } else {
                     $scope.loggedIn = false;
                     $cookies.remove('doozerSession');
@@ -39,9 +37,13 @@ angular.module('webClientApp')
                 Session.login({
                     token: response.authResponse.accessToken
                 }, function(result) {
-                    $scope.sessionId = result.sessionId;
-                    //console.log(result.sessionId);
                     $cookies.put('doozerSession', result.sessionId);
+
+                    $facebook.api('/me').then(function(response) {
+                        $scope.username = response.name;
+                        $cookies.put('username', response.name);
+                    });
+
                     var items = $resource('http://localhost:3000/api/items', null, {
                         query: {
                             headers: {
