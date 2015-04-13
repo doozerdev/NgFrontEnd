@@ -28,7 +28,7 @@
     <div class='col-sm-6'>
         <ul class='list-group'>
             <li class='list-group-item item' ng-repeat="solution in solutions | orderBy:'title'">
-            {{solution.title}}
+            <a href='#/solution/{{solution.id}}'>{{solution.title}}</a>
             </li>
         </ul>
     </div>
