@@ -139,11 +139,11 @@ angular.module('webClientApp')
       });
     };
 
-    $scope.removeItem = function(idx, item) {
+    $scope.removeItem = function(item) {
       Item.get({itemId: item.id}, function(toUpdate){
         toUpdate.archive = true;
         toUpdate.$update({itemId: item.id});
-        $scope.items.splice(idx, 1);
+        $scope.items.splice($scope.items.indexOf(item), 1);
       });
     };
 

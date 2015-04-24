@@ -90,7 +90,7 @@ angular.module('webClientApp')
             });
         };
 
-        $scope.removeList = function(idx, item) {
+        $scope.removeList = function(item) {
 
             console.log('removeList');
             Item.get({
@@ -114,15 +114,9 @@ angular.module('webClientApp')
                             });
                         });
                     });
-                    $scope.lists.splice(idx, 1);
+                    $scope.lists.splice($scope.items.indexOf(item), 1);
                 });
             });
-
-            // Item.delete({
-            //     itemId: item.id
-            // }, function() {
-            //     $scope.lists.splice(idx, 1);
-            // });
         };
 
         $scope.editItem = function(item) {

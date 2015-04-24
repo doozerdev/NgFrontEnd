@@ -22,7 +22,6 @@ angular.module('webClientApp')
                 // TODO: for some reason this needs to be here, leave for now, debug later
             },
             update: {
-                url: doozerURL + 'items/:itemId',
                 method: 'PUT'
             }
         });

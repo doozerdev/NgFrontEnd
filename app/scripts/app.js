@@ -45,12 +45,12 @@ angular.module('webClientApp', [
                 controller: 'SearchCtrl'
             })
             .when('/solution', {
-                templateUrl: 'views/solution.html',
-                controller: 'SolutionCtrl'
+                templateUrl: 'views/solutions.html',
+                controller: 'SolutionsCtrl'
             })
             .when('/solution/:id',{
-                templateUrl: 'views/applySolution.html',
-                controller: 'ApplySolutionCtrl'
+                templateUrl: 'views/solution.html',
+                controller: 'SolutionCtrl'
             })
             .when('/:id', {
                 templateUrl: 'views/list.html',
