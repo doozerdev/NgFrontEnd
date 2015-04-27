@@ -27,6 +27,14 @@ angular.module('webClientApp')
             update: {
                 url: doozerURL + 'items/:itemId',
                 method: 'PUT'
+            },
+            mapSolution:{
+                url: doozerURL + 'items/:itemId/mapSolution',
+                method: 'POST'
+            },
+            solutions:{
+                url: doozerURL + 'items/:itemId/solutions',
+                method: 'GET'
             }
         });
     });
