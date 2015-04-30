@@ -48,7 +48,7 @@ angular.module('webClientApp', [
                 templateUrl: 'views/solutions.html',
                 controller: 'SolutionsCtrl'
             })
-            .when('/solution/:id',{
+            .when('/solution/:id', {
                 templateUrl: 'views/solution.html',
                 controller: 'SolutionCtrl'
             })
@@ -65,7 +65,7 @@ angular.module('webClientApp', [
 
     // Load the SDK asynchronously
     (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
+        var js, fjs = d.    getElementsByTagName(s)[0];
         if (d.getElementById(id)) {
             return;
         }

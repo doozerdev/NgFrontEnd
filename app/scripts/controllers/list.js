@@ -1,3 +1,5 @@
+/// <reference path="../../../typings/jquery/jquery.d.ts"/>
+/// <reference path="../../../typings/angularjs/angular.d.ts"/>
 'use strict';
 
 /**
@@ -9,7 +11,7 @@
  */
 angular.module('webClientApp')
   .controller('ListCtrl', function ($scope, $routeParams, Item) {
-
+    
     var step = 33554432; //assume about 63 items per list optimally
     var max = 2147483647; //maxIn32
 
@@ -87,7 +89,7 @@ angular.module('webClientApp')
         angular.forEach(items, function(item){
           item.order = current;
           Sorting.persistItem(item);
-          current = current++ + newStep;
+          current = current + newStep;
         });
         return items;
       },
@@ -127,15 +129,11 @@ angular.module('webClientApp')
       var item = new Item();
       item.title = newItem.title;
       item.parent = newItem.parent;
-      if($scope.items.length < 2){
-        item.order = step * ($scope.items.length+1);
-      }
+ 
       Item.save(item, function(savedItem){
-        $scope.items.push(savedItem);
+        $scope.items.unshift(savedItem);
         $scope.newItem = ''; 
-        if($scope.items.length > 2){
-          Sorting.move($scope.items, $scope.items.length-1);
-        }
+        Sorting.move($scope.items, 0);
       });
     };
 
