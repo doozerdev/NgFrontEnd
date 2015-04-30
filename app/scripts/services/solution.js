@@ -4,7 +4,7 @@ angular.module('webClientApp')
     .factory('Solution', function($resource, $http, $cookies) {
 
         var doozerURL = 'https://warm-atoll-6588.herokuapp.com/api/';
-        //var doozerURL = 'http://localhost:3000/api/';
+    //var doozerURL = 'http://localhost:3000/api/'
 
         $http.defaults.headers.common.sessionId = $cookies.get('doozerSession');
 
