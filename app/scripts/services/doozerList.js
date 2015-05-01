@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('webClientApp')
-  .factory('doozerList', function($resource, $http, $cookies) {
+  .factory('doozerList', function($resource, $http, $cookies, doozerURL) {
 
     // var Items = $resource(doozerURL + 'items/:itemId', 
     //   {itemId:'@id'}, 
@@ -10,7 +10,7 @@ angular.module('webClientApp')
     //   }
     // });
 
-    var doozerURL = 'https://warm-atoll-6588.herokuapp.com/api/';
+    //var doozerURL = 'https://warm-atoll-6588.herokuapp.com/api/';
     //var doozerURL = 'http://localhost:3000/api/'
 
     var Item = $resource(doozerURL + 'items/:itemId', { }, {

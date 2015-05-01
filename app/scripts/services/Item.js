@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('webClientApp')
-    .factory('Item', function($resource, $http, $cookies) {
+    .factory('Item', function($resource, $http, $cookies, doozerURL) {
 
-        var doozerURL = 'https://warm-atoll-6588.herokuapp.com/api/';
+        //var doozerURL = 'https://warm-atoll-6588.herokuapp.com/api/';
     //var doozerURL = 'http://localhost:3000/api/'
 
 

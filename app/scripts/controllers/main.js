@@ -11,7 +11,8 @@
 
 
 angular.module('webClientApp')
-    .controller('MainCtrl', function($scope, $cookies, $resource, $facebook, Session, Item) {
+    .controller('MainCtrl', function($scope, $cookies, $resource, $facebook, 
+        Session, Item, doozerURL) {
 
         $scope.refresh = function() {
             Item.query(function(listData) {
@@ -44,7 +45,7 @@ angular.module('webClientApp')
                         $cookies.put('username', response.name);
                     });
 
-                    var items = $resource('http://localhost:3000/api/items', null, {
+                    var items = $resource(doozerURL+'/items', null, {
                         query: {
                             headers: {
                                 'sessionId': result.sessionId

@@ -15,7 +15,7 @@
             <span class="glyphicon glyphicon-check" ng-if='item.done' ng-click='toggle(item)'></span>
             <span class="glyphicon glyphicon-unchecked" ng-if='!item.done' ng-click='toggle(item)'></span>
             <label ng-dblclick="editItem(item)">{{item.title}}</label>
-            <span class="glyphicon glyphicon-remove pull-right" ng-click='removeItem($index, item)'></span>
+            <span class="glyphicon glyphicon-remove pull-right" ng-click='removeItem(item)'></span>
         </div>
         <div ng-class="item == editedItem  ? 'show' : 'hidden'">
             <form ng-submit="saveEdits(item, 'submit')" class='input-group input-group'>

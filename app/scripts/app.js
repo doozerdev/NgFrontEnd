@@ -60,12 +60,13 @@ angular.module('webClientApp', [
                 redirectTo: '/'
             });
     })
-
+ .constant('doozerURL','https://warm-atoll-6588.herokuapp.com/api/')
+ //.constant('doozerURL','http://localhost:3000/api/')
 .run(function() {
 
     // Load the SDK asynchronously
     (function(d, s, id) {
-        var js, fjs = d.    getElementsByTagName(s)[0];
+        var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) {
             return;
         }

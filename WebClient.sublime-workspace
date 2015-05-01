@@ -392,42 +392,10 @@
 	"buffers":
 	[
 		{
-			"file": "app/views/solution.html",
+			"file": "app/scripts/services/doozerList.js",
 			"settings":
 			{
-				"buffer_size": 2200,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/search.html",
-			"settings":
-			{
-				"buffer_size": 2456,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/controllers/solution.js",
-			"settings":
-			{
-				"buffer_size": 627,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/controllers/solutions.js",
-			"settings":
-			{
-				"buffer_size": 1655,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/solution.js",
-			"settings":
-			{
-				"buffer_size": 1098,
+				"buffer_size": 1118,
 				"line_ending": "Unix"
 			}
 		},
@@ -435,15 +403,47 @@
 			"file": "app/scripts/services/Item.js",
 			"settings":
 			{
-				"buffer_size": 1264,
+				"buffer_size": 1272,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/views/solutions.html",
+			"file": "app/scripts/controllers/list.js",
 			"settings":
 			{
-				"buffer_size": 3154,
+				"buffer_size": 5183,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/search.js",
+			"settings":
+			{
+				"buffer_size": 574,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/session.js",
+			"settings":
+			{
+				"buffer_size": 641,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/solution.js",
+			"settings":
+			{
+				"buffer_size": 1106,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/app.js",
+			"settings":
+			{
+				"buffer_size": 2294,
 				"line_ending": "Unix"
 			}
 		}
@@ -552,35 +552,35 @@
 	],
 	"file_history":
 	[
+		"/Users/joe/github/Doozer/NgFrontEnd/app/views/solutions.html",
+		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/services/session.js",
+		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/services/search.js",
+		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/services/Item.js",
+		"/Users/joe/github/Doozer/NgFrontEnd/app/views/solution.html",
+		"/Users/joe/github/Doozer/NgFrontEnd/web.js",
+		"/Users/joe/github/Doozer/NgFrontEnd/.gitignore",
+		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/services/doozerList.js",
 		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/controllers/solution.js",
+		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/controllers/solutions.js",
+		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/services/solution.js",
 		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/services/itemSolutionMap.js",
 		"/Users/joe/github/Doozer/NgFrontEnd/app/views/item.html",
 		"/Users/joe/github/Doozer/NgFrontEnd/app/views/list.html",
 		"/Users/joe/github/Doozer/NgFrontEnd/app/views/main.html",
 		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/controllers/list.js",
-		"/Users/joe/github/Doozer/NgFrontEnd/app/views/solutions.html",
 		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/app.js",
 		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/controllers/Solution.js",
-		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/controllers/solutions.js",
 		"/Users/joe/github/Doozer/NgFrontEnd/app/index.html",
 		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/controllers/main.js",
-		"/Users/joe/github/Doozer/NgFrontEnd/app/views/solution.html",
-		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/services/solution.js",
-		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/services/Item.js",
 		"/Users/joe/github/Doozer/NgFrontEnd/app/views/search.html",
-		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/services/session.js",
 		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/controllers/search.js",
 		"/Users/joe/github/Doozer/NgFrontEnd/bower.json",
-		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/services/doozerList.js",
-		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/services/search.js",
 		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/services/doozerSession.js",
 		"/Users/joe/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
 		"/Users/joe/github/Doozer/NgFrontEnd/app/styles/main.scss",
 		"/Users/joe/Desktop/about.js",
 		"/Users/joe/Desktop/about.html",
 		"/Users/joe/github/Doozer/NgFrontEnd/Procfile",
-		"/Users/joe/github/Doozer/NgFrontEnd/web.js",
-		"/Users/joe/github/Doozer/NgFrontEnd/.gitignore",
 		"/Users/joe/github/Doozer/NgFrontEnd/.git_ignore",
 		"/Users/joe/github/Doozer/coreAPI/config/routes.rb",
 		"/Users/joe/github/Doozer/coreAPI/app/controllers/cors_controller.rb",
@@ -700,6 +700,8 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"ngFacebook",
+			"gif",
 			"$cookies",
 			"session_id",
 			"current_session_id",
@@ -825,9 +827,7 @@
 			"line-height",
 			"pull",
 			"large",
-			"body",
-			"\\nbody",
-			" body"
+			"body"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -947,65 +947,64 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "app/views/solution.html",
+					"file": "app/scripts/services/doozerList.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2200,
+						"buffer_size": 1118,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1869,
-								1869
+								117,
+								117
 							]
 						],
 						"settings":
 						{
-							"color_scheme": "Packages/Theme - Afterglow/Afterglow.tmTheme",
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 936.0,
+						"translation.y": 666.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "app/views/search.html",
-					"semi_transient": true,
+					"file": "app/scripts/services/Item.js",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2456,
+						"buffer_size": 1272,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								801,
-								839
+								113,
+								113
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 125.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
@@ -1013,52 +1012,143 @@
 				},
 				{
 					"buffer": 2,
-					"file": "app/scripts/controllers/solution.js",
+					"file": "app/scripts/controllers/list.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 627,
+						"buffer_size": 5183,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								591,
-								591
+								4390,
+								4390
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3037.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "app/scripts/services/search.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 574,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								113,
+								113
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "app/scripts/controllers/solutions.js",
+					"buffer": 4,
+					"file": "app/scripts/services/session.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1655,
+						"buffer_size": 641,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								953,
-								953
+								109,
+								109
 							]
 						],
 						"settings":
 						{
-							"color_scheme": "Packages/Theme - Afterglow/Afterglow.tmTheme",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "app/scripts/services/solution.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1106,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								117,
+								117
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "app/scripts/app.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2294,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1837,
+								1837
+							]
+						],
+						"settings":
+						{
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
@@ -1068,98 +1158,6 @@
 						"zoom_level": 1.0
 					},
 					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "app/scripts/services/solution.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1098,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								910,
-								910
-							]
-						],
-						"settings":
-						{
-							"color_scheme": "Packages/Theme - Afterglow/Afterglow.tmTheme",
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 166.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "app/scripts/services/Item.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1264,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1059,
-								1059
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 278.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "app/views/solutions.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3154,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1955,
-								2007
-							]
-						],
-						"settings":
-						{
-							"color_scheme": "Packages/Theme - Afterglow/Afterglow.tmTheme",
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 830.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
 					"type": "text"
 				}
 			]
@@ -1246,7 +1244,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 194.0,
+	"side_bar_width": 216.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
