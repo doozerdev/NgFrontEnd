@@ -119,7 +119,8 @@ angular.module('webClientApp')
       var newItem = {
         title: $scope.newItem.trim(),
         parent: $scope.list.id,
-        completed: false
+        done: false,
+        archive: false
       };
 
       if (!newItem.title) {
@@ -129,6 +130,8 @@ angular.module('webClientApp')
       var item = new Item();
       item.title = newItem.title;
       item.parent = newItem.parent;
+      item.done = newItem.done;
+      item.archive = newItem.archive;
  
       Item.save(item, function(savedItem){
         $scope.items.unshift(savedItem);

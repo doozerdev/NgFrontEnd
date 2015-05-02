@@ -75,7 +75,9 @@ angular.module('webClientApp')
         $scope.addList = function() {
             var newList = {
                 title: $scope.newList.trim(),
-                completed: false
+                // TODO: is there such a property as "completed" on Lists? (and is the name of property 'done' like items?)
+                completed: false,
+                archive: false
             };
 
             if (!newList.title) {
@@ -84,6 +86,7 @@ angular.module('webClientApp')
 
             var item = new Item();
             item.title = newList.title;
+            item.archive = newList.archive;    
 
             Item.save(item, function(savedList) {
                 $scope.lists.push(savedList);
