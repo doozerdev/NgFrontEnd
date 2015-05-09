@@ -155,6 +155,7 @@ angular.module('webClientApp')
         console.log(item);
         item.done = !item.done;
         toUpdate.done = item.done;
+        //TODO - move the completed item's order to the end... 
         toUpdate.$update({itemId: item.id});
       });
     };

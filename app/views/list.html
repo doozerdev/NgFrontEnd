@@ -10,7 +10,7 @@
     <p>There are no items in this list, please add one from above.</p>
 </div>
 <ul ui-sortable="sortableOptions" style='list-group' ng-model="items">
-    <li class='list-group-item item' ng-repeat="item in items | orderBy:['done', 'order']">
+    <li class='list-group-item item' ng-repeat="item in items | orderBy:'order'">
         <div ng-class="item == editedItem  ? 'hidden' : 'show'">
             <span class="glyphicon glyphicon-check" ng-if='item.done' ng-click='toggle(item)'></span>
             <span class="glyphicon glyphicon-unchecked" ng-if='!item.done' ng-click='toggle(item)'></span>
