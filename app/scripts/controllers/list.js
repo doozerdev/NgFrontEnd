@@ -43,7 +43,10 @@ angular.module('webClientApp')
       },
 
       move: function(items, newIndex){
-        if(0 === newIndex){
+        if (items.length === 1){
+          items[0].order = step;
+        }
+        else if(0 === newIndex){
           if(items[1].order > 2){
             items[newIndex].order = Math.floor(items[1].order/2);
             Sorting.persistItem(items[newIndex]);
