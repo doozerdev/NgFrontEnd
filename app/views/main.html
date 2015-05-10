@@ -14,7 +14,7 @@
             <li class='list-group-item item' ng-repeat="item in lists | orderBy:'title'">
                 <div ng-class="item == editedItem  ? 'hidden' : 'show'">
                     <label ng-dblclick="editItem(item)">{{item.title}}</label>
-                    ({{item.children_undone}} items)
+                    ({{item.children_undone}})
                     <a ng-href='#/{{item.id}}'>view list &gt; </a>
                     <span class="glyphicon glyphicon-remove pull-right" ng-click='removeList($index, item)'></span>
                 </div>

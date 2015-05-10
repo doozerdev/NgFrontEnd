@@ -96,6 +96,15 @@ angular.module('webClientApp')
         });
         return items;
       },
+      
+      indexOfFirstDone: function(items){
+        for (var i = 0; i < items.length; i++){
+          if (items[i].done){
+            return i;
+          }
+        }
+        return -1;  
+      },
 
       //for debugging purposes
       outputList: function(items){
@@ -115,7 +124,9 @@ angular.module('webClientApp')
       stop: function() {
         Sorting.move($scope.items, $scope.dest);
       },
-      cursor: 'move'
+      cursor: 'move',
+      cancel: ".unsortable",
+      items: "li:not(.unsortable)"
     };
 
     $scope.addItem = function () {
@@ -157,9 +168,16 @@ angular.module('webClientApp')
       Item.get({itemId: item.id}, function(toUpdate) {
         console.log(item);
         item.done = !item.done;
-        toUpdate.done = item.done;
-        //TODO - move the completed item's order to the end... 
-        toUpdate.$update({itemId: item.id});
+        toUpdate.done = item.done;        
+        toUpdate.$update({itemId: item.id}, function(){
+          var toMove = $scope.items.splice($scope.items.indexOf(item), 1);
+          var newIndex = Sorting.indexOfFirstDone($scope.items);
+          if(newIndex === -1){
+            newIndex = $scope.items.length;
+          }
+          $scope.items.splice(newIndex, 0, toMove[0]);
+          Sorting.move($scope.items, newIndex);                  
+        });
       });
     };
 
