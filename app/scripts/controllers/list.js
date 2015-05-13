@@ -45,6 +45,7 @@ angular.module('webClientApp')
       move: function(items, newIndex){
         if (items.length === 1){
           items[0].order = step;
+          Sorting.persistItem(items[0]);          
         }
         else if(0 === newIndex){
           if(items[1].order > 2){
@@ -97,14 +98,7 @@ angular.module('webClientApp')
         return items;
       },
       
-      indexOfFirstDone: function(items){
-        for (var i = 0; i < items.length; i++){
-          if (items[i].done){
-            return i;
-          }
-        }
-        return -1;  
-      },
+
 
       //for debugging purposes
       outputList: function(items){
@@ -114,6 +108,25 @@ angular.module('webClientApp')
         });
         console.log(list);
       }
+    };
+
+    //TODO: cache the index value for performance, and only recalculate on appropriate delete/complete/reorder functions
+    //This method assumes that "done" items are all at the end of the items array (that the toggle function moves the order of these items)
+    //Returns: the index of the first done item. 
+    //         if no 'done' items, then it returns the length of items array (aka the index where the first done item should go)
+    $scope.indexOfFirstDone = function(){
+      if($scope.items === undefined){
+        console.log("indexOfFirstDone() called while $scope.items is undefined");
+        return undefined;
+      }
+      for (var i = 0; i < $scope.items.length; i++){
+        if ($scope.items[i].done){
+          //console.log("indexOfFirstDone is: "+i);
+          return i;
+        }
+      }
+      //console.log("indexOfFirstDone - there are no done items");
+      return $scope.items.length;  
     };
 
 
@@ -167,12 +180,15 @@ angular.module('webClientApp')
     $scope.toggle = function(item) {
       Item.get({itemId: item.id}, function(toUpdate) {
         console.log(item);
-        item.done = !item.done;
-        toUpdate.done = item.done;        
+        //TODO: without these 2 lines, the server data doesn't get updated... but why isn't the Sorting.move call in $update enough to do so? 
+        toUpdate.done = item.done;  
+        toUpdate.done = !toUpdate.done;   
+           
         toUpdate.$update({itemId: item.id}, function(){
           var toMove = $scope.items.splice($scope.items.indexOf(item), 1);
-          var newIndex = Sorting.indexOfFirstDone($scope.items);
-          if(newIndex === -1){
+          toMove[0].done = !toMove[0].done;
+          var newIndex = $scope.indexOfFirstDone();
+          if(newIndex === undefined){
             newIndex = $scope.items.length;
           }
           $scope.items.splice(newIndex, 0, toMove[0]);
