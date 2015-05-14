@@ -18,7 +18,7 @@
               <!--for testing only:  <label ng-click="editItem(item)">{{item.title}}  order: {{item.order}}  done: {{item.done}}  archive: {{item.archive}}</label> -->
             <span class="glyphicon glyphicon-remove pull-right" ng-click='removeItem(item)'></span>
         </div>
-        <div ng-class="item == editedItem  ? 'show' : 'hidden'">
+        <div ng-class="item == editedItem  ? 'show' : 'hidden'" class="unsortable">
             <form ng-submit="saveEdits(item, 'submit')" class='input-group input-group'>
                 <span class="glyphicon glyphicon-check text-muted" ng-if='item.done'></span>
                 <input class="edit" ng-trim="false" ng-model="item.title" item-escape="revertEdits(item)" ng-blur="saveEdits(item, 'blur')" item-focus="item == editedItem" class='form-control'>
