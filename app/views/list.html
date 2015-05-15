@@ -26,20 +26,28 @@
         </div>
     </li>
 </ul>
-<h3>Completed items:</h3>
+
+
 <ul style='list-group' ng-model="items">
-    <li class='list-group-item item' ng-repeat="item in items | limitTo:-items.length+indexOfFirstDone()">
-        <div ng-class="item == editedItem  ? 'hidden' : 'show'">
-            <span class="glyphicon glyphicon-check" ng-if='item.done' ng-click='toggle(item)'></span>
-            <span class="glyphicon glyphicon-unchecked" ng-if='!item.done' ng-click='toggle(item)'></span>
-            <label ng-click="editItem(item)">{{item.title}}</label>
-            <span class="glyphicon glyphicon-remove pull-right" ng-click='removeItem(item)'></span>
-        </div>
-        <div ng-class="item == editedItem  ? 'show' : 'hidden'">
-            <form ng-submit="saveEdits(item, 'submit')" class='input-group input-group'>
-                <span class="glyphicon glyphicon-check text-muted" ng-if='item.done'></span>
-                <input class="edit" ng-trim="false" ng-model="item.title" item-escape="revertEdits(item)" ng-blur="saveEdits(item, 'blur')" item-focus="item == editedItem" class='form-control'>
-            </form>
-        </div>
+    <li class='list-group-item group-header' data-toggle="collapse" data-target=".donecollapse" ng-click="isDoneGroupOpen=!isDoneGroupOpen" ng-dblclick="isDoneGroupOpen=!isDoneGroupOpen">
+        <span class="glyphicon glyphicon-chevron-right" ng-if="!isDoneGroupOpen" data-toggle="collapse" data-target=".donecollapse"></span>
+        <span class="glyphicon glyphicon-chevron-down" ng-if="isDoneGroupOpen" data-toggle="collapse" data-target=".donecollapse"></span>
+         Completed ({{items.length - indexOfFirstDone()}})
     </li>
+    <div class="collapse donecollapse">
+        <li class='list-group-item item' ng-repeat="item in items | limitTo:-items.length+indexOfFirstDone()">
+            <div ng-class="item == editedItem  ? 'hidden' : 'show'">
+                <span class="glyphicon glyphicon-check" ng-if='item.done' ng-click='toggle(item)'></span>
+                <span class="glyphicon glyphicon-unchecked" ng-if='!item.done' ng-click='toggle(item)'></span>
+                <label ng-click="editItem(item)">{{item.title}}</label>
+                <span class="glyphicon glyphicon-remove pull-right" ng-click='removeItem(item)'></span>
+            </div>
+            <div ng-class="item == editedItem  ? 'show' : 'hidden'">
+                <form ng-submit="saveEdits(item, 'submit')" class='input-group input-group'>
+                    <span class="glyphicon glyphicon-check text-muted" ng-if='item.done'></span>
+                    <input class="edit" ng-trim="false" ng-model="item.title" item-escape="revertEdits(item)" ng-blur="saveEdits(item, 'blur')" item-focus="item == editedItem" class='form-control'>
+                </form>
+            </div>
+        </li>
+    </div>
 </ul>

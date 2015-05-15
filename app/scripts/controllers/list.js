@@ -14,6 +14,18 @@ angular.module('webClientApp')
     
     var step = 33554432; //assume about 63 items per list optimally
     var max = 2147483647; //maxIn32
+    
+    var isDoneGroupOpen = false; 
+    //TODO: fix this. toggling isDoneGroupOpen on ng-click has issues (e.g. double-click is taken as 2 clicks). 
+    //Instead, I tried to get isDoneGroupOpen toggling to happen on the js events, but it didn't work...
+//    $('.donecollapse').on('shown.bs.collapse', function () {
+//     isDoneGroupOpen = true;
+//     console.log("shown event "+ isDoneGroupOpen);
+//    });
+//    $('.donecollapse').on('hidden.bs.collapse', function () {
+//      isDoneGroupOpen = false;
+//      console.log("hidden event "+ isDoneGroupOpen);
+//    });
 
     Item.children({itemId: $routeParams.id}, function(listData) {
         $scope.items = listData.items;
