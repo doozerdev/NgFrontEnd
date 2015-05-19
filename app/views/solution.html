@@ -54,9 +54,11 @@
         <div class="col-lg-12" ng-show='results.length > 0'>
             <p>Search completed in {{request_time}}.</p>
             <ul style='list-group'>
-                <li class='list-group-item item' ng-repeat="item in results | filter: '!'+(item.parent==='')">
+                <li class='list-group-item item' ng-repeat="item in results" ng-if="item.parent!=''">
+                {{'!'+('' === item.parent)}}
+                {{!item.parent}}
                         <label>{{item.title}}</label>
-                      <a href='#/{{item.parent}}'><span class="pull-right" ng-click='viewInList(item)'>View in List <span class="glyphicon glyphicon-menu-right"></span></span>
+                      <a href='#/{{item.parent}}' target="_blank"><span class="pull-right" ng-click='viewInList(item)'>View in List <span class="glyphicon glyphicon-menu-right"></span></span>
                     </a>
                 </li>
             </ul>
