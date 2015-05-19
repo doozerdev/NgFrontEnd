@@ -16,7 +16,7 @@ angular.module('webClientApp')
     var max = 2147483647; //maxIn32
     
     var isDoneGroupOpen = false; 
-    //TODO: fix this. toggling isDoneGroupOpen on ng-click has issues (e.g. double-click is taken as 2 clicks). 
+    //TODO: fix this (git hub issue #8). toggling isDoneGroupOpen on ng-click has issues (e.g. double-click is taken as 2 clicks). 
     //Instead, I tried to get isDoneGroupOpen toggling to happen on the js events, but it didn't work...
 //    $('.donecollapse').on('shown.bs.collapse', function () {
 //     isDoneGroupOpen = true;

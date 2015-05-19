@@ -3,10 +3,59 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
 
+.testoutline{
+  //this is just for testing - uncomment to see the test outlines
+ //border: 1px solid blueviolet;
+}
+.testfill{
+  //just for testing
+ // background-color: yellow;
+}
+
 .group-header{
   cursor: pointer;
   background: #ccc;
   font-size: 20px;
+  @include border-bottom-radius($list-group-border-radius);
+}
+
+.group-header-with-list{
+  //TODO this doesn't seem to work... 
+  @include border-bottom-radius(0);
+}
+
+.group-header-group{
+  //make the group header & its uncollapsed list not have any gaps, overriding .list-group
+  margin-bottom: -1px;
+  
+}
+
+.list-with-group-header {
+  // Un-Round the first item, override list-group-item
+  &:first-child {
+    @include border-top-radius(0);
+  }
+}
+
+.panel-row-override {
+  //this is only needed to negate the styling from panels, and make it like list-group-items, because boostrap quirk requires panel class to get accordion behavior
+  margin-bottom: -1px;
+  background-color: $list-group-bg;
+  border: 1px solid $list-group-border;
+  border-radius: 0;
+  @include box-shadow(0 0px 0px rgba(0,0,0,0));
+  
+  //overriding row spacing here too
+  margin-left:  0;
+  margin-right: 0;
+  padding: 0;  
+}
+
+.col-override{
+  padding-top: 10px;
+  padding-bottom: 5px;
+  padding-left: auto;
+  padding-right: auto;
 }
 
 
