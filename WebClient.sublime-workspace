@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"doozer",
+				"doozerURL"
+			],
+			[
 				"text",
 				"textarea	Tag"
 			],
@@ -392,18 +396,10 @@
 	"buffers":
 	[
 		{
-			"file": "app/scripts/services/doozerList.js",
-			"settings":
-			{
-				"buffer_size": 1118,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "app/scripts/services/Item.js",
 			"settings":
 			{
-				"buffer_size": 1272,
+				"buffer_size": 1273,
 				"line_ending": "Unix"
 			}
 		},
@@ -411,31 +407,15 @@
 			"file": "app/scripts/controllers/list.js",
 			"settings":
 			{
-				"buffer_size": 5183,
+				"buffer_size": 5346,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/scripts/services/search.js",
+			"file": "app/views/list.html",
 			"settings":
 			{
-				"buffer_size": 574,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/session.js",
-			"settings":
-			{
-				"buffer_size": 641,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/services/solution.js",
-			"settings":
-			{
-				"buffer_size": 1106,
+				"buffer_size": 1793,
 				"line_ending": "Unix"
 			}
 		},
@@ -444,6 +424,14 @@
 			"settings":
 			{
 				"buffer_size": 2294,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/doozerList.js",
+			"settings":
+			{
+				"buffer_size": 1118,
 				"line_ending": "Unix"
 			}
 		}
@@ -547,31 +535,32 @@
 		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/controllers",
 		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/directives",
 		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/services",
-		"/Users/joe/github/Doozer/NgFrontEnd/app/styles",
-		"/Users/joe/github/Doozer/NgFrontEnd/app/views"
+		"/Users/joe/github/Doozer/NgFrontEnd/app/styles"
 	],
 	"file_history":
 	[
-		"/Users/joe/github/Doozer/NgFrontEnd/app/views/solutions.html",
-		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/services/session.js",
-		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/services/search.js",
+		"/Users/joe/Desktop/untitled.html",
+		"/Users/joe/Desktop/test.jsp",
+		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/controllers/main.js",
+		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/services/doozerList.js",
 		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/services/Item.js",
+		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/controllers/list.js",
+		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/services/search.js",
+		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/services/session.js",
+		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/services/solution.js",
+		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/app.js",
+		"/Users/joe/github/Doozer/NgFrontEnd/app/views/solutions.html",
 		"/Users/joe/github/Doozer/NgFrontEnd/app/views/solution.html",
 		"/Users/joe/github/Doozer/NgFrontEnd/web.js",
 		"/Users/joe/github/Doozer/NgFrontEnd/.gitignore",
-		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/services/doozerList.js",
 		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/controllers/solution.js",
 		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/controllers/solutions.js",
-		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/services/solution.js",
 		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/services/itemSolutionMap.js",
 		"/Users/joe/github/Doozer/NgFrontEnd/app/views/item.html",
 		"/Users/joe/github/Doozer/NgFrontEnd/app/views/list.html",
 		"/Users/joe/github/Doozer/NgFrontEnd/app/views/main.html",
-		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/controllers/list.js",
-		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/app.js",
 		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/controllers/Solution.js",
 		"/Users/joe/github/Doozer/NgFrontEnd/app/index.html",
-		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/controllers/main.js",
 		"/Users/joe/github/Doozer/NgFrontEnd/app/views/search.html",
 		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/controllers/search.js",
 		"/Users/joe/github/Doozer/NgFrontEnd/bower.json",
@@ -677,9 +666,7 @@
 		"/Users/jbasirico/github/whetstone/app/views/goals/_show_okr.html.erb",
 		"/Users/jbasirico/github/whetstone/app/views/goals/_show_legacy.html.erb",
 		"/Users/jbasirico/github/whetstone/app/views/welcome/index.html.erb",
-		"/Users/jbasirico/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
-		"/Users/jbasirico/github/whetstone/app/views/goals/review.html.erb",
-		"/Users/jbasirico/github/whetstone/app/views/goals/_show_rating.html.erb"
+		"/Users/jbasirico/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings"
 	],
 	"find":
 	{
@@ -700,6 +687,10 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"\\/watch\\?v=\\w+",
+			"\"\\/watch\\?v=\\w+\"",
+			"\"/watch?v=\\w+\"",
+			"localhost",
 			"ngFacebook",
 			"gif",
 			"$cookies",
@@ -823,16 +814,12 @@
 			"120",
 			"url",
 			"font-size",
-			"body",
-			"line-height",
-			"pull",
-			"large",
 			"body"
 		],
 		"highlight": true,
 		"in_selection": false,
 		"preserve_case": false,
-		"regex": false,
+		"regex": true,
 		"replace_history":
 		[
 			"sessionId",
@@ -947,54 +934,24 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "app/scripts/services/doozerList.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1118,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								117,
-								117
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 666.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
 					"file": "app/scripts/services/Item.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1272,
+						"buffer_size": 1273,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								113,
-								113
+								942,
+								942
 							]
 						],
 						"settings":
@@ -1004,7 +961,37 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 125.0,
+						"translation.y": 70.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/scripts/controllers/list.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5346,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1732,
+								1732
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
@@ -1012,114 +999,24 @@
 				},
 				{
 					"buffer": 2,
-					"file": "app/scripts/controllers/list.js",
+					"file": "app/views/list.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5183,
+						"buffer_size": 1793,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4390,
-								4390
+								1096,
+								1096
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 3037.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "app/scripts/services/search.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 574,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								113,
-								113
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "app/scripts/services/session.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 641,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								109,
-								109
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "app/scripts/services/solution.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1106,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								117,
-								117
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"syntax": "Packages/HTML/HTML.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
@@ -1131,7 +1028,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 3,
 					"file": "app/scripts/app.js",
 					"semi_transient": false,
 					"settings":
@@ -1143,8 +1040,8 @@
 						"selection":
 						[
 							[
-								1837,
-								1837
+								1770,
+								1770
 							]
 						],
 						"settings":
@@ -1154,10 +1051,40 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 172.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "app/scripts/services/doozerList.js",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 1118,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 21.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
 					"type": "text"
 				}
 			]
@@ -1206,7 +1133,7 @@
 	"project": "WebClient.sublime-project",
 	"replace":
 	{
-		"height": 46.0
+		"height": 72.0
 	},
 	"save_all_on_build": true,
 	"select_file":
