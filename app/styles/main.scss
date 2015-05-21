@@ -14,13 +14,14 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 
 .group-header{
   cursor: pointer;
+  //TODO the background is getting trumped/ not shown with the bootstrap grid classes (issue #12)
   background: #ccc;
-  font-size: 20px;
+  font-size: 18px;
   @include border-bottom-radius($list-group-border-radius);
 }
 
 .group-header-with-list{
-  //TODO this doesn't seem to work... 
+  //TODO this doesn't seem to work... (git hub issue #11)
   @include border-bottom-radius(0);
 }
 
@@ -56,6 +57,14 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   padding-bottom: 5px;
   padding-left: auto;
   padding-right: auto;
+}
+
+.no-padding{
+  padding: 0;
+}
+
+.task-details{
+  font-size: 18px;
 }
 
 

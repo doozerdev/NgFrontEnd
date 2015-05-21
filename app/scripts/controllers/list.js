@@ -46,37 +46,29 @@ angular.module('webClientApp')
 
     var Sorting = {
 
-      persistItem: function(item){
-        Item.get({itemId: item.id}, function(toUpdate) {
-          toUpdate.order = item.order;
-          toUpdate.$update({itemId: item.id});
-          console.log('saved item: ' + item.title + ' new order: ' + item.order);
-        });
-      },
-
       move: function(items, newIndex){
         if (items.length === 1){
           items[0].order = step;
-          Sorting.persistItem(items[0]);          
+          $scope.saveEdits(items[0]);          
         }
         else if(0 === newIndex){
           if(items[1].order > 2){
             items[newIndex].order = Math.floor(items[1].order/2);
-            Sorting.persistItem(items[newIndex]);
+            $scope.saveEdits(items[newIndex]);
           }else{
             items[newIndex].order = 0;
-            //don't call persist here, reorder will do it
+            //don't call saveEdits here, reorder will do it
             Sorting.reorderList(items);
           }
         }else if(newIndex === items.length-1){
           //can we just add it to the end?
           if(items[items.length-2].order + step < max){
-            items[newIndex].order = items[items.length-2].order+step;
-            Sorting.persistItem(items[newIndex]);
+            items[newIndex].order = items[items.length-2].order+step;            
+            $scope.saveEdits(items[newIndex]);
           }//add it right after the last value and reorder list
           else{ 
             items[newIndex].order = items[items.length-2].order+1;
-            //don't call persist here, reorder will do it
+            //don't call saveEdits here, reorder will do it
             Sorting.reorderList(items);
           }
         }else{
@@ -84,7 +76,7 @@ angular.module('webClientApp')
           if(difference > 3){
             var newOrder = items[newIndex-1].order + Math.floor(difference/2);
             items[newIndex].order = newOrder;
-            Sorting.persistItem(items[newIndex]);
+            $scope.saveEdits(items[newIndex]);
           }else{
             items[newIndex].order = items[newIndex-1].order+1;
             Sorting.reorderList(items);
@@ -103,8 +95,8 @@ angular.module('webClientApp')
         var current = newStep;
 
         angular.forEach(items, function(item){
-          item.order = current;
-          Sorting.persistItem(item);
+          item.order = current;          
+          $scope.saveEdits(item);
           current = current + newStep;
         });
         return items;
@@ -125,7 +117,7 @@ angular.module('webClientApp')
     //TODO: cache the index value for performance, and only recalculate on appropriate delete/complete/reorder functions
     //This method assumes that "done" items are all at the end of the items array (that the toggle function moves the order of these items)
     //Returns: the index of the first done item. 
-    //         if no 'done' items, then it returns the length of items array (aka the index where the first done item should go)
+    //         OR, if no 'done' items, then it returns the length of items array (aka the index where the first done item should go)
     $scope.indexOfFirstDone = function(){
       if($scope.items === undefined){
         console.log("indexOfFirstDone() called while $scope.items is undefined");
@@ -192,20 +184,19 @@ angular.module('webClientApp')
     $scope.toggle = function(item) {
       Item.get({itemId: item.id}, function(toUpdate) {
         console.log(item);
-        //TODO: without these 2 lines, the server data doesn't get updated... but why isn't the Sorting.move call in $update enough to do so? 
+       
         toUpdate.done = item.done;  
-        toUpdate.done = !toUpdate.done;   
-           
-        toUpdate.$update({itemId: item.id}, function(){
-          var toMove = $scope.items.splice($scope.items.indexOf(item), 1);
-          toMove[0].done = !toMove[0].done;
-          var newIndex = $scope.indexOfFirstDone();
-          if(newIndex === undefined){
+        toUpdate.done = !toUpdate.done;
+
+        $scope.items.splice($scope.items.indexOf(item), 1);   
+        var newIndex = $scope.indexOfFirstDone();
+        if(newIndex === undefined){
             newIndex = $scope.items.length;
-          }
-          $scope.items.splice(newIndex, 0, toMove[0]);
-          Sorting.move($scope.items, newIndex);                  
-        });
+        }        
+        $scope.items.splice(newIndex, 0, toUpdate);
+        
+        //don't call saveEdits here, Sorting.move already does it
+        Sorting.move($scope.items, newIndex);              
       });
     };
 
@@ -218,8 +209,17 @@ angular.module('webClientApp')
     $scope.saveEdits = function(item) {
       Item.get({itemId: item.id}, function(toUpdate) {
         toUpdate.title = item.title;
+        toUpdate.order = item.order;
+        toUpdate.done = item.done;
+        
+        //Don't update archive here; that's handled separately with removeItem()
+        //toUpdate.archive = item.archive;
+        
         toUpdate.$update({itemId: item.id});
         $scope.editedItem = null;
+        
+        console.log('saved item: ');
+        console.log(item);
       });
     };
 
