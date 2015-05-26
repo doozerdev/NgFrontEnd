@@ -28,11 +28,15 @@
     <div ng-show='items.length < 1'>
         No Associated Items
     </div>
-    <div ng-hide='items.length > 0' class='panel panel-default' ng-repeat="item in items | orderBy:'title'">
-        <div class='panel-body'>
-            <a href='#/item/{{item.id}}'>{{item.title}}</a>
-        </div>
-    </div>
+
+<ul style='list-group'>
+                <li class='list-group-item item' ng-repeat="item in items">
+                <span class="glyphicon glyphicon-check" ng-click='toggleMap(item)'></span>
+                    <label>{{item.title}}</label>
+                      <a href='#/{{item.parent}}' target="_blank"><span class="pull-right" ng-click='viewInList(item)'>View in List <span class="glyphicon glyphicon-menu-right"></span></span>
+                    </a>
+                </li>
+            </ul>
 </div>
 <div class='well'>
     <h3>Search and Associate</h3>
@@ -55,9 +59,9 @@
             <p>Search completed in {{request_time}}.</p>
             <ul style='list-group'>
                 <li class='list-group-item item' ng-repeat="item in results" ng-if="item.parent!=''">
-                {{'!'+('' === item.parent)}}
-                {{!item.parent}}
-                        <label>{{item.title}}</label>
+                <span class="glyphicon glyphicon-check" ng-if='items.indexOf(item)!=-1' ng-click='toggleMap(item)'></span>
+                <span class="glyphicon glyphicon-unchecked" ng-if='items.indexOf(item)===-1' ng-click='toggleMap(item)'></span>
+                    <label>{{item.title}}</label>
                       <a href='#/{{item.parent}}' target="_blank"><span class="pull-right" ng-click='viewInList(item)'>View in List <span class="glyphicon glyphicon-menu-right"></span></span>
                     </a>
                 </li>

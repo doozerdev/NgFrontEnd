@@ -28,6 +28,10 @@ angular.module('webClientApp')
                 url: doozerURL + 'solutions/:id/mapItem',
                 method: 'POST'
             },
+            unmapItem: {
+                url: doozerURL + 'solutions/:id/unmapItem/:itemId',
+                method: 'DELETE'
+            },
             items: {
                 url: doozerURL + 'solutions/:id/items',
                 method: 'GET'
