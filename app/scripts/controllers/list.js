@@ -14,7 +14,7 @@ angular.module('webClientApp')
     
     var step = 33554432; //assume about 63 items per list optimally
     var max = 2147483647; //maxIn32
-    
+    var editedItem = null;
     var isDoneGroupOpen = false; 
     //TODO: fix this (git hub issue #8). toggling isDoneGroupOpen on ng-click has issues (e.g. double-click is taken as 2 clicks). 
     //Instead, I tried to get isDoneGroupOpen toggling to happen on the js events, but it didn't work...
@@ -36,6 +36,7 @@ angular.module('webClientApp')
           if(item.order && item.order > greatest){
             greatest = item.order;
           }
+          item.duedate = new Date(item.duedate);
         });
 
         //nothing has a sort order
@@ -187,6 +188,8 @@ angular.module('webClientApp')
        
         toUpdate.done = item.done;  
         toUpdate.done = !toUpdate.done;
+        toUpdate.duedate = new Date(item.duedate);
+        //TODO: is there any danger that we're blowing away other properties of item? (e.g. the client side version of item doesn't match the server side toUpdate)
 
         $scope.items.splice($scope.items.indexOf(item), 1);   
         var newIndex = $scope.indexOfFirstDone();
@@ -201,9 +204,14 @@ angular.module('webClientApp')
     };
 
     $scope.editItem = function (item) {
-      $scope.editedItem = item;
-      // Clone the original item to restore it on demand.
-      $scope.originalItem = angular.extend({}, item);
+      if (item === null){
+        $scope.editedItem = null;
+      }
+      else{
+        $scope.editedItem = item;
+        // Clone the original item to restore it on demand.
+        $scope.originalItem = angular.extend({}, item);
+      }
     };
 
     $scope.saveEdits = function(item) {
@@ -211,6 +219,8 @@ angular.module('webClientApp')
         toUpdate.title = item.title;
         toUpdate.order = item.order;
         toUpdate.done = item.done;
+        toUpdate.notes = item.notes;
+        toUpdate.duedate = item.duedate;
         
         //Don't update archive here; that's handled separately with removeItem()
         //toUpdate.archive = item.archive;
