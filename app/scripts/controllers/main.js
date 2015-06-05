@@ -15,7 +15,7 @@ angular.module('webClientApp')
         Session, Item, doozerURL) {
 
         $scope.refresh = function() {
-            Item.query(function(listData) {
+            Item.lists(function(listData) {
                 var lists = listData.items;
                 if (lists) {
                     $scope.username = $cookies.get('username');
@@ -45,7 +45,7 @@ angular.module('webClientApp')
                         $cookies.put('username', response.name);
                     });
 
-                    var items = $resource(doozerURL+'/items', null, {
+                    var items = $resource(doozerURL+'/lists', null, {
                         query: {
                             headers: {
                                 'sessionId': result.sessionId
