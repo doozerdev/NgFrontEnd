@@ -14,8 +14,8 @@ angular.module('webClientApp')
     
     var step = 33554432; //assume about 63 items per list optimally
     var max = 2147483647; //maxIn32
-    var editedItem = null;
-    var isDoneGroupOpen = false; 
+    $scope.editedItem = null;
+    $scope.isDoneGroupOpen = false; 
     //TODO: fix this (git hub issue #8). toggling isDoneGroupOpen on ng-click has issues (e.g. double-click is taken as 2 clicks). 
     //Instead, I tried to get isDoneGroupOpen toggling to happen on the js events, but it didn't work...
 //    $('.donecollapse').on('shown.bs.collapse', function () {
