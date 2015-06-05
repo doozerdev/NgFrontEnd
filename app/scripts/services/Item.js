@@ -24,6 +24,10 @@ angular.module('webClientApp')
                 url: doozerURL + 'items/:itemId/children',
                 method: 'GET'
             },
+            archive: {
+                url: doozerURL + 'items/:itemId/archive',
+                method: 'DELETE'
+            },
             delete: {
                 method: 'DELETE'
             },
