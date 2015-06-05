@@ -15,7 +15,7 @@ angular.module('webClientApp')
         Session, Item, doozerURL) {
 
         $scope.refresh = function() {
-            Item.query(function(listData) {
+            Item.lists(function(listData) {
                 var lists = listData.items;
                 if (lists) {
                     $scope.username = $cookies.get('username');
@@ -45,7 +45,7 @@ angular.module('webClientApp')
                         $cookies.put('username', response.name);
                     });
 
-                    var items = $resource(doozerURL+'/items', null, {
+                    var items = $resource(doozerURL+'/lists', null, {
                         query: {
                             headers: {
                                 'sessionId': result.sessionId
@@ -95,32 +95,35 @@ angular.module('webClientApp')
         };
 
         $scope.removeList = function(item) {
-
-            console.log('removeList');
-            Item.get({
-                itemId: item.id
-            }, function(toUpdate) {
-                toUpdate.archive = true;
-                toUpdate.$update({
-                    itemId: item.id
-                });
-                Item.children({
-                    itemId: item.id
-                }, function(listData) {
-                    var children = listData.items;
-                    angular.forEach(children, function(child) {
-                        Item.get({
-                            itemId: child.id
-                        }, function(toArchive) {
-                            toArchive.archive = true;
-                            toArchive.$update({
-                                itemId: child.id
-                            });
-                        });
-                    });
-                    $scope.lists.splice($scope.items.indexOf(item), 1);
-                });
+            Item.archive({itemId: item.id}, function(){
+                $scope.lists.splice($scope.lists.indexOf(item), 1);
             });
+
+            // console.log('removeList');
+            // Item.get({
+            //     itemId: item.id
+            // }, function(toUpdate) {
+            //     toUpdate.archive = true;
+            //     toUpdate.$update({
+            //         itemId: item.id
+            //     });
+            //     Item.children({
+            //         itemId: item.id
+            //     }, function(listData) {
+            //         var children = listData.items;
+            //         angular.forEach(children, function(child) {
+            //             Item.get({
+            //                 itemId: child.id
+            //             }, function(toArchive) {
+            //                 toArchive.archive = true;
+            //                 toArchive.$update({
+            //                     itemId: child.id
+            //                 });
+            //             });
+            //         });
+            //         $scope.lists.splice($scope.items.indexOf(item), 1);
+            //     });
+            // });
         };
 
         $scope.editItem = function(item) {

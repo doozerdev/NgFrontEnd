@@ -12,12 +12,21 @@ angular.module('webClientApp')
         return $resource(doozerURL + 'items/:itemId', {
             itemId: '@itemId'
         }, {
-            query: {
-                // TODO: for some reason this needs to be here, leave for now, debug later
+            lists: {
+                url: doozerURL + 'lists',
+                method: 'GET'
+            },
+            items: {
+                url: doozerURL + 'items',
+                method: 'GET'
             },
             children: {
                 url: doozerURL + 'items/:itemId/children',
                 method: 'GET'
+            },
+            archive: {
+                url: doozerURL + 'items/:itemId/archive',
+                method: 'DELETE'
             },
             delete: {
                 method: 'DELETE'
