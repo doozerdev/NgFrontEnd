@@ -173,13 +173,15 @@ angular.module('webClientApp')
     };
 
     $scope.removeItem = function(item) {
-      Item.get({itemId: item.id}, function(toUpdate){
-        toUpdate.archive = true;
-        console.log(item.id);
-        toUpdate.$update({itemId: item.id}, function(){
+      Item.archive({itemId: item.id}, function(){
           $scope.items.splice($scope.items.indexOf(item), 1);
-        });
       });
+        //toUpdate.archive = true;
+        //console.log(item.id);
+        //toUpdate.$update({itemId: item.id}, function(){
+        //  $scope.items.splice($scope.items.indexOf(item), 1);
+        //});
+        
     };
 
     $scope.toggle = function(item) {
