@@ -10,7 +10,8 @@ angular.module('webClientApp')
         $http.defaults.headers.common.sessionId = $cookies.get('doozerSession');
 
         return $resource(doozerURL + 'items/:itemId', {
-            itemId: '@itemId'
+            itemId: '@itemId',
+            last_sync: '@last_sync'
         }, {
             lists: {
                 url: doozerURL + 'lists',

@@ -15,6 +15,10 @@ angular.module('webClientApp')
         Session, Item, doozerURL) {
 
         $scope.refresh = function() {
+            //Item.items({
+                //last_sync: "Mon, 08 Jun 2015 09:18:02 -0700" 
+            //},
+
             Item.lists(function(listData) {
                 var lists = listData.items;
                 if (lists) {

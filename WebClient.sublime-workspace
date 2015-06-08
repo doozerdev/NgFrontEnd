@@ -399,7 +399,7 @@
 			"file": "app/scripts/services/Item.js",
 			"settings":
 			{
-				"buffer_size": 1345,
+				"buffer_size": 1491,
 				"line_ending": "Unix"
 			}
 		},
@@ -412,26 +412,18 @@
 			}
 		},
 		{
-			"file": "app/scripts/controllers/solution.js",
-			"settings":
-			{
-				"buffer_size": 1384,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "app/scripts/controllers/main.js",
 			"settings":
 			{
-				"buffer_size": 4599,
+				"buffer_size": 4814,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/scripts/services/solution.js",
+			"file": "app/views/main.html",
 			"settings":
 			{
-				"buffer_size": 1247,
+				"buffer_size": 1620,
 				"line_ending": "Unix"
 			}
 		},
@@ -439,7 +431,7 @@
 			"file": "app/views/list.html",
 			"settings":
 			{
-				"buffer_size": 5110,
+				"buffer_size": 6026,
 				"line_ending": "Unix"
 			}
 		},
@@ -563,6 +555,8 @@
 	],
 	"file_history":
 	[
+		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/services/solution.js",
+		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/controllers/solution.js",
 		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/controllers/solutions.js",
 		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/controllers/list.js",
 		"/Users/joe/Desktop/untitled.html",
@@ -572,13 +566,11 @@
 		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/services/Item.js",
 		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/services/search.js",
 		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/services/session.js",
-		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/services/solution.js",
 		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/app.js",
 		"/Users/joe/github/Doozer/NgFrontEnd/app/views/solutions.html",
 		"/Users/joe/github/Doozer/NgFrontEnd/app/views/solution.html",
 		"/Users/joe/github/Doozer/NgFrontEnd/web.js",
 		"/Users/joe/github/Doozer/NgFrontEnd/.gitignore",
-		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/controllers/solution.js",
 		"/Users/joe/github/Doozer/NgFrontEnd/app/scripts/services/itemSolutionMap.js",
 		"/Users/joe/github/Doozer/NgFrontEnd/app/views/item.html",
 		"/Users/joe/github/Doozer/NgFrontEnd/app/views/list.html",
@@ -958,7 +950,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 4,
 			"sheets":
 			[
 				{
@@ -967,19 +959,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1345,
+						"buffer_size": 1491,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								156,
-								156
-							],
-							[
-								516,
-								516
+								832,
+								838
 							]
 						],
 						"settings":
@@ -992,7 +980,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -1019,57 +1007,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 980.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "app/scripts/controllers/solution.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1384,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								766,
-								766
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 353.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
 					"file": "app/scripts/controllers/main.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4599,
+						"buffer_size": 4814,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1086,
-								1086
+								3062,
+								3062
 							]
 						],
 						"settings":
@@ -1079,49 +1037,49 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 124.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "app/scripts/services/solution.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1247,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1083,
-								1089
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1975.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 3,
+					"file": "app/views/main.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1620,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1029,
+								1029
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 210.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
 					"file": "app/views/list.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5110,
+						"buffer_size": 6026,
 						"regions":
 						{
 						},
@@ -1139,14 +1097,14 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 746.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 5,
 					"file": "app/views/search.html",
 					"semi_transient": false,
 					"settings":
@@ -1172,11 +1130,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 6,
 					"file": "app/scripts/app.js",
 					"semi_transient": false,
 					"settings":
@@ -1188,8 +1146,8 @@
 						"selection":
 						[
 							[
-								1839,
-								1839
+								1770,
+								1770
 							]
 						],
 						"settings":
@@ -1199,10 +1157,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 864.0,
+						"translation.y": 1099.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 3,
 					"type": "text"
 				}
 			]
