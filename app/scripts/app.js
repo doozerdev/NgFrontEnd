@@ -55,13 +55,16 @@ angular.module('webClientApp', [
             .when('/:id', {
                 templateUrl: 'views/list.html',
                 controller: 'ListCtrl'
+            }).when('/:id/item',{
+                templateUrl: 'views/item.html',
+                controller: 'ItemCtrl'
             })
             .otherwise({
                 redirectTo: '/'
             });
     })
-.constant('doozerURL','https://warm-atoll-6588.herokuapp.com/api/')
-//.constant('doozerURL','http://localhost:3000/api/')
+//.constant('doozerURL','https://warm-atoll-6588.herokuapp.com/api/')
+.constant('doozerURL','http://localhost:3000/api/')
 .run(function() {
 
     // Load the SDK asynchronously

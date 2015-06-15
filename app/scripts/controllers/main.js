@@ -15,11 +15,12 @@ angular.module('webClientApp')
         Session, Item, doozerURL) {
 
         $scope.refresh = function() {
-            //Item.items({
-                //last_sync: "Mon, 08 Jun 2015 09:18:02 -0700" 
-            //},
+            // Item.items({
+            //     last_sync: "1433740362" 
+            // },
 
-            Item.lists(function(listData) {
+            Item.lists(
+                function(listData) {
                 var lists = listData.items;
                 if (lists) {
                     $scope.username = $cookies.get('username');
