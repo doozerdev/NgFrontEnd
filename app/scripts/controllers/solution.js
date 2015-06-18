@@ -19,7 +19,8 @@ angular.module('webClientApp')
         });
 
         $scope.toggleMap = function(item) {
-            if($scope.items.indexOf(item)===-1){
+            var index = $scope.checkLink(item);
+            if(index===-1){
                 Solution.mapItem({
                     id: $routeParams.id,
                     itemId: item.id
@@ -31,11 +32,25 @@ angular.module('webClientApp')
                     id: $routeParams.id,
                     itemId: item.id
                 }, function(){
-                    $scope.items.splice($scope.items.indexOf(item), 1);
+                    $scope.items.splice(index, 1);
                 });
             }
 
-        }
+        };
+        
+        $scope.checkLink = function(item){
+            if(item===null){return -1;}
+            if($scope.items.length<1){return -1;}
+            
+            for (var i = 0; i < $scope.items.length; i++){
+                if ($scope.items[i].id===item.id){
+                  //console.log("indexOf this result is: "+i);
+                  return i;
+                }
+            }
+            //console.log("didn't find this result in linked items");
+            return -1;
+        };
 
         $scope.search = function() {
             Search.query({
@@ -46,4 +61,4 @@ angular.module('webClientApp')
             });
         };
 
-    })
+    });
