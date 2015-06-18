@@ -1,6 +1,6 @@
 <h1>{{item.title}}</h1>
 
 <h2>Solutions</h2>
-<ol ng-repeat="solution in solutions">
-    <li>{{solution.title}}</li>
-</ol>
+<div ng-repeat="solution in solutions">
+    <dzr-solution solution="solution" expert="false"></dzr-solution>
+</div>

@@ -1,25 +1,43 @@
-<h1>{{solution.title}}</h1>
-<b>Source:</b>{{solution.source}}
-<br />
-<b>Price:</b>{{solution.price}}
-<br />
-<b>Phone Number:</b>{{solution.phoneNumber}}
-<br />
-<b>Hours:</b>{{solution.openHours}}
-<br />
-<b>Link:</b>{{solution.link}}
-<br />
-<b>Tags:</b>{{solution.tags}}
-<br />
-<b>Expiration date:</b>{{solution.expireDate}}
-<br />
-<b>img Link:</b>{{solution.imgLink}}
-<br />
-<b>Render Image:</b><img ng-show='solution.imgLink' src='{{solution.imgLink}}' />
-<br />
-<b>Description:</b>{{solution.description}}
-<br />
-<b>Address:</b>{{solution.address}}
-<br />
-<b>Notes:</b>{{solution.notes}}
-<br />
+<div class="panel panel-default"><div class="panel-body no-topbottom-padding testoutline">
+<div class="media">
+	<div class="media-left testoutline" ng-show="solution.imgLink">
+		<a href="{{solution.link}}"><img src='{{solution.imgLink}}' height="200px"/></a>
+	</div>
+	<div class="media-body testoutline">
+	<div class="row testoutline">
+		<div class="col-xs-12">
+			<h3><a href="{{solution.link}}">{{solution.title}}</a></h3>
+		</div>
+	</div>
+	<div class="row testoutline">
+		<div class="col-xs-12 testoutline">{{solution.description}}</div>
+	</div>
+	<div class="row testoutline">
+		<div class="col-xs-6">{{solution.source}}</div>
+		<div class="col-xs-6 testoutline">{{solution.address}}</div>
+	</div><div class="row testoutline">
+		<div class="col-xs-6">{{solution.price | currency}}</div>
+		<div class="col-xs-6 testoutline">{{solution.phoneNumber}}</div>
+	</div><div class="row testoutline">
+		<div class="col-xs-6 col-xs-offset-6 testoutline">{{solution.openHours}}</div>
+	</div>
+	</div>
+</div>
+</div></div>
+
+<div class="panel panel-default" ng-if="expert=='true'">
+	<div class="panel-heading testoutline"><div class="row testoutline">
+		<h3 class="col-xs-12 panel-title">Experts internal info for solution #{{solution.id}}</h3>
+	</div></div>
+	<div class="panel-body no-topbottom-padding testoutline">
+		<div class="row testoutline"><div class="col-xs-12"><b>Link: </b>{{solution.link}}</div></div>
+		<div class="row testoutline"><div class="col-xs-12"><b>Image link: </b>{{solution.imgLink}}</div></div>
+		<div class="row testoutline">
+			<div class="col-xs-6"><b>Created: </b>{{solution.created_at | date}}</div>
+			<div class="col-xs-6"><b>Notes: </b>{{solution.notes}}</div>
+			<div class="col-xs-6"><b>Expiration date: </b>{{solution.expireDate | date}}</div>
+			<div class="col-xs-6"><b>Tags: </b>{{solution.tags}}</div>
+			<div class="col-xs-6"><a href="#/solution/{{solution.id}}">Edit Solution (coming soon)</a></div>
+		</div>
+	</div>
+</div>

@@ -63,6 +63,11 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   padding: 0;
 }
 
+.no-topbottom-padding{
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
 .task-details{
   font-size: 18px;
 }
