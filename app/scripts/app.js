@@ -51,20 +51,24 @@ angular.module('webClientApp', [
             .when('/solution/:id', {
                 templateUrl: 'views/solution.html',
                 controller: 'SolutionCtrl'
-            })
-            .when('/:id', {
+            }).when('/users', {
+                templateUrl: 'views/users.html',
+                controller: 'UsersCtrl'
+            }).when('/user/:id', {
+                templateUrl: 'views/user.html',
+                controller: 'UserCtrl'
+            }).when('/:id', {
                 templateUrl: 'views/list.html',
                 controller: 'ListCtrl'
             }).when('/:id/item',{
                 templateUrl: 'views/item.html',
                 controller: 'ItemCtrl'
-            })
-            .otherwise({
+            }).otherwise({
                 redirectTo: '/'
             });
     })
-.constant('doozerURL','https://warm-atoll-6588.herokuapp.com/api/')
-//.constant('doozerURL','http://localhost:3000/api/')
+//.constant('doozerURL','https://warm-atoll-6588.herokuapp.com/api/')
+.constant('doozerURL','http://localhost:3000/api/')
 .run(function() {
 
     // Load the SDK asynchronously
