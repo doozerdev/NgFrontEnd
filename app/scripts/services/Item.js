@@ -3,18 +3,18 @@
 angular.module('webClientApp')
     .factory('Item', function($resource, $http, $cookies, doozerURL) {
 
-        //var doozerURL = 'https://warm-atoll-6588.herokuapp.com/api/';
-    //var doozerURL = 'http://localhost:3000/api/'
-
-
         $http.defaults.headers.common.sessionId = $cookies.get('doozerSession');
 
         return $resource(doozerURL + 'items/:itemId', {
             itemId: '@itemId',
-            last_sync: '@last_sync'
+            userId: '@userId'
         }, {
             lists: {
                 url: doozerURL + 'lists',
+                method: 'GET'
+            },
+            listsForUser: {
+                url: doozerURL + 'listsForUser/:userId',
                 method: 'GET'
             },
             items: {
@@ -23,6 +23,10 @@ angular.module('webClientApp')
             },
             children: {
                 url: doozerURL + 'items/:itemId/children',
+                method: 'GET'
+            },
+            childrenForUser: {
+                url: doozerURL + 'items/:itemId/childrenForUser/:userId',
                 method: 'GET'
             },
             archive: {
