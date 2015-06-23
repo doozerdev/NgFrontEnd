@@ -1,8 +1,8 @@
-<dzr-solution solution="solution" expert="true"></dzr-solution>
+<dzr-solution solution="solution" expert="true" save-tags="saveTagEdits(solution)"></dzr-solution>
 <br />
 
 <div class='well'>
-    <h3>Linked Tasks</h3>
+    <h3>Linked Tasks <span ng-if='items.length>0'>({{items.length}})</span></h3>
     <div ng-show='items.length < 1'>
         No tasks linked to this solution
     </div>

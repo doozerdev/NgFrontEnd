@@ -60,5 +60,14 @@ angular.module('webClientApp')
                 $scope.request_time = results.request_time;
             });
         };
+        
+        $scope.saveTagEdits = function(sol){
+            Solution.get({id: sol.id}, function(toUpdate) {
+                toUpdate.tags = sol.tags;
+                toUpdate.$update({id: sol.id}, function(updated){
+                    console.log("tags saved: "+updated.tags);
+                });
+            });  
+        };
 
     });

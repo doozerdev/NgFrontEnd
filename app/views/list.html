@@ -39,13 +39,13 @@
            <form class="form-inline form-group">
               <div class="col-xs-12 col-override testoutline">
                 <label for="duedateinput">Due: {{item.duedate | date:'EEEE'}}</label>
-                <input type="date" class="form-control unsortable testoutline" name="duedateinput" ng-model="item.duedate" ng-change="saveEdits(item)" ng-model-options="{updateOn:'default blur submit', debounce:{default:750, blur:0}}" placeholder="MM-dd-yyyy"></input>
+                <input type="date" class="form-control unsortable testoutline" id="duedateinput" name="duedateinput" ng-model="item.duedate" ng-change="saveEdits(item)" ng-model-options="{updateOn:'default blur submit', debounce:{default:750, blur:0}}" placeholder="MM-dd-yyyy"></input>
               </div>
            </form>
            <form class="form-horizontal form-group">
                <div class="col-xs-10 col-override unsortable testoutline">
                 <label class="sr-only" for="notesinput">Notes:</label>
-                <textarea class="form-control testoutline" rows="3" name="notesinput" placeholder="(add some notes...)" ng-trim="false" ng-model="item.notes" ng-change="saveEdits(item)" ng-model-options="{updateOn: 'default blur submit', debounce:{default:2000, blur:0}}"></textarea>
+                <textarea class="form-control testoutline" rows="3" id="notesinput" name="notesinput" placeholder="(add some notes...)" ng-trim="false" ng-model="item.notes" ng-change="saveEdits(item)" ng-model-options="{updateOn: 'default blur submit', debounce:{default:2000, blur:0}}"></textarea>
                </div>
            </form>
        </div> 

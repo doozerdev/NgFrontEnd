@@ -31,15 +31,20 @@
 	<div class="panel-heading testoutline"><div class="row testoutline">
 		<h3 class="col-xs-12 panel-title">Experts internal info for solution #{{solution.id}}</h3>
 	</div></div>
-	<div class="panel-body no-topbottom-padding testoutline">
+	<div class="panel-body testoutline">
 		<div class="row testoutline"><div class="col-xs-12"><b>Link: </b>{{solution.link}}</div></div>
 		<div class="row testoutline"><div class="col-xs-12"><b>Image link: </b>{{solution.imgLink}}</div></div>
 		<div class="row testoutline">
 			<div class="col-xs-6"><b>Created: </b>{{solution.created_at | date}}</div>
 			<div class="col-xs-6"><b>Notes: </b>{{solution.notes}}</div>
 			<div class="col-xs-6"><b>Expiration date: </b>{{solution.expireDate | date}}</div>
-			<div class="col-xs-6"><b>Tags: </b>{{solution.tags}}</div>
 			<div class="col-xs-6"><a href="#/solution/{{solution.id}}">Edit Solution (coming soon)</a></div>
 		</div>
+		<form class="form-horizontal"><div class="form-group">
+            <label class="control-label col-xs-1" for="tagsinput"><b>Tags: </b></label>
+            <div class="col-xs-9">
+				<input type="text" class="form-control" ng-trim="true" placeholder="Tags (comma separated)" ng-model="solution.tags" id="tagsinput" name="tagsinput" ng-change="saveTags(solution)" ng-model-options="{updateOn: 'default blur submit', debounce:{default:2000, blur:0}}">
+			</div>
+        </div></form>		
 	</div>
 </div>

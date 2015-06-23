@@ -12,7 +12,8 @@ angular.module('webClientApp')
         restrict: 'E',
         scope: {
           solution: '=',
-          expert: '@'
+          expert: '@',
+          saveTags: '&'
         },
         templateUrl: 'scripts/directives/dzr-solution.html'
       };
