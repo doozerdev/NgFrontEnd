@@ -61,11 +61,23 @@ angular.module('webClientApp')
             });
         };
         
-        $scope.saveTagEdits = function(sol){
+        $scope.saveSolutionEdits = function(sol){
             Solution.get({id: sol.id}, function(toUpdate) {
                 toUpdate.tags = sol.tags;
+                toUpdate.link = sol.link;
+                toUpdate.imgLink = sol.imgLink;
+                toUpdate.expireDate = sol.expireDate;
+                toUpdate.notes = sol.notes;
+                toUpdate.title = sol.title;
+                toUpdate.source = sol.source;
+                toUpdate.price = sol.price;
+                toUpdate.phoneNumber = sol.phoneNumber;
+                toUpdate.openHours = sol.openHours;
+                toUpdate.address = sol.address;
+                toUpdate.description = sol.description;
                 toUpdate.$update({id: sol.id}, function(updated){
-                    console.log("tags saved: "+updated.tags);
+                    console.log("solution saved: ");
+                    console.log(updated);
                 });
             });  
         };

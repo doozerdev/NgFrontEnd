@@ -13,7 +13,7 @@ angular.module('webClientApp')
         scope: {
           solution: '=',
           expert: '@',
-          saveTags: '&'
+          saveEdits: '&'
         },
         templateUrl: 'scripts/directives/dzr-solution.html'
       };
