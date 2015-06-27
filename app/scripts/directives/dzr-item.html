@@ -1,0 +1,11 @@
+<span class="glyphicon glyphicon-check" ng-if='checkToggle(item)!=-1' ng-click='toggleAction(item)'></span>
+<span class="glyphicon glyphicon-unchecked" ng-if='checkToggle(item)===-1' ng-click='toggleAction(item)'></span>
+<span ng-if="item.done==true">
+    <s>{{item.title}} <span ng-if="item.archive==true">(archived)</span></s>
+</span>
+<span ng-if="item.done!=true">
+    <label>{{item.title}}</label>
+    <label ng-if="item.archive==true">(archived)</label>
+</span>
+<a href='#/{{item.parent}}' target="_blank"><span class="pull-right" ng-click='clickAction(item)'>View in List <span class="glyphicon glyphicon-menu-right"></span></span>
+        </a>
