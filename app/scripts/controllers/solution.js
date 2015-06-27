@@ -1,22 +1,38 @@
 'use strict';
 
 angular.module('webClientApp')
-    .controller('SolutionCtrl', function($scope, $routeParams, Solution, Search) {
+    .controller('SolutionCtrl', function($scope, $routeParams, Solution, Search, Item) {
 
         Solution.get({
             id: $routeParams.id
         }, function(solution) {
             $scope.solution = solution;
+            $scope.solution.expireDate = new Date($scope.solution.expireDate);
         });
 
         Solution.items({
             id: $routeParams.id
         }, function(response) {
-            if (response.items)
+            if (response.items){
                 $scope.items = response.items;
-            else
+                
+                angular.forEach($scope.items, function(item) {
+                    $scope.getParent(item);
+                });                   
+            }
+            else{
                 $scope.items = [];
+            }
         });
+        
+        $scope.getParent = function(item){
+            Item.get({
+                itemId: item.parent
+            }, function(parent){
+                item.parentTitle = parent.title;
+                //console.log("done with "+item.parentTitle);
+            });
+        };
 
         $scope.toggleMap = function(item) {
             var index = $scope.checkLink(item);
@@ -52,12 +68,24 @@ angular.module('webClientApp')
             return -1;
         };
 
+        
         $scope.search = function() {
             Search.query({
                 searchTerm: $scope.searchTerm.trim()
             }, function(results) {
                 $scope.results = results.items;
                 $scope.request_time = results.request_time;
+                
+                for (var i=$scope.results.length-1; i >= 0; i--) {
+                    if (!$scope.results[i].parent){
+                        var temp = $scope.results.splice(i, 1);
+                        console.log("skipped list: ");
+                        console.log(temp);
+                    }
+                    else{
+                        $scope.getParent($scope.results[i]);                      
+                    }
+                }
             });
         };
         

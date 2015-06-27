@@ -14,7 +14,7 @@ angular.module('webClientApp')
           item: '=',
           checkToggle: '&',
           toggleAction: '&',
-          clickAction: '&'
+          //clickAction: '&'
         },
         templateUrl: 'scripts/directives/dzr-item.html'
       };
