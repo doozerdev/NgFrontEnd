@@ -11,12 +11,12 @@
  */
 angular.module('webClientApp')
   .controller('ListCtrl', function ($scope, $routeParams, Item) {
-    
+
     var step = 33554432; //assume about 63 items per list optimally
     var max = 2147483647; //maxIn32
     $scope.editedItem = null;
-    $scope.isDoneGroupOpen = false; 
-    //TODO: fix this (git hub issue #8). toggling isDoneGroupOpen on ng-click has issues (e.g. double-click is taken as 2 clicks). 
+    $scope.isDoneGroupOpen = false;
+    //TODO: fix this (git hub issue #8). toggling isDoneGroupOpen on ng-click has issues (e.g. double-click is taken as 2 clicks).
     //Instead, I tried to get isDoneGroupOpen toggling to happen on the js events, but it didn't work...
 //    $('.donecollapse').on('shown.bs.collapse', function () {
 //     isDoneGroupOpen = true;
@@ -50,7 +50,7 @@ angular.module('webClientApp')
       move: function(items, newIndex){
         if (items.length === 1){
           items[0].order = step;
-          $scope.saveEdits(items[0]);          
+          $scope.saveEdits(items[0]);
         }
         else if(0 === newIndex){
           if(items[1].order > 2){
@@ -64,10 +64,10 @@ angular.module('webClientApp')
         }else if(newIndex === items.length-1){
           //can we just add it to the end?
           if(items[items.length-2].order + step < max){
-            items[newIndex].order = items[items.length-2].order+step;            
+            items[newIndex].order = items[items.length-2].order+step;
             $scope.saveEdits(items[newIndex]);
           }//add it right after the last value and reorder list
-          else{ 
+          else{
             items[newIndex].order = items[items.length-2].order+1;
             //don't call saveEdits here, reorder will do it
             Sorting.reorderList(items);
@@ -96,13 +96,13 @@ angular.module('webClientApp')
         var current = newStep;
 
         angular.forEach(items, function(item){
-          item.order = current;          
+          item.order = current;
           $scope.saveEdits(item);
           current = current + newStep;
         });
         return items;
       },
-      
+
 
 
       //for debugging purposes
@@ -117,7 +117,7 @@ angular.module('webClientApp')
 
     //TODO: cache the index value for performance, and only recalculate on appropriate delete/complete/reorder functions
     //This method assumes that "done" items are all at the end of the items array (that the toggle function moves the order of these items)
-    //Returns: the index of the first done item. 
+    //Returns: the index of the first done item.
     //         OR, if no 'done' items, then it returns the length of items array (aka the index where the first done item should go)
     $scope.indexOfFirstDone = function(){
       if($scope.items === undefined){
@@ -131,7 +131,7 @@ angular.module('webClientApp')
         }
       }
       //console.log("indexOfFirstDone - there are no done items");
-      return $scope.items.length;  
+      return $scope.items.length;
     };
 
 
@@ -164,10 +164,10 @@ angular.module('webClientApp')
       item.parent = newItem.parent;
       item.done = newItem.done;
       item.archive = newItem.archive;
- 
+
       Item.save(item, function(savedItem){
         $scope.items.unshift(savedItem);
-        $scope.newItem = ''; 
+        $scope.newItem = '';
         Sorting.move($scope.items, 0);
       });
     };
@@ -181,27 +181,27 @@ angular.module('webClientApp')
         //toUpdate.$update({itemId: item.id}, function(){
         //  $scope.items.splice($scope.items.indexOf(item), 1);
         //});
-        
+
     };
 
     $scope.toggle = function(item) {
       Item.get({itemId: item.id}, function(toUpdate) {
         console.log(item);
-       
-        toUpdate.done = item.done;  
+
+        toUpdate.done = item.done;
         toUpdate.done = !toUpdate.done;
         toUpdate.duedate = new Date(item.duedate);
         //TODO: is there any danger that we're blowing away other properties of item? (e.g. the client side version of item doesn't match the server side toUpdate)
 
-        $scope.items.splice($scope.items.indexOf(item), 1);   
+        $scope.items.splice($scope.items.indexOf(item), 1);
         var newIndex = $scope.indexOfFirstDone();
         if(newIndex === undefined){
             newIndex = $scope.items.length;
-        }        
+        }
         $scope.items.splice(newIndex, 0, toUpdate);
-        
+
         //don't call saveEdits here, Sorting.move already does it
-        Sorting.move($scope.items, newIndex);              
+        Sorting.move($scope.items, newIndex);
       });
     };
 
@@ -219,17 +219,17 @@ angular.module('webClientApp')
     $scope.saveEdits = function(item) {
       Item.get({itemId: item.id}, function(toUpdate) {
         toUpdate.title = item.title;
+        toUpdate.type = item.type;
         toUpdate.order = item.order;
         toUpdate.done = item.done;
         toUpdate.notes = item.notes;
         toUpdate.duedate = item.duedate;
-        
         //Don't update archive here; that's handled separately with removeItem()
         //toUpdate.archive = item.archive;
-        
+
         toUpdate.$update({itemId: item.id});
         $scope.editedItem = null;
-        
+
         console.log('saved item: ');
         console.log(item);
       });
