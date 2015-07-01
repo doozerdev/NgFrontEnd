@@ -7,7 +7,7 @@ angular.module('webClientApp')
             id: $routeParams.id
         }, function(solution) {
             $scope.solution = solution;
-            $scope.solution.expireDate = new Date($scope.solution.expireDate);
+            $scope.solution.expire_date = new Date($scope.solution.expire_date);
         });
 
         Solution.items({
@@ -93,14 +93,14 @@ angular.module('webClientApp')
             Solution.get({id: sol.id}, function(toUpdate) {
                 toUpdate.tags = sol.tags;
                 toUpdate.link = sol.link;
-                toUpdate.imgLink = sol.imgLink;
-                toUpdate.expireDate = sol.expireDate;
+                toUpdate.img_link = sol.img_link;
+                toUpdate.expire_date = sol.expire_date;
                 toUpdate.notes = sol.notes;
                 toUpdate.title = sol.title;
                 toUpdate.source = sol.source;
                 toUpdate.price = sol.price;
-                toUpdate.phoneNumber = sol.phoneNumber;
-                toUpdate.openHours = sol.openHours;
+                toUpdate.phone_number = sol.phone_number;
+                toUpdate.open_hours = sol.open_hours;
                 toUpdate.address = sol.address;
                 toUpdate.description = sol.description;
                 toUpdate.$update({id: sol.id}, function(updated){

@@ -1,7 +1,7 @@
 <div class="panel panel-default"><div class="panel-body no-topbottom-padding testoutline">
 <div class="media">
-	<div class="media-left testoutline" ng-show="solution.imgLink">
-		<a href="{{solution.link}}"><img src='{{solution.imgLink}}' height="200px"/></a>
+	<div class="media-left testoutline" ng-if="solution.img_link">
+		<a href="{{solution.link}}"><img src='{{solution.img_link}}' height="200px"/></a>
 	</div>
 	<div class="media-body testoutline">
 	<div class="row testoutline">
@@ -17,9 +17,9 @@
 		<div class="col-xs-6 testoutline">{{solution.address}}</div>
 	</div><div class="row testoutline">
 		<div class="col-xs-6">{{solution.price | currency}}</div>
-		<div class="col-xs-6 testoutline">{{solution.phoneNumber}}</div>
+		<div class="col-xs-6 testoutline">{{solution.phone_number}}</div>
 	</div><div class="row testoutline">
-		<div class="col-xs-6 col-xs-offset-6 testoutline">{{solution.openHours}}</div>
+		<div class="col-xs-6 col-xs-offset-6 testoutline">{{solution.open_hours}}</div>
 	</div>
 	</div>
 </div>
@@ -49,13 +49,13 @@
 			<div class="form-group">
 	            <label class="control-label col-xs-2" for="imginput"><b>Image Link: </b></label>
 	            <div class="col-xs-10">
-					<input type="text" class="form-control" ng-trim="true" placeholder="Image Link (include http)" ng-model="solution.imgLink" id="imginput" name="imginput" ng-change="saveEdits(solution)" ng-model-options="{updateOn: 'default blur submit', debounce:{default:2000, blur:0}}">
+					<input type="text" class="form-control" ng-trim="true" placeholder="Image Link (include http)" ng-model="solution.img_link" id="imginput" name="imginput" ng-change="saveEdits(solution)" ng-model-options="{updateOn: 'default blur submit', debounce:{default:2000, blur:0}}">
 				</div>
         	</div>
 			<div class="form-group">
 	            <label class="control-label col-xs-2" for="expireinput"><b>Expiration date: </b></label>
 	            <div class="col-xs-4">
-					<input type="date" class="form-control" ng-trim="true" placeholder="Expiration date" ng-model="solution.expireDate" id="expireinput" name="expireinput" ng-change="saveEdits(solution)" ng-model-options="{updateOn: 'default blur submit', debounce:{default:2000, blur:0}}">
+					<input type="date" class="form-control" ng-trim="true" placeholder="Expiration date" ng-model="solution.expire_date" id="expireinput" name="expireinput" ng-change="saveEdits(solution)" ng-model-options="{updateOn: 'default blur submit', debounce:{default:2000, blur:0}}">
 				</div>
         	</div>
 			<div class="form-group">
@@ -94,13 +94,13 @@
 			<div class="form-group">
 	            <label class="control-label col-xs-2" for="phoneinput"><b>Phone number: </b></label>
 	            <div class="col-xs-10">
-					<input type="text" class="form-control" ng-trim="true" placeholder="Phone number" ng-model="solution.phoneNumber" id="phoneinput" name="phoneinput" ng-change="saveEdits(solution)" ng-model-options="{updateOn: 'default blur submit', debounce:{default:2000, blur:0}}">
+					<input type="text" class="form-control" ng-trim="true" placeholder="Phone number" ng-model="solution.phone_number" id="phoneinput" name="phoneinput" ng-change="saveEdits(solution)" ng-model-options="{updateOn: 'default blur submit', debounce:{default:2000, blur:0}}">
 				</div>
         	</div>
 			<div class="form-group">
 	            <label class="control-label col-xs-2" for="hoursinput"><b>Open hours: </b></label>
 	            <div class="col-xs-10">
-					<input type="text" class="form-control" ng-trim="true" placeholder="Open hours" ng-model="solution.openHours" id="hoursinput" name="hoursinput" ng-change="saveEdits(solution)" ng-model-options="{updateOn: 'default blur submit', debounce:{default:2000, blur:0}}">
+					<input type="text" class="form-control" ng-trim="true" placeholder="Open hours" ng-model="solution.open_hours" id="hoursinput" name="hoursinput" ng-change="saveEdits(solution)" ng-model-options="{updateOn: 'default blur submit', debounce:{default:2000, blur:0}}">
 				</div>
         	</div>
 			<div class="form-group">
