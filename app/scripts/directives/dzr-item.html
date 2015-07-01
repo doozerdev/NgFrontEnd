@@ -1,12 +1,11 @@
 <div class="row item">
-    <span class="glyphicon glyphicon-check col-xs-1" ng-if='checkToggle(item)!=-1' ng-click='toggleAction(item)'></span>
+    <span class="glyphicon glyphicon-check col-xs-1" ng-if='checkToggle(item)>=0' ng-click='toggleAction(item)'></span>
     <span class="glyphicon glyphicon-unchecked col-xs-1" ng-if='checkToggle(item)===-1' ng-click='toggleAction(item)'></span>
     <span class="col-xs-11" ng-if="item.done==true">
-        <s>{{item.title}} <span ng-if="item.archive==true">(archived)</span></s>
+        <a ng-href='#/{{item.id}}/item'><s>{{item.title}} <span ng-if="item.archive==true">(archived)</span></s></a>
     </span>
     <span class="col-xs-11" ng-if="item.done!=true">
-        <label>{{item.title}}</label>
-        <label ng-if="item.archive==true">(archived)</label>
+        <a ng-href='#/{{item.id}}/item'>{{item.title}} <span ng-if="item.archive==true">(archived)</span></a>
     </span>
 </div>
 <div class="row">

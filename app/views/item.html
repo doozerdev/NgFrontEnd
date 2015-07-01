@@ -1,6 +1,14 @@
-<h1>{{item.title}}</h1>
+<div class="panel panel-default"><div class="panel-body testoutline">
+    <dzr-item item="item"></dzr-item>
+</div></div>
 
-<h2>Solutions</h2>
-<div ng-repeat="solution in solutions">
-    <dzr-solution solution="solution" expert="false"></dzr-solution>
+<h3>Linked Solutions <span ng-if='solutions.length>0'>({{solutions.length}})</span></h3>
+<div ng-show='solutions.length < 1'>
+        No solutions linked to this task
 </div>
+
+<div ng-repeat="solution in solutions">
+    <dzr-solution solution="solution" expert="true-min"></dzr-solution>
+</div>
+
+

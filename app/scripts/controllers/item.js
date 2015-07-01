@@ -7,10 +7,16 @@ angular.module('webClientApp')
         }, function(item) {
             $scope.item = item;
             
-            Item.solutions({
-              itemId: $routeParams.id
-            }, function(solutionsData) {
-              $scope.solutions = solutionsData.items;
+            Item.get({
+                itemId: $scope.item.parent
+            }, function(parent){
+                $scope.item.parentTitle = parent.title;              
             });
+        });
+        
+        Item.solutions({
+            itemId: $routeParams.id
+        }, function(solutionsData) {
+            $scope.solutions = solutionsData.items;
         });
     });
