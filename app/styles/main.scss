@@ -3,41 +3,6 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
 
-.testoutline{
-  //this is just for testing - uncomment to see the test outlines
- //border: 1px solid blueviolet;
-}
-.testfill{
-  //just for testing
- // background-color: yellow;
-}
-
-.group-header{
-  cursor: pointer;
-  //TODO the background is getting trumped/ not shown with the bootstrap grid classes (issue #12)
-  background: #ccc;
-  font-size: 18px;
-  @include border-bottom-radius($list-group-border-radius);
-}
-
-.group-header-with-list{
-  //TODO this doesn't seem to work... (git hub issue #11)
-  @include border-bottom-radius(0);
-}
-
-.group-header-group{
-  //make the group header & its uncollapsed list not have any gaps, overriding .list-group
-  margin-bottom: -1px;
-  
-}
-
-.list-with-group-header {
-  // Un-Round the first item, override list-group-item
-  &:first-child {
-    @include border-top-radius(0);
-  }
-}
-
 .panel-row-override {
   //this is only needed to negate the styling from panels, and make it like list-group-items, because boostrap quirk requires panel class to get accordion behavior
   margin-bottom: -1px;
@@ -67,6 +32,50 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   padding-top: 0;
   padding-bottom: 0;
 }
+
+
+
+
+
+.testoutline{
+  //this is just for testing - uncomment to see the test outlines
+  //border: 1px solid blueviolet;
+}
+.testfill{
+  //just for testing
+ // background-color: yellow;
+}
+
+.group-header{
+  cursor: pointer;
+  //TODO the background is getting trumped/ not shown with the bootstrap grid classes (issue #12)
+  background-color: #ccc;
+  font-size: 18px;
+  @include border-bottom-radius($list-group-border-radius);
+}
+
+.header-type-test{
+  background-color: #bcbde5;
+}
+
+.group-header-with-list{
+  //TODO this doesn't seem to work... (git hub issue #11)
+  @include border-bottom-radius(0);
+}
+
+.group-header-group{
+  //make the group header & its uncollapsed list not have any gaps, overriding .list-group
+  margin-bottom: -1px;
+  
+}
+
+.list-with-group-header {
+  // Un-Round the first item, override list-group-item
+  &:first-child {
+    @include border-top-radius(0);
+  }
+}
+
 
 .task-details{
   font-size: 18px;
