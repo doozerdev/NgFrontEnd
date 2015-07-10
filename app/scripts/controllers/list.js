@@ -16,7 +16,8 @@ angular.module('webClientApp')
     var max = 2147483647; //maxIn32
     $scope.editedItem = null;
     $scope.isDoneGroupOpen = false;
-    //TODO: fix this (git hub issue #8). toggling isDoneGroupOpen on ng-click has issues (e.g. double-click is taken as 2 clicks).
+    $scope.hasDoneHeader = false;
+     //TODO: fix this (git hub issue #8). toggling isDoneGroupOpen on ng-click has issues (e.g. double-click is taken as 2 clicks).
     //Instead, I tried to get isDoneGroupOpen toggling to happen on the js events, but it didn't work...
 //    $('.donecollapse').on('shown.bs.collapse', function () {
 //     isDoneGroupOpen = true;
@@ -36,7 +37,14 @@ angular.module('webClientApp')
           if(item.order && item.order > greatest){
             greatest = item.order;
           }
+          
           item.duedate = new Date(item.duedate);
+          
+          if(item.type == "completed_header"){
+            console.log("completed header found:");
+            console.log(item);
+            $scope.hasDoneHeader = true;
+          }
         });
 
         //nothing has a sort order
@@ -133,6 +141,14 @@ angular.module('webClientApp')
       //console.log("indexOfFirstDone - there are no done items");
       return $scope.items.length;
     };
+    
+    $scope.lengthOfUndone = function(){
+      var length = $scope.indexOfFirstDone();
+      if($scope.hasDoneHeader == true){
+        return length-1;
+      }
+      return length;
+    };
 
 
     $scope.sortableOptions = {
@@ -187,14 +203,21 @@ angular.module('webClientApp')
     $scope.toggle = function(item) {
       Item.get({itemId: item.id}, function(toUpdate) {
         console.log(item);
-
+        var newIndex;
+        
         toUpdate.done = item.done;
         toUpdate.done = !toUpdate.done;
         toUpdate.duedate = new Date(item.duedate);
         //TODO: is there any danger that we're blowing away other properties of item? (e.g. the client side version of item doesn't match the server side toUpdate)
 
         $scope.items.splice($scope.items.indexOf(item), 1);
-        var newIndex = $scope.indexOfFirstDone();
+        
+        if(toUpdate.done==true){
+          newIndex = $scope.indexOfFirstDone();
+        }else{
+          newIndex = $scope.lengthOfUndone();
+        }
+        
         if(newIndex === undefined){
             newIndex = $scope.items.length;
         }

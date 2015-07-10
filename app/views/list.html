@@ -13,7 +13,7 @@
 </div>
 
 <ul class="list-group" id="itemsparent" ui-sortable="sortableOptions" ng-model="items">
-    <li class="row panel panel-row-override list-group-item item" ng-repeat="item in items | limitTo:indexOfFirstDone()">
+    <li class="row panel panel-row-override list-group-item item" ng-repeat="item in items | limitTo:lengthOfUndone()">
        <span class="glyphicon glyphicon-check col-xs-1 col-override" ng-if='item.done' ng-click='toggle(item)'></span>
        <span class="glyphicon glyphicon-unchecked col-xs-1 col-override testoutline" ng-if='!item.done' ng-click='toggle(item)'></span>
 
