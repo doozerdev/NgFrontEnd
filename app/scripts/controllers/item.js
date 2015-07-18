@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('webClientApp')
-    .controller('ItemCtrl', function($scope, $routeParams, Item) {
+    .controller('ItemCtrl', function($scope, $routeParams, Item, Solution) {
         Item.get({
             itemId: $routeParams.id
         }, function(item) {
@@ -18,5 +18,13 @@ angular.module('webClientApp')
             itemId: $routeParams.id
         }, function(solutionsData) {
             $scope.solutions = solutionsData.items;
+
+            angular.forEach($scope.solutions, function(sol){
+                Solution.view({
+                  id: sol.id,
+                  itemId: $routeParams.id
+                }, function() {
+                });
+            });
         });
     });

@@ -15,6 +15,7 @@ angular.module('webClientApp')
           expert: '@',
           saveEdits: '&'
         },
-        templateUrl: 'scripts/directives/dzr-solution.html'
+        templateUrl: 'scripts/directives/dzr-solution.html',
+        controller: 'SolutionInterCtrl'
       };
   });

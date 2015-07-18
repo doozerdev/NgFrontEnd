@@ -9,7 +9,8 @@ angular.module('webClientApp')
         $http.defaults.headers.common.sessionId = $cookies.get('doozerSession');
 
         return $resource(doozerURL + 'solutions/:id', {
-            id: '@id'
+            id: '@id',
+            itemId: '@itemId'
         }, {
             query: {
                 isArray: true
@@ -35,6 +36,18 @@ angular.module('webClientApp')
             items: {
                 url: doozerURL + 'solutions/:id/items',
                 method: 'GET'
+            },
+            like: {
+                url: doozerURL + 'solutions/:id/like/:itemId',
+                method: 'POST'  
+            },
+            dislike: {
+                url: doozerURL + 'solutions/:id/dislike/:itemId',
+                method: 'POST'  
+            },
+            view: {
+                url: doozerURL + 'solutions/:id/view/:itemId',
+                method: 'POST'  
             }
         });
     });
