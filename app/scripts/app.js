@@ -20,8 +20,8 @@ angular.module('webClientApp', [
         'ui.sortable',
     ])
     .config(function($routeProvider, $facebookProvider) {
-        $facebookProvider.setAppId(1474823829455959); //prod
-        //$facebookProvider.setAppId(1615408935397447); //dev
+        //$facebookProvider.setAppId(1474823829455959); //prod
+        $facebookProvider.setAppId(1615408935397447); //dev
 
         $routeProvider
             .when('/', {
@@ -68,7 +68,8 @@ angular.module('webClientApp', [
                 redirectTo: '/'
             });
     })
-.constant('doozerURL','https://warm-atoll-6588.herokuapp.com/api/')
+.constant('doozerURL','http://ec2-52-25-226-188.us-west-2.compute.amazonaws.com/api/')
+//.constant('doozerURL','https://warm-atoll-6588.herokuapp.com/api/')
 //.constant('doozerURL','http://localhost:3000/api/')
 .run(function() {
 
