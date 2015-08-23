@@ -11,7 +11,7 @@
 
 
 angular.module('webClientApp')
-    .controller('MainCtrl', function($scope, $cookies, $resource, $facebook, 
+    .controller('MainCtrl', function($scope, $cookies, $resource, $http, $facebook, 
         Session, Item, doozerURL) {
 
         $scope.refresh = function() {
@@ -27,9 +27,11 @@ angular.module('webClientApp')
                     $scope.loggedIn = true;
                     $scope.lists = lists;
                     $scope.sessionId = $cookies.get('doozerSession');
+                    $http.defaults.headers.common.sessionId = $cookies.get('doozerSession');
                 } else {
                     $scope.loggedIn = false;
                     $cookies.remove('doozerSession');
+                    console.log('else, not logged in'); //TODO: the else never gets called? because if not logged in, Item.lists doesn't call return function. fix this
                 }
             });
         };
@@ -44,7 +46,8 @@ angular.module('webClientApp')
                     token: response.authResponse.accessToken
                 }, function(result) {
                     $cookies.put('doozerSession', result.sessionId);
-
+                    $http.defaults.headers.common.sessionId = result.sessionId;
+                    
                     $facebook.api('/me').then(function(response) {
                         $scope.username = response.name;
                         $cookies.put('username', response.name);

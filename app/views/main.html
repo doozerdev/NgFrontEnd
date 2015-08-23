@@ -11,7 +11,7 @@
             <input id="new-list" class='form-control' placeholder="New List" ng-model="newList" ng-disabled="saving" autofocus>
         </form>
         <ul class='list-group'>
-            <li class='list-group-item item' ng-repeat="item in lists | orderBy:'title'">
+            <li class='list-group-item item' ng-repeat="item in lists | orderBy:'order'">
                 <div ng-class="item == editedItem  ? 'hidden' : 'show'">
                     <label ng-dblclick="editItem(item)">{{item.title}}</label>
                     ({{item.children_undone}})
