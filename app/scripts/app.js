@@ -64,6 +64,9 @@ angular.module('webClientApp', [
             }).when('/:id/item',{
                 templateUrl: 'views/item.html',
                 controller: 'ItemCtrl'
+            }).when('/:id/itemexpert',{
+                templateUrl: 'views/itemexpert.html',
+                controller: 'ItemExpertCtrl'
             }).otherwise({
                 redirectTo: '/'
             });

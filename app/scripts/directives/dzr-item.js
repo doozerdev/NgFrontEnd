@@ -3,7 +3,10 @@
 /*
 Doozer item - directive to render a user's task in a variety of Expert UI
 
- item: the item object to render
+item: the item object to render
+
+[expert]: a string to control expert "modes" - visibility of extra properties/functionality for experts 
+           values: 'false', 'true', 'true-min'
   
  checkToggle: the function to call to determine whether the checkbox should be checked or unchecked (in context of expert UI, this usually is used for the state of linking between solution & this item)
               value of -1 means that it should be unchecked
@@ -18,6 +21,7 @@ angular.module('webClientApp')
         restrict: 'E',
         scope: {
           item: '=',
+          expert: '@',
           checkToggle: '&',
           toggleAction: '&',
           //clickAction: '&'
