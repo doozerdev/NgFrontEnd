@@ -30,11 +30,17 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-1 col-xs-offset-8">
-                <h3><span class="glyphicon glyphicon-thumbs-up testoutline button" ng-click='likeSolution(solution)'></span></h3>
+            <div class="col-xs-1">
+                <h3>
+                    <span class="glyphicon glyphicon-check col-xs-1" ng-if='checkToggle(solution)>=0' ng-click='toggleAction(solution)'></span>
+                    <span class="glyphicon glyphicon-unchecked col-xs-1" ng-if='checkToggle(solution)===-1' ng-click='toggleAction(solution)'></span>
+                </h3>
+            </div>
+            <div class="col-xs-1 col-xs-offset-7">
+                <h3 ng-if="expert=='false'"><span class="glyphicon glyphicon-thumbs-up testoutline button" ng-click='likeSolution(solution)'></span></h3>
             </div>
             <div class="col-xs-1">
-                <h3><span class="glyphicon glyphicon-thumbs-down testoutline button" ng-click='dislikeSolution(solution)'></span></h3>
+                <h3 ng-if="expert=='false'"><span class="glyphicon glyphicon-thumbs-down testoutline button" ng-click='dislikeSolution(solution)'></span></h3>
             </div>
             <div class="col-xs-2">
                 <a ng-if="expert=='true-min'" class="btn btn-primary" href="#/solution/{{solution.id}}">Edit Solution</a>

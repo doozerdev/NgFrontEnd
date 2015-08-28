@@ -1,14 +1,15 @@
+<div class="panel panel-default"><div class="panel-body testoutline">
+
 <div class="row item">
     <span class="glyphicon glyphicon-check col-xs-1" ng-if='checkToggle(item)>=0' ng-click='toggleAction(item)'></span>
     <span class="glyphicon glyphicon-unchecked col-xs-1" ng-if='checkToggle(item)===-1' ng-click='toggleAction(item)'></span>
-    <span class="col-xs-11" ng-if="expert!='false' && item.done==true">
+    <span class="col-xs-11" ng-if="item.done==true">
         <a ng-href='#/{{item.id}}/itemexpert' ng-if="expert=='true-min'"><s>{{item.title}} <span ng-if="item.archive==true">(archived)</span></s></a>
-        <h3 ng-if="expert=='true'">{{item.title}} <span ng-if="item.archive==true">(archived)</span></h3>
+        <h3 ng-if="expert=='true' || expert=='false'"><s>{{item.title}} <span ng-if="item.archive==true">(archived)</span></s></h3>
     </span>
-    <span class="col-xs-11" ng-if="item.done!=true || expert=='false'">
-        <h3 ng-if="expert=='false'">{{item.title}} <span ng-if="item.archive==true">(archived)</span></h3>
+    <span class="col-xs-11" ng-if="item.done!=true">
         <a ng-href='#/{{item.id}}/itemexpert' ng-if="expert=='true-min'">{{item.title}} <span ng-if="item.archive==true">(archived)</span></a>        
-        <h3 ng-if="expert=='true'">{{item.title}} <span ng-if="item.archive==true">(archived)</span></h3>
+        <h3 ng-if="expert=='true' || expert=='false'">{{item.title}} <span ng-if="item.archive==true">(archived)</span></h3>
     </span>
 </div>
 <div class="row">
@@ -33,3 +34,5 @@
         </div></div>
     </div>
 </div>  
+
+</div></div>

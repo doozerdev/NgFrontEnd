@@ -89,6 +89,7 @@ angular.module('webClientApp')
             });
         };
         
+        //TODO: move this to solution-interaction.js and then no need to pass it as an attribute to the directive
         $scope.saveSolutionEdits = function(sol){
             Solution.get({id: sol.id}, function(toUpdate) {
                 toUpdate.tags = sol.tags;

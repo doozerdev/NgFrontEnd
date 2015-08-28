@@ -1,13 +1,11 @@
-<div class="panel panel-default"><div class="panel-body testoutline">
-    <dzr-item item="item" expert="false"></dzr-item>
-</div></div>
+<dzr-item item="item" expert="false"></dzr-item>
 
 <h3>Linked Solutions <span ng-if='solutions.length>0'>({{solutions.length}})</span></h3>
 <div ng-show='solutions.length < 1'>
         No solutions linked to this task
 </div>
 
-<div ng-repeat="solution in solutions">
+<div ng-repeat="solution in solutions | orderBy:'-created_at'">
     <dzr-solution solution="solution" expert="false"></dzr-solution>
 </div>
 
