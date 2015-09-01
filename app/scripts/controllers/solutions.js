@@ -8,7 +8,7 @@
  * Controller of the webClientApp
  */
 angular.module('webClientApp')
-    .controller('SolutionsCtrl', function($scope, $routeParams, Solution, Search, Item) {
+    .controller('SolutionsCtrl', function($scope, $routeParams, Solution, Search, Item, User) {
 
         var eOV = function(item) {
             return item ? item.trim() : '';
@@ -17,6 +17,45 @@ angular.module('webClientApp')
         Solution.query(function(solutionData) {
             $scope.solutions = solutionData;
         });
+        
+        User.query(function(userData) {
+            $scope.users = userData;
+            $scope.active_items = [];
+            
+            angular.forEach($scope.users, function(user) {
+                Item.listsForUser({
+                    userId: user.uid
+                    }, function(listData) {
+                        $scope.lists = listData.items;
+                                                
+                        $scope.getItemsFromList($scope.lists, user);
+                });
+            });            
+        });
+        
+        $scope.getItemsFromList = function(lists, user){
+            angular.forEach(lists, function(list){
+                Item.childrenForUser({
+                    itemId: list.id,
+                    userId: user.uid
+                    }, function(itemData){
+                        $scope.active_items = $scope.active_items.concat($scope.getActiveItems(itemData.items));
+                });
+            });
+        };
+        
+        $scope.getActiveItems = function(items){
+            var temp = [];
+            angular.forEach(items, function(item){
+                if(item.type==undefined || item.type==""){
+                    if(item.archive!=true && item.done!=true){
+                        temp.push(item);      
+                    }
+                }
+            });
+            console.log("finished getting active items from another list");
+            return temp;
+        };
 
         $scope.createSolution = function() {
             var newSolution = new Solution({

@@ -54,7 +54,10 @@
     <div role="tabpanel" class="tab-pane fade in active" id="taskstab">
         <div class='row'>
             <div class="col-xs-12" ng-show='!item_results'>
-                Placeholder
+                <h5>All active items across users: {{active_items.length}}</h5>
+                <div ng-repeat="item in active_items | orderBy:'-created_at'">
+                    <dzr-item item="item" expert="true-min"></dzr-item>
+                </div>
             </div>
             <div class="col-xs-12" ng-show='item_results.length < 1'>
                 <p>No task titles match that search term. Please try again.</p>
