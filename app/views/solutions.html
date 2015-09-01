@@ -26,10 +26,61 @@
         </div>
     </div>
 </div>
-<div class='row'>
-    <div class='col-sm-12'>
-        <div ng-repeat="solution in solutions | orderBy:'-created_at'">
-            <dzr-solution solution="solution" expert="true-min"></dzr-solution>
+
+
+<div class="row">
+    <h3 class="col-xs-12">Search for tasks and solutions</h3>
+    <form class="col-xs-12" id="search-form" ng-submit="search()">
+        <div class="input-group">
+            <input type="text" ng-model='searchTerm' class="form-control" placeholder="enter a search term">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button" ng-click="search()">
+                    <span class="glyphicon glyphicon-search"></span>&nbsp;
+                </button>
+            </span>
+        </div>
+    </form>
+</div>
+
+  <!-- Nav tabs -->
+<div class="row"><div class="col-xs-12">
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="" data-target="#taskstab" aria-controls="tasks" role="tab" data-toggle="tab">Tasks</a></li>
+        <li role="presentation"><a href="" data-target="#solutionstab" aria-controls="solutions" role="tab" data-toggle="tab">Solutions</a></li>
+    </ul>
+</div></div>
+  <!-- Tab panes -->
+<div class="tab-content well">
+    <div role="tabpanel" class="tab-pane fade in active" id="taskstab">
+        <div class='row'>
+            <div class="col-xs-12" ng-show='!item_results'>
+                Placeholder
+            </div>
+            <div class="col-xs-12" ng-show='item_results.length < 1'>
+                <p>No task titles match that search term. Please try again.</p>
+                <p>Search completed in {{item_request_time}}.</p>
+            </div>
+            <div class="col-xs-12" ng-show='item_results.length > 0'>
+                <p>Search completed in {{item_request_time}}. {{item_results.length}} results.</p>
+                <div ng-repeat="result in item_results" ng-if="result.parent!=''">
+                    <dzr-item item="result" expert="true-min"></dzr-item>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div role="tabpanel" class="tab-pane fade" id="solutionstab">
+        <div class='row'>
+            <div class="col-sm-12" ng-show="!solution_results">
+                <div ng-repeat="solution in solutions | orderBy:'-created_at'">
+                    <dzr-solution solution="solution" expert="true-min"></dzr-solution>
+                </div>
+            </div>
+            <div class="col-sm-12" ng-show="solution_results">
+                Placeholder for solution search results
+            </div>
         </div>
     </div>
 </div>
+
+
+

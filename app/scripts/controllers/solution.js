@@ -70,6 +70,12 @@ angular.module('webClientApp')
 
         
         $scope.search = function() {
+            if($scope.searchTerm.trim()==""){
+                $scope.results = undefined;
+                $scope.request_time = "";
+                return;
+            }
+            
             Search.query({
                 searchTerm: $scope.searchTerm.trim()
             }, function(results) {

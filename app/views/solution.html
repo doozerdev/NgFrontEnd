@@ -35,11 +35,9 @@
     </div>
         <div class="col-lg-12" ng-show='results.length > 0'>
             <p>Search completed in {{request_time}}. {{results.length}} results.</p>
-            <ul style='list-group'>
-                <li class='list-group-item' ng-repeat="result in results" ng-if="result.parent!=''">
-                    <dzr-item item="result" check-toggle="checkLink(result)" toggle-action="toggleMap(result)" expert="true-min"></dzr-item>
-                </li>
-            </ul>
+            <div ng-repeat="result in results" ng-if="result.parent!=''">
+                <dzr-item item="result" check-toggle="checkLink(result)" toggle-action="toggleMap(result)" expert="true-min"></dzr-item>
+            </div>
         </div>
     </div>
 </div>
