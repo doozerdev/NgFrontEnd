@@ -2,6 +2,9 @@
 
 angular.module('webClientApp')
     .controller('ItemExpertCtrl', function($scope, $routeParams, Item, Solution) {
+        $scope.solutions = [];
+        $scope.allsolutions = [];
+        
         Item.get({
             itemId: $routeParams.id
         }, function(item) {
