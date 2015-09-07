@@ -10,7 +10,7 @@ angular.module('webClientApp')
 
         return $resource(doozerURL + 'solutions/:id', {
             id: '@id',
-            itemId: '@itemId'
+            item_id: '@itemId'
         }, {
             query: {
                 isArray: true

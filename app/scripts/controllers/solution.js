@@ -57,7 +57,7 @@ angular.module('webClientApp')
         $scope.checkLink = function(item){
             if(item===null){return -1;}
             if($scope.items.length<1){return -1;}
-            
+
             for (var i = 0; i < $scope.items.length; i++){
                 if ($scope.items[i].id===item.id){
                   //console.log("indexOf this result is: "+i);
