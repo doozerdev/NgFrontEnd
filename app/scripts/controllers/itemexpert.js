@@ -21,9 +21,13 @@ angular.module('webClientApp')
             item_id: $routeParams.id
         }, function(solutionsData) {
             if (solutionsData.items){
-                $scope.solutions = solutionsData.items;                   
+                $scope.solutions = solutionsData.items;
+                console.log("got all solutions");
+                console.log($scope.solutions);  
+                console.log(solutionsData);             
             }
             else{
+                console.log("no linked solutions");
                 $scope.solutions = [];
             }
         });
@@ -38,7 +42,7 @@ angular.module('webClientApp')
             if(index===-1){
                 $scope.map(solution);
             }else{
-                $scope.unmap(solution);
+                $scope.unmap(solution, index);
             }
         };
         
@@ -57,23 +61,21 @@ angular.module('webClientApp')
         };
         
         $scope.map = function(solution){
-            Item.mapSolution({
-                item_id: $routeParams.id,
-                id: solution.id
+            Solution.mapItem({
+                id: solution.id,
+                item_id: $routeParams.id
             }, function(){
                 $scope.solutions.unshift(solution);
             });
         };
         
-        $scope.unmap = function(solution){
-            /*TODO: add unmapSolution here
+        $scope.unmap = function(solution, index){
             Solution.unmapItem({
-                id: $routeParams.id,
-                item_id: item.id
+                id: solution.id,
+                item_id: $routeParams.id
             }, function(){
-                $scope.items.splice(index, 1);
+                $scope.solutions.splice(index, 1);
             });
-            */
         };
         
     });

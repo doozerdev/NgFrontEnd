@@ -42,7 +42,7 @@ angular.module('webClientApp')
         $scope.map = function(solution, item){
             Solution.mapItem({
                 id: solution.id,
-                itemId: item.id
+                item_id: item.id
             }, function(out){
                 console.log(out);
                //TODO $scope.items.unshift(item);
