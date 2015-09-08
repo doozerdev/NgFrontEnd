@@ -6,7 +6,7 @@ angular.module('webClientApp')
         $scope.likeSolution = function(sol){
             Solution.like({
               id: sol.id,
-              itemId: $routeParams.id
+              item_id: $routeParams.id
             }, function() {
               alert('liked');
             });
@@ -15,7 +15,7 @@ angular.module('webClientApp')
         $scope.dislikeSolution = function(sol){
             Solution.dislike({
               id: sol.id,
-              itemId: $routeParams.id
+              item_id: $routeParams.id
             }, function() {
               alert('disliked');
             });

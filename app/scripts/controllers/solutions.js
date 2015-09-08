@@ -34,7 +34,7 @@ angular.module('webClientApp')
         $scope.getItemsFromList = function(lists, user){
             angular.forEach(lists, function(list){
                 Item.childrenForUser({
-                    itemId: list.id,
+                    item_id: list.id,
                     userId: user.uid
                     }, function(itemData){
                         $scope.active_items = $scope.active_items.concat($scope.getActiveItems(itemData.items));
@@ -63,7 +63,7 @@ angular.module('webClientApp')
         
         $scope.getItemParent = function(item){
             Item.get({
-                itemId: item.parent
+                item_id: item.parent
             }, function(parent){
                 item.parentTitle = parent.title;
             });

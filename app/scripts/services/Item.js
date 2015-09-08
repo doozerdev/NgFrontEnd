@@ -5,8 +5,8 @@ angular.module('webClientApp')
 
         $http.defaults.headers.common.sessionId = $cookies.get('doozerSession');
 
-        return $resource(doozerURL + 'items/:itemId', {
-            itemId: '@item_id',
+        return $resource(doozerURL + 'items/:item_id', {
+            item_id: '@item_id',
             userId: '@userId'
         }, {
             lists: {
@@ -22,15 +22,15 @@ angular.module('webClientApp')
                 method: 'GET'
             },
             children: {
-                url: doozerURL + 'items/:itemId/children',
+                url: doozerURL + 'items/:item_id/children',
                 method: 'GET'
             },
             childrenForUser: {
-                url: doozerURL + 'items/:itemId/childrenForUser/:userId',
+                url: doozerURL + 'items/:item_id/childrenForUser/:userId',
                 method: 'GET'
             },
             archive: {
-                url: doozerURL + 'items/:itemId/archive',
+                url: doozerURL + 'items/:item_id/archive',
                 method: 'DELETE'
             },
             delete: {
@@ -40,15 +40,15 @@ angular.module('webClientApp')
                 // TODO: for some reason this needs to be here, leave for now, debug later
             },
             update: {
-                url: doozerURL + 'items/:itemId',
+                url: doozerURL + 'items/:item_id',
                 method: 'PUT'
             },
             mapSolution:{
-                url: doozerURL + 'items/:itemId/mapSolution',
+                url: doozerURL + 'items/:item_id/mapSolution',
                 method: 'POST'
             },
             solutions:{
-                url: doozerURL + 'items/:itemId/solutions',
+                url: doozerURL + 'items/:item_id/solutions',
                 method: 'GET'
             }
         });

@@ -6,19 +6,19 @@ angular.module('webClientApp')
         $scope.allsolutions = [];
         
         Item.get({
-            itemId: $routeParams.id
+            item_id: $routeParams.id
         }, function(item) {
             $scope.item = item;
                         
             Item.get({
-                itemId: $scope.item.parent
+                item_id: $scope.item.parent
             }, function(parent){
                 $scope.item.parentTitle = parent.title;              
             });
         });
         
         Item.solutions({
-            itemId: $routeParams.id
+            item_id: $routeParams.id
         }, function(solutionsData) {
             if (solutionsData.items){
                 $scope.solutions = solutionsData.items;                   
@@ -40,7 +40,6 @@ angular.module('webClientApp')
             }else{
                 $scope.unmap(solution);
             }
-
         };
         
         $scope.checkLink = function(solution){
@@ -59,7 +58,7 @@ angular.module('webClientApp')
         
         $scope.map = function(solution){
             Item.mapSolution({
-                itemId: $routeParams.id,
+                item_id: $routeParams.id,
                 id: solution.id
             }, function(){
                 $scope.solutions.unshift(solution);
@@ -70,7 +69,7 @@ angular.module('webClientApp')
             /*TODO: add unmapSolution here
             Solution.unmapItem({
                 id: $routeParams.id,
-                itemId: item.id
+                item_id: item.id
             }, function(){
                 $scope.items.splice(index, 1);
             });
