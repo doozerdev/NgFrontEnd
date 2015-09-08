@@ -101,29 +101,29 @@ angular.module('webClientApp')
         };
 
         $scope.removeList = function(item) {
-            Item.archive({itemId: item.id}, function(){
+            Item.archive({item_id: item.id}, function(){
                 $scope.lists.splice($scope.lists.indexOf(item), 1);
             });
 
             // console.log('removeList');
             // Item.get({
-            //     itemId: item.id
+            //     item_id: item.id
             // }, function(toUpdate) {
             //     toUpdate.archive = true;
             //     toUpdate.$update({
-            //         itemId: item.id
+            //         item_id: item.id
             //     });
             //     Item.children({
-            //         itemId: item.id
+            //         item_id: item.id
             //     }, function(listData) {
             //         var children = listData.items;
             //         angular.forEach(children, function(child) {
             //             Item.get({
-            //                 itemId: child.id
+            //                 item_id: child.id
             //             }, function(toArchive) {
             //                 toArchive.archive = true;
             //                 toArchive.$update({
-            //                     itemId: child.id
+            //                     item_id: child.id
             //                 });
             //             });
             //         });
@@ -140,11 +140,11 @@ angular.module('webClientApp')
 
         $scope.saveEdits = function(item) {
             Item.get({
-                itemId: item.id
+                item_id: item.id
             }, function(toUpdate) {
                 toUpdate.title = item.title;
                 toUpdate.$update({
-                    itemId: item.id
+                    item_id: item.id
                 });
                 $scope.editedItem = null;
             });

@@ -27,7 +27,7 @@ angular.module('webClientApp')
         
         $scope.getParent = function(item){
             Item.get({
-                itemId: item.parent
+                item_id: item.parent
             }, function(parent){
                 item.parentTitle = parent.title;
                 //console.log("done with "+item.parentTitle);
@@ -39,14 +39,14 @@ angular.module('webClientApp')
             if(index===-1){
                 Solution.mapItem({
                     id: $routeParams.id,
-                    itemId: item.id
+                    item_id: item.id
                 }, function(){
                     $scope.items.unshift(item);
                 });
             }else{
                 Solution.unmapItem({
                     id: $routeParams.id,
-                    itemId: item.id
+                    item_id: item.id
                 }, function(){
                     $scope.items.splice(index, 1);
                 });

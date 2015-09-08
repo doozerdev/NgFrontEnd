@@ -10,7 +10,7 @@ angular.module('webClientApp')
 
         return $resource(doozerURL + 'solutions/:id', {
             id: '@id',
-            item_id: '@itemId'
+            item_id: '@item_id'
         }, {
             query: {
                 isArray: true
@@ -30,7 +30,7 @@ angular.module('webClientApp')
                 method: 'POST'
             },
             unmapItem: {
-                url: doozerURL + 'solutions/:id/unmapItem/:itemId',
+                url: doozerURL + 'solutions/:id/unmapItem/:item_id',
                 method: 'DELETE'
             },
             items: {
@@ -38,15 +38,15 @@ angular.module('webClientApp')
                 method: 'GET'
             },
             like: {
-                url: doozerURL + 'solutions/:id/like/:itemId',
+                url: doozerURL + 'solutions/:id/like/:item_id',
                 method: 'POST'  
             },
             dislike: {
-                url: doozerURL + 'solutions/:id/dislike/:itemId',
+                url: doozerURL + 'solutions/:id/dislike/:item_id',
                 method: 'POST'  
             },
             view: {
-                url: doozerURL + 'solutions/:id/view/:itemId',
+                url: doozerURL + 'solutions/:id/view/:item_id',
                 method: 'POST'  
             }
         });

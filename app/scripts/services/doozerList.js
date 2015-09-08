@@ -3,8 +3,8 @@
 angular.module('webClientApp')
   .factory('doozerList', function($resource, $http, $cookies, doozerURL) {
 
-    // var Items = $resource(doozerURL + 'items/:itemId', 
-    //   {itemId:'@id'}, 
+    // var Items = $resource(doozerURL + 'items/:item_id',
+    //   {item_id:'@id'},
     //   {
     //     headers:{'sessionId': $cookies.doozerSession
     //   }
@@ -13,7 +13,7 @@ angular.module('webClientApp')
     //var doozerURL = 'https://warm-atoll-6588.herokuapp.com/api/';
     //var doozerURL = 'http://localhost:3000/api/'
 
-    var Item = $resource(doozerURL + 'items/:itemId', { }, {
+    var Item = $resource(doozerURL + 'items/:item_id', { }, {
       query: {
         headers: {'sessionId': $cookies.get('doozerSession')}
       },
@@ -24,11 +24,11 @@ angular.module('webClientApp')
 
     var store = {
       getLists: function(){
-        return Item.query({itemId:'index'});
+        return Item.query({item_id:'index'});
       },
 
-      getChildren: function(itemId){
-        return Item.query({itemId: itemId});
+      getChildren: function(item_id){
+        return Item.query({item_id: item_id});
       },
 
       createItem: function(item){

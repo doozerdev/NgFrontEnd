@@ -28,9 +28,9 @@ angular.module('webClientApp')
 //      console.log("hidden event "+ isDoneGroupOpen);
 //    });
 
-    Item.children({itemId: $routeParams.id}, function(listData) {
+    Item.children({item_id: $routeParams.id}, function(listData) {
         $scope.items = listData.items;
-        $scope.list = Item.get({itemId: $routeParams.id});
+        $scope.list = Item.get({item_id: $routeParams.id});
 
         var greatest = -1;
         angular.forEach($scope.items, function(item) {
@@ -189,19 +189,19 @@ angular.module('webClientApp')
     };
 
     $scope.removeItem = function(item) {
-      Item.archive({itemId: item.id}, function(){
+      Item.archive({item_id: item.id}, function(){
           $scope.items.splice($scope.items.indexOf(item), 1);
       });
         //toUpdate.archive = true;
         //console.log(item.id);
-        //toUpdate.$update({itemId: item.id}, function(){
+        //toUpdate.$update({item_id: item.id}, function(){
         //  $scope.items.splice($scope.items.indexOf(item), 1);
         //});
 
     };
 
     $scope.toggle = function(item) {
-      Item.get({itemId: item.id}, function(toUpdate) {
+      Item.get({item_id: item.id}, function(toUpdate) {
         console.log(item);
         var newIndex;
         
@@ -240,7 +240,7 @@ angular.module('webClientApp')
     };
 
     $scope.saveEdits = function(item) {
-      Item.get({itemId: item.id}, function(toUpdate) {
+      Item.get({item_id: item.id}, function(toUpdate) {
         toUpdate.title = item.title;
         toUpdate.type = item.type;
         toUpdate.order = item.order;
@@ -250,7 +250,7 @@ angular.module('webClientApp')
         //Don't update archive here; that's handled separately with removeItem()
         //toUpdate.archive = item.archive;
 
-        toUpdate.$update({itemId: item.id});
+        toUpdate.$update({item_id: item.id});
         $scope.editedItem = null;
 
         console.log('saved item: ');
