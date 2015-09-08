@@ -28,13 +28,17 @@ angular.module('webClientApp')
             });
 
             Solution.save(newSolution, function(savedSolution) {
-                if($scope.solutions){
-                    $scope.solutions.push(savedSolution);
-                }
+                console.log("saved solution: ");
                 console.log(savedSolution);
+                
                 if($scope.mapItem){
                     $scope.map(savedSolution, $scope.mapItem);
                 }
+                else if($scope.solutions){
+                    $scope.solutions.push(savedSolution);
+                }
+
+                $('#newSolModal').modal('hide');
                 $scope.solution = angular.copy({});
             });
         };
@@ -43,9 +47,19 @@ angular.module('webClientApp')
             Solution.mapItem({
                 id: solution.id,
                 item_id: item.id
-            }, function(out){
-                console.log(out);
-               //TODO $scope.items.unshift(item);
+            }, function(){
+                
+                Solution.get({
+                    id: solution.id
+                }, function(updatedSolution) {
+                    if($scope.mappedSolutions){
+                        $scope.mappedSolutions.push(updatedSolution);
+                    }
+                    if($scope.solutions){
+                        $scope.solutions.push(updatedSolution);
+                    }
+                });
+                
             });
         }
 

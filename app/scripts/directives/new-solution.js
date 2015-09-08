@@ -6,9 +6,11 @@ The directive displays a button in whatever space the directive is inserted. The
 
 solutions (optional): the array containing all solutions that this new solutions should be added to
 
-text (optional): override default button text with custom string
+btntext (optional): override default button text with custom string
 
 mapItem (optional): the item to use in calling map with the newly created solution (if applicable)
+
+mappedSolutions (optional): the array containing the solutions mapped to mapItem, to push the new solution into, only if mapItem is provided as well (if applicable)
 
 */
 angular.module('webClientApp')
@@ -18,7 +20,8 @@ angular.module('webClientApp')
         scope: {
           solutions: '=',
           btnText: '@',
-          mapItem: '='
+          mapItem: '=',
+          mappedSolutions: '='
         },
         templateUrl: 'scripts/directives/new-solution.html',
         controller: 'CreateSolutionCtrl'
