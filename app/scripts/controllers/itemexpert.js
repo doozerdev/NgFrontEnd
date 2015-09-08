@@ -36,21 +36,9 @@ angular.module('webClientApp')
         $scope.toggleMap = function(solution) {
             var index = $scope.checkLink(solution);
             if(index===-1){
-                Item.mapSolution({
-                    itemId: $routeParams.id,
-                    id: solution.id
-                }, function(){
-                    $scope.solutions.unshift(solution);
-                });
+                $scope.map(solution);
             }else{
-                /*TODO: add unmapSolution here
-                Solution.unmapItem({
-                    id: $routeParams.id,
-                    itemId: item.id
-                }, function(){
-                    $scope.items.splice(index, 1);
-                });
-                */
+                $scope.unmap(solution);
             }
 
         };
@@ -67,6 +55,26 @@ angular.module('webClientApp')
             }
             //console.log("didn't find this result in linked items");
             return -1;
+        };
+        
+        $scope.map = function(solution){
+            Item.mapSolution({
+                itemId: $routeParams.id,
+                id: solution.id
+            }, function(){
+                $scope.solutions.unshift(solution);
+            });
+        };
+        
+        $scope.unmap = function(solution){
+            /*TODO: add unmapSolution here
+            Solution.unmapItem({
+                id: $routeParams.id,
+                itemId: item.id
+            }, function(){
+                $scope.items.splice(index, 1);
+            });
+            */
         };
         
     });

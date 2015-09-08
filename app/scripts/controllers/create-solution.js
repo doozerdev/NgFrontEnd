@@ -3,6 +3,10 @@
 angular.module('webClientApp')
     .controller('CreateSolutionCtrl', function($scope, $routeParams, Solution) {
 
+        if (!$scope.btnText){
+            $scope.btnText = "Create solution";
+        }
+        
         var eOV = function(item) {
             return item ? item.trim() : '';
         };
@@ -27,8 +31,22 @@ angular.module('webClientApp')
                 if($scope.solutions){
                     $scope.solutions.push(savedSolution);
                 }
+                console.log(savedSolution);
+                if($scope.mapItem){
+                    $scope.map(savedSolution, $scope.mapItem);
+                }
                 $scope.solution = angular.copy({});
             });
         };
+        
+        $scope.map = function(solution, item){
+            Solution.mapItem({
+                id: solution.id,
+                itemId: item.id
+            }, function(out){
+                console.log(out);
+               //TODO $scope.items.unshift(item);
+            });
+        }
 
     });
