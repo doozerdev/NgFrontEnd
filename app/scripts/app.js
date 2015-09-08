@@ -73,7 +73,8 @@ angular.module('webClientApp', [
     })
 //.constant('doozerURL','http://ec2-52-25-226-188.us-west-2.compute.amazonaws.com/api/')
 //.constant('doozerURL','https://warm-atoll-6588.herokuapp.com/api/')
-.constant('doozerURL','http://localhost:3000/api/')
+//.constant('doozerURL','http://localhost:3000/api/')
+.constant('doozerURL','http://api.test.doozer.tips/api/')
 .run(function() {
 
     // Load the SDK asynchronously
