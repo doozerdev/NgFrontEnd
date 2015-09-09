@@ -27,10 +27,11 @@
         </div></div>
         <div class="row"><div class="col-xs-12">Notes: {{item.notes}}</div></div>
         <div class="row"><div class="col-xs-12">
+            <span ng-if="expert!='false' && user">{{user.gender}}, {{user.locale}}<span ng-if="user.role">, {{user.role}}</span></span>
+            <span class="pull-right" ng-if="expert!='false'">List: {{item.parentTitle}}</span>
             <a class="pull-right" href='#/{{item.parent}}' target="_blank" ng-if="expert=='false'">List: {{item.parentTitle}}
                 <span class="glyphicon glyphicon-menu-right"></span>
             </a>
-            <div class="pull-right" ng-if="expert!='false'">List: {{item.parentTitle}}</div>
         </div></div>
     </div>
 </div>  

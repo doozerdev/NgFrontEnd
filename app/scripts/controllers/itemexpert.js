@@ -1,9 +1,11 @@
 'use strict';
 
 angular.module('webClientApp')
-    .controller('ItemExpertCtrl', function($scope, $routeParams, Item, Solution) {
+    .controller('ItemExpertCtrl', function($scope, $routeParams, Item, Solution, User) {
         $scope.solutions = [];
         $scope.allsolutions = [];
+        $scope.item = null; 
+        $scope.user = null;
         
         Item.get({
             item_id: $routeParams.id
@@ -14,6 +16,12 @@ angular.module('webClientApp')
                 item_id: $scope.item.parent
             }, function(parent){
                 $scope.item.parentTitle = parent.title;              
+            });
+            
+            User.get({
+                userId: $scope.item.user_id
+            }, function(userData) {
+                $scope.user = userData;
             });
         });
         
