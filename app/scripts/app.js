@@ -20,8 +20,8 @@ angular.module('webClientApp', [
         'ui.sortable',
     ])
     .config(function($routeProvider, $facebookProvider) {
-        //$facebookProvider.setAppId(1474823829455959); //prod
-        $facebookProvider.setAppId(1615408935397447); //dev
+        $facebookProvider.setAppId(1474823829455959); //prod
+        //$facebookProvider.setAppId(1615408935397447); //dev
 
         $routeProvider
             .when('/', {
@@ -72,9 +72,10 @@ angular.module('webClientApp', [
             });
     })
 //.constant('doozerURL','http://api.doozer.tips/api/')
-//.constant('doozerURL','https://warm-atoll-6588.herokuapp.com/api/')
+.constant('doozerURL','http://api.beta.doozer.tips/api/')
+//.constant('doozerURL','http://api.test.doozer.tips/api/')
 //.constant('doozerURL','http://localhost:3000/api/')
-.constant('doozerURL','http://api.test.doozer.tips/api/')
+
 .run(function() {
 
     // Load the SDK asynchronously
