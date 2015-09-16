@@ -12,6 +12,7 @@ angular.module('webClientApp')
         $scope.solutions = [];
         $scope.users = [];
         $scope.active_items = [];
+        $scope.all_items = []; //TODO - unused for now
 
         Solution.query(function(solutionData) {
             $scope.solutions = solutionData;
@@ -43,16 +44,20 @@ angular.module('webClientApp')
         };
         
         $scope.getActiveItems = function(items){
-            var temp = [];
+            var tempactive = [];
+            
             angular.forEach(items, function(item){
                 if(item.type==undefined || item.type==""){
+                    //TODO:make all items, included done item accessible for analysis
+                    // $scope.all_items.push(item);
+                    
                     if(item.archive!=true && item.done!=true){
-                        temp.push(item);      
+                        tempactive.push(item);      
                     }
                 }
             });
             console.log("finished getting active items from another list");
-            return temp;
+            return tempactive;
         };
 
         $scope.removeSolution = function(solution) {

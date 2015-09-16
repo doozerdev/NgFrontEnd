@@ -23,23 +23,48 @@
             <div class="well">
                 <h3>TASKS</h3>
                 <div class='row'>
-                    <div class="col-xs-12" ng-show='!item_results'>
+                    <div class="col-xs-12" ng-if='!item_results'>
                         <h5>All active items across users: {{active_items.length}}</h5>
                         <div ng-repeat="item in active_items | orderBy:'-created_at'">
                             <dzr-item item="item" expert="true-min"></dzr-item>
                         </div>
+                        <!-- TODO: make this table view usable/performant for future exporting of task data
+                            <h5>All items across users: {{all_items.length}}</h5>
+                            <table width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>Task title</th>
+                                        <th>Date created</th>
+                                        <th>Date updated</th>
+                                        <th>Completed</th>
+                                        <th>Archived</th>
+                                        <th>Notes</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="item in all_items | orderBy:'-created_at'">
+                                        <td>{{item.title}}</td>
+                                        <td>{{item.created_at | date:'shortDate'}}</td>
+                                        <td>{{item.updated_at | date:'shortDate'}}</td>
+                                        <td>{{item.done}}</td>
+                                        <td>{{item.archive}}</td>
+                                        <td>{{item.notes}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        -->
                     </div>
-                    <div class="col-xs-12" ng-show='item_results.length < 1'>
+                    <div class="col-xs-12" ng-if='item_results.length < 1'>
                         <p>No task titles match that search term. Please try again.</p>
                         <p>Search completed in {{item_request_time}}.</p>
                     </div>
-                    <div class="col-xs-12" ng-show='item_results.length > 0'>
+                    <div class="col-xs-12" ng-if='item_results.length > 0'>
                         <p>Search completed in {{item_request_time}}. {{item_results.length}} results.</p>
                         <div ng-repeat="result in item_results" ng-if="result.parent!=''">
                             <dzr-item item="result" expert="true-min"></dzr-item>
                         </div>
                     </div>
-                </div>
+                </div><!--/.row-->
             </div><!--/.well-->
         </div><!--/.col-->
         <div class="col-xs-6">

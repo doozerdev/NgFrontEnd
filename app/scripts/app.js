@@ -20,8 +20,8 @@ angular.module('webClientApp', [
         'ui.sortable',
     ])
     .config(function($routeProvider, $facebookProvider) {
-        $facebookProvider.setAppId(1474823829455959); //prod
-        //$facebookProvider.setAppId(1615408935397447); //dev
+        //$facebookProvider.setAppId(1474823829455959); //prod
+        $facebookProvider.setAppId(1615408935397447); //dev
 
         $routeProvider
             .when('/', {
