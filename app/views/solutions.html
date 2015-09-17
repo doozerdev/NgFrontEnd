@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-xs-6 col-xs-offset-3">
-            <h3>Search for tasks and solutions</h3>
+            <h3>Search for tasks and tips</h3>
             <form id="search-form" ng-submit="search()">
                 <div class="input-group">
                     <input type="text" ng-model='searchTerm' class="form-control" placeholder="enter a search term">
@@ -24,7 +24,7 @@
                 <h3>TASKS</h3>
                 <div class='row'>
                     <div class="col-xs-12" ng-if='!item_results'>
-                        <h5>All active items across users: {{active_items.length}}</h5>
+                        <h5>All active tasks across users: {{active_items.length}}</h5>
                         <div ng-repeat="item in active_items | orderBy:'-created_at'">
                             <dzr-item item="item" expert="true-min"></dzr-item>
                         </div>
@@ -69,16 +69,16 @@
         </div><!--/.col-->
         <div class="col-xs-6">
             <div class="well">
-                <h3>SOLUTIONS</h3>
+                <h3>TIPS</h3>
                 <div class='row'>
                     <div class="col-sm-12" ng-show="!solution_results">
-                        <h5>Total available solutions: {{solutions.length}}</h5>
+                        <h5>Total available tips: {{solutions.length}}</h5>
                         <div ng-repeat="solution in solutions | orderBy:'-created_at'">
                             <dzr-solution solution="solution" expert="true-min"></dzr-solution>
                         </div>
                     </div>
                     <div class="col-sm-12" ng-show="solution_results">
-                        Placeholder for solution search results
+                        Placeholder for tip search results
                     </div>
                 </div>
             </div><!--/.well-->

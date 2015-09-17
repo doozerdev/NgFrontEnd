@@ -76,7 +76,7 @@
             <div ng-class="item == editedItem  ? 'hidden' : 'show'">
                 <label ng-click="editItem(item)">{{item.title}}</label>
                 <div ng-if="item.solutions_count > 0">
-                    <a ng-href='#/{{item.id}}/item'>View Solutions! ({{item.solutions_count}})</a>
+                    <a ng-href='#/{{item.id}}/item'>View Tips! ({{item.solutions_count}})</a>
                 </div>
             </div>
             <div ng-class="item == editedItem  ? 'show' : 'hidden'">

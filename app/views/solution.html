@@ -9,7 +9,7 @@
     <div class='well'>
         <h3>Linked Tasks <span ng-if='items.length>0'>({{items.length}})</span></h3>
         <div ng-if='items.length < 1'>
-            No tasks linked to this solution
+            No tasks linked to this tip
         </div>
         <div ng-repeat="item in items" ng-if="items.length > 0">
             <dzr-item item="item" check-toggle="1" toggle-action="toggleMap(item)" expert="true-min"></dzr-item>

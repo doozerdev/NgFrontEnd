@@ -24,11 +24,11 @@
                 <div ng-class="show">
                     <label>{{item.title}}</label>
                     <span ng-show="item.parent && item.parent!=''">
-                      <a href='#/{{item.parent}}'><span class="pull-right" ng-click='viewInList(item)'>View in List <span class="glyphicon glyphicon-menu-right"></span></span>
+                      <a ng-href='#/{{item.parent}}'><span class="pull-right" ng-click='viewInList(item)'>View in List <span class="glyphicon glyphicon-menu-right"></span></span>
                     </a>
                     </span>
                     <span ng-show="!item.parent || item.parent===''">
-                    <a href='#/{{item.id}}'><span class="pull-right" ng-click='viewInList(item)'>View List <span class="glyphicon glyphicon-menu-right"></span></span>
+                    <a ng-href='#/{{item.id}}'><span class="pull-right" ng-click='viewInList(item)'>View List <span class="glyphicon glyphicon-menu-right"></span></span>
                     </a>
                     </span>
                 </div>
@@ -40,11 +40,11 @@
                 <div ng-class="show">
                     <label>{{item.title}}</label>
                     <span ng-hide="item.parent===''">
-                      <a href='#/{{item.parent}}'><span class="pull-right" ng-click='viewInList(item)'>View in List <span class="glyphicon glyphicon-menu-right"></span></span>
+                      <a ng-href='#/{{item.parent}}'><span class="pull-right" ng-click='viewInList(item)'>View in List <span class="glyphicon glyphicon-menu-right"></span></span>
                     </a>
                     </span>
                     <span ng-show="item.parent===''">
-                    <a href='#/{{item.id}}'><span class="pull-right" ng-click='viewInList(item)'>View List <span class="glyphicon glyphicon-menu-right"></span></span>
+                    <a ng-href='#/{{item.id}}'><span class="pull-right" ng-click='viewInList(item)'>View List <span class="glyphicon glyphicon-menu-right"></span></span>
                     </a>
                     </span>
                 </div>

@@ -4,7 +4,7 @@ angular.module('webClientApp')
     .controller('CreateSolutionCtrl', function($scope, $routeParams, Solution) {
 
         if (!$scope.btnText){
-            $scope.btnText = "Create solution";
+            $scope.btnText = "Create tip";
         }
         
         var eOV = function(item) {

@@ -1,19 +1,9 @@
 <div class="panel panel-default panel-body item-panel">
 
 <div class="row">
-    <div class="col-xs-1 item" ng-if="checkToggle()">
-        <span class="glyphicon glyphicon-check" ng-if='checkToggle(item)>=0' ng-click='toggleAction(item)'></span>
-        <span class="glyphicon glyphicon-unchecked" ng-if='checkToggle(item)===-1' ng-click='toggleAction(item)'></span>
-    </div>
-    <div class="col-xs-11">
-        <div ng-if="item.done==true">
-            <a class="item" ng-href='#/{{item.id}}/itemexpert' ng-if="expert=='true-min'"><s>{{item.title}} <span ng-if="item.archive==true">(archived)</span></s></a>
-            <h3 ng-if="expert=='true' || expert=='false'"><s>{{item.title}} <span ng-if="item.archive==true">(archived)</span></s></h3>
-        </div>
-        <div ng-if="item.done!=true">
-            <a class="item" ng-href='#/{{item.id}}/itemexpert' ng-if="expert=='true-min'">{{item.title}} <span ng-if="item.archive==true">(archived)</span></a>
-            <h3 ng-if="expert=='true' || expert=='false'">{{item.title}} <span ng-if="item.archive==true">(archived)</span></h3>
-        </div>
+    <div class="col-xs-12">
+        <h3 ng-if="item.done==true"><s>{{item.title}} <span ng-if="item.archive==true">(archived)</span></s></h3>
+        <h3 ng-if="item.done!=true">{{item.title}} <span ng-if="item.archive==true">(archived)</span></h3>
         <h5><span class="text-muted">Due <span ng-if="!item.duedate">someday</span></span><strong>{{item.duedate | date:'EEEE, MMM d, y'}}</strong></h5>
         <div class="panel panel-default panel-body">
             <span class="text-muted">Notes: </span>{{item.notes}}
@@ -21,27 +11,35 @@
     </div>
 </div>
 
-<a class="pull-right" href='#/{{item.parent}}' target="_blank" ng-if="expert=='false'">List: {{item.parentTitle}}
+<a class="pull-right" ng-href='#/{{item.parent}}' target="_blank" ng-if="expert=='false'">List: {{item.parentTitle}}
     <span class="glyphicon glyphicon-menu-right"></span>
 </a>
 
+<!--expert info summary-->
 <div class="row well item-well" ng-if="expert!='false'">
-    <div class="col-xs-4">
-        Created: {{item.created_at | date:'shortDate'}}<br/>
-        Updated: {{item.updated_at | date:'shortDate'}}
+    <div class="col-xs-4" ng-if="expert=='true-min' || checkToggle()!=null">
+        <a ng-click="toggleAction(item)" ng-if="checkToggle()!=null">
+            <span class="glyphicon glyphicon-check h3-text" ng-if='checkToggle(item)>=0'></span>
+            <span class="glyphicon glyphicon-unchecked h3-text" ng-if='checkToggle(item)==-1'></span>
+            <span class="h4-text">Link to this tip</span>
+        </a>
+        <a ng-if="expert=='true-min'" ng-href="#/{{item.id}}/itemexpert"><strong>(Total: {{item.solutions_count}}
+            <span ng-if="item.solutions_count===1"> tip)</span>
+            <span ng-if="item.solutions_count!=1"> tips)</span>
+        </strong></a>
     </div>
-    <div class="col-xs-8">
-        <div ng-if="user">{{user.gender}}, {{user.locale}}<span ng-if="user.role">, {{user.role}}</span></div>
-        <div>
-            <span ng-if="item.parentTitle">List: {{item.parentTitle}}</span>
-            <span class="pull-right">
-                <strong>{{item.solutions_count}}
-                <span ng-if="item.solutions_count===1"> solution</span>
-                <span ng-if="item.solutions_count!=1"> solutions</span>
-                </strong>
-            </span>
-        </div>
+    <div class="col-xs-3">
+        <div class="h5-text">Created: {{item.created_at | date:'shortDate'}}</div>
+        <div class="h5-text">Updated: {{item.updated_at | date:'shortDate'}}</div>
     </div>
-</div>  
+    <div class="col-xs-5">
+        <div ng-if="user" class="h5-text">{{user.gender}}, {{user.locale}}<span ng-if="user.role">, {{user.role}}</span></div>
+        <div class="h5-text" ng-if="item.parentTitle">List: {{item.parentTitle}}</div>
+        <div class="h5-text">Tags: {{item.tags}}</div>
+        <a ng-if="expert=='true-min'" class="btn btn-primary pull-right clearfix" ng-href="#/{{item.id}}/itemexpert">Edit Task</a>
+    </div>
+</div>
+
+
 
 </div>

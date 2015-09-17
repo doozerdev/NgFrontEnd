@@ -29,13 +29,9 @@ angular.module('webClientApp')
             item_id: $routeParams.id
         }, function(solutionsData) {
             if (solutionsData.items){
-                $scope.solutions = solutionsData.items;
-                console.log("got all solutions");
-                console.log($scope.solutions);  
-                console.log(solutionsData);             
+                $scope.solutions = solutionsData.items;            
             }
             else{
-                console.log("no linked solutions");
                 $scope.solutions = [];
             }
         });

@@ -3,6 +3,29 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
 
+/*-------------------------------------
+TYPOGRAPHY
+------------------------------------------*/
+.h1-text{
+  font-size: 36px;
+}
+.h2-text{
+  font-size: 30px;
+}
+.h3-text{
+  font-size: 24px;
+}
+.h4-text{
+  font-size: 18px;
+}
+.h5-text{
+  font-size: 14px;
+}
+.h6-text{
+  font-size: 12px;
+}
+
+
 .panel-row-override {
   //this is only needed to negate the styling from panels, and make it like list-group-items, because boostrap quirk requires panel class to get accordion behavior
   margin-bottom: -1px;
@@ -86,8 +109,23 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   padding-bottom: 0;
 }
 
+.solution-well{
+  padding-top: 0;
+  padding-left: 0;
+  padding-bottom: 0;
+}
+
+.solution-row{
+  margin-left: 0;
+}
+
 .task-details{
   font-size: 18px;
+}
+
+.btns-thumbs{
+  font-size: 36px;
+  padding-bottom: 10px;
 }
 
 

@@ -2,9 +2,9 @@
     
     <dzr-item item="item" expert="false"></dzr-item>
     
-    <h3>Linked Solutions <span ng-if='solutions.length>0'>({{solutions.length}})</span></h3>
+    <h3>Tips <span ng-if='solutions.length>0'>({{solutions.length}})</span></h3>
     <div ng-show='solutions.length < 1'>
-            No solutions linked to this task
+            No tips linked to this task
     </div>
     
     <div ng-repeat="solution in solutions | orderBy:'-created_at'">

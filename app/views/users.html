@@ -1,6 +1,6 @@
 <div class="container">
     <h1>Users List</h1>
     <ul>
-        <li ng-repeat="user in users"><a href='#user/{{user.uid}}'>{{user.uid}} {{user.gender}} - {{user.locale}}</a></li>
+        <li ng-repeat="user in users"><a ng-href='#user/{{user.uid}}'>{{user.uid}} {{user.gender}} - {{user.locale}}</a></li>
     </ul>
 </div>
