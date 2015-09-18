@@ -47,6 +47,10 @@ angular.module('webClientApp')
                 url: doozerURL + 'items/:item_id/mapSolution',
                 method: 'POST'
             },
+            unmapSolution:{
+                url: doozerURL + 'items/:item_id/unmapSolution',
+                method: 'POST'
+            },
             solutions:{
                 url: doozerURL + 'items/:item_id/solutions',
                 method: 'GET'

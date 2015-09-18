@@ -69,8 +69,8 @@ angular.module('webClientApp')
         };
         
         $scope.map = function(solution){
-            Solution.mapItem({
-                id: solution.id,
+            Item.mapSolution({
+                solution_id: solution.id,
                 item_id: $routeParams.id
             }, function(){
                 $scope.solutions.unshift(solution);
@@ -78,8 +78,8 @@ angular.module('webClientApp')
         };
         
         $scope.unmap = function(solution, index){
-            Solution.unmapItem({
-                id: solution.id,
+            Item.unmapSolution({
+                solution_id: solution.id,
                 item_id: $routeParams.id
             }, function(){
                 $scope.solutions.splice(index, 1);
