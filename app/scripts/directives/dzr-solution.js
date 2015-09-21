@@ -22,7 +22,7 @@ angular.module('webClientApp')
             restrict: 'E',
             scope: {
                 solution: '=',
-                solution_stats: '=',
+                solutionStats: '=',
                 expert: '@',
                 checkToggle: '&',
                 toggleAction: '&',
