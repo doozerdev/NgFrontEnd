@@ -48,6 +48,10 @@ angular.module('webClientApp')
             view: {
                 url: doozerURL + 'solutions/:id/view/:item_id',
                 method: 'POST'  
+            },
+            stats: {
+                url: doozerURL + 'solutions/:id/stats',
+                method: 'GET'
             }
         });
     });
