@@ -74,8 +74,8 @@ angular.module('webClientApp', [
             });
     })
 //.constant('doozerURL','https://api.doozer.tips/api/')
-//.constant('doozerURL','http://api.beta.doozer.tips/api/')
-.constant('doozerURL','http://api.test.doozer.tips/api/')
+.constant('doozerURL','http://api.beta.doozer.tips/api/')
+//.constant('doozerURL','http://api.test.doozer.tips/api/')
 //.constant('doozerURL','http://localhost:3000/api/')
 
 .run(function() {
