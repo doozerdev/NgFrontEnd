@@ -18,6 +18,7 @@ angular.module('webClientApp')
 
                 angular.forEach($scope.items, function (item) {
                     $scope.getParent(item);
+                    $scope.getState(item);
                 });
             }
             else {
@@ -25,7 +26,7 @@ angular.module('webClientApp')
             }
         });
 
-        Solution.stats({
+        Solution.performance({
                 id: $routeParams.id
             }, function (response) {
                 $scope.solution_stats = response;
@@ -39,6 +40,16 @@ angular.module('webClientApp')
                 item.parentTitle = parent.title;
                 //console.log("done with "+item.parentTitle);
             });
+        };
+
+        $scope.getState = function(item) {
+            Solution.state({
+                    id: $routeParams.id,
+                    item_id: item.id
+                }, function (response) {
+                    item.solution_state = response;
+                }
+            );
         };
 
         $scope.toggleMap = function (item) {

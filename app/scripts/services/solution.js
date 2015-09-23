@@ -49,8 +49,12 @@ angular.module('webClientApp')
                 url: doozerURL + 'solutions/:id/view/:item_id',
                 method: 'POST'  
             },
-            stats: {
-                url: doozerURL + 'solutions/:id/stats',
+            state: {
+                url: doozerURL + 'solutions/:id/state/:item_id',
+                method: 'GET'
+            },
+            performance: {
+                url: doozerURL + 'solutions/:id/performance',
                 method: 'GET'
             }
         });
