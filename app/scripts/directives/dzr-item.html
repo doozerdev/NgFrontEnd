@@ -10,33 +10,45 @@
         </div>
     </div>
 </div>
-
+<!--user list link-->
 <a class="pull-right" ng-href='#/{{item.parent}}' target="_blank" ng-if="expert=='false'">List: {{item.parentTitle}}
     <span class="glyphicon glyphicon-menu-right"></span>
 </a>
 
 <!--expert info summary-->
 <div class="row well item-well" ng-if="expert!='false'">
-    <div class="col-xs-4" ng-if="expert=='true-min' || checkToggle()!=null">
+    <div class="col-xs-3">
         <a ng-click="toggleAction(item)" ng-if="checkToggle()!=null">
             <span class="glyphicon glyphicon-check h3-text" ng-if='checkToggle(item)>=0'></span>
             <span class="glyphicon glyphicon-unchecked h3-text" ng-if='checkToggle(item)==-1'></span>
-            <span class="h4-text">Link to this tip</span>
+            <span class="h5-text">Link to this tip</span>
         </a>
-        <a ng-if="expert=='true-min'" ng-href="#/{{item.id}}/itemexpert"><strong>(Total: {{item.solutions_count}}
-            <span ng-if="item.solutions_count===1"> tip)</span>
-            <span ng-if="item.solutions_count!=1"> tips)</span>
-        </strong></a>
+        <br/>
+        <br/>
+        <a ng-if="expert=='true-min'" class="btn btn-primary" ng-href="#/{{item.id}}/itemexpert">Edit Task</a>
     </div>
     <div class="col-xs-3">
+        <div ng-if="item.solution_state">
+            <h4>{{item.solution_state.current}}</h4>
+            Rating value: {{item.solution_state.like}}
+            <br/>
+            Clicks: {{item.solution_state.clicks}}
+            <br/>
+            Views: {{item.solution_state.views}}
+            <br/>
+        </div>
+        <h4 ng-if="expert=='true-min'">
+            (Total: {{item.solutions_count}}
+            <span ng-if="item.solutions_count===1"> tip)</span>
+            <span ng-if="item.solutions_count!=1"> tips)</span>
+        </h4>
         <div class="h5-text">Created: {{item.created_at | date:'shortDate'}}</div>
         <div class="h5-text">Updated: {{item.updated_at | date:'shortDate'}}</div>
     </div>
-    <div class="col-xs-5">
-        <div ng-if="user" class="h5-text">{{user.gender}}, {{user.locale}}<span ng-if="user.role">, {{user.role}}</span></div>
-        <div class="h5-text" ng-if="item.parentTitle">List: {{item.parentTitle}}</div>
+    <div class="col-xs-6">
+        <h4 ng-if="item.parentTitle">List: {{item.parentTitle}}</h4>
+        <div ng-if="user" class="h5-text"><strong>{{user.gender}}</strong>, {{user.locale}}<span ng-if="user.role">, {{user.role}}</span></div>
         <div class="h5-text">Tags: {{item.tags}}</div>
-        <a ng-if="expert=='true-min'" class="btn btn-primary pull-right clearfix" ng-href="#/{{item.id}}/itemexpert">Edit Task</a>
     </div>
 </div>
 

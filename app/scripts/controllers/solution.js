@@ -29,7 +29,7 @@ angular.module('webClientApp')
         Solution.performance({
                 id: $routeParams.id
             }, function (response) {
-                $scope.solution_stats = response;
+                $scope.solution_performance = response;
             }
         );
 
@@ -48,6 +48,19 @@ angular.module('webClientApp')
                     item_id: item.id
                 }, function (response) {
                     item.solution_state = response;
+                    
+                    if (item.solution_state.like > 0) {
+                        item.solution_state.current = "Liked";
+                    }
+                    else if (item.solution_state.like < 0) {
+                        item.solution_state.current = "Disliked";
+                    }
+                    else if (item.solution_state.views > 0) {
+                        item.solution_state.current = "Viewed";
+                    }
+                    else {
+                        item.solution_state.current = "Unseen";
+                    }
                 }
             );
         };
