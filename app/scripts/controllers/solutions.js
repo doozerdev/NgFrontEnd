@@ -11,7 +11,7 @@ angular.module('webClientApp')
     .controller('SolutionsCtrl', function($scope, $routeParams, Solution, Search, Item, User) {
         $scope.solutions = [];
         $scope.users = [];
-        $scope.beta_uids = [4614807584795, 10100716370439739]; //dan = 888679437823595, rebecca = 10153226353173625
+        $scope.beta_uids = [4614807584795, 10100716370439739, 10103069913924734]; //dan = 888679437823595, rebecca = 10153226353173625
         $scope.active_items = [];
         $scope.active_beta_items = [];
         $scope.all_items = []; //TODO - unused for now
@@ -19,6 +19,15 @@ angular.module('webClientApp')
 
         Solution.query(function(solutionData) {
             $scope.solutions = solutionData;
+            
+            angular.forEach($scope.solutions, function(solution){
+                Solution.performance({
+                        id: solution.id
+                    }, function (response) {
+                        solution.performance = response;
+                    }
+                );
+            });
         });
         
         User.query(function(userData) {

@@ -45,6 +45,11 @@
                 Clicks: {{solution.item_state.clicks}}<br/>
                 Views: {{solution.item_state.views}}<br/>
             </div>
+            <div ng-if="solution.performance">
+                <h4>Likes: {{solution.performance.likes}} / Dislikes: {{solution.performance.dislikes}}</h4>
+                Clicks: {{solution.performance.clicks}}<br/>
+                Views: {{solution.performance.views}}
+            </div>
         </div>
         <div class="col-xs-6">
             <h4>

@@ -36,7 +36,7 @@
                                 All active tasks across BETA users: {{active_beta_items.length}}
                             </label>
                         </div>
-                        <div ng-if="show_beta" ng-repeat="item in active_beta_items | orderBy:'-created_at'">
+                        <div ng-if="show_beta" ng-repeat="item in active_beta_items | orderBy:'-updated_at'">
                             <dzr-item item="item" expert="true-min"></dzr-item>
                         </div>
                         <div ng-if="!show_beta" ng-repeat="item in active_items | orderBy:'-created_at'">
