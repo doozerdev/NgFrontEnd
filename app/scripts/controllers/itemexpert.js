@@ -29,7 +29,11 @@ angular.module('webClientApp')
             item_id: $routeParams.id
         }, function(solutionsData) {
             if (solutionsData.items){
-                $scope.solutions = solutionsData.items;            
+                $scope.solutions = solutionsData.items;
+                
+                angular.forEach($scope.solutions, function (solution) {
+                    $scope.getState(solution);
+                });
             }
             else{
                 $scope.solutions = [];
@@ -39,8 +43,31 @@ angular.module('webClientApp')
         Solution.query(function(solutionsData) {
             $scope.allsolutions = solutionsData;
         });
-        
-        
+
+
+        $scope.getState = function(solution) {
+            Solution.state({
+                    id: solution.id,
+                    item_id: $routeParams.id
+                }, function (response) {
+                    solution.item_state = response;
+                    
+                    if (solution.item_state.like > 0) {
+                        solution.item_state.current = "Liked";
+                    }
+                    else if (solution.item_state.like < 0) {
+                        solution.item_state.current = "Disliked";
+                    }
+                    else if (solution.item_state.views > 0) {
+                        solution.item_state.current = "Viewed";
+                    }
+                    else {
+                        solution.item_state.current = "Unseen";
+                    }
+                }
+            );
+        };
+
         $scope.toggleMap = function(solution) {
             var index = $scope.checkLink(solution);
             if(index===-1){
