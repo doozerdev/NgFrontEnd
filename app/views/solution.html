@@ -11,7 +11,7 @@
         <div ng-if='items.length < 1'>
             No tasks linked to this tip
         </div>
-        <div ng-repeat="item in items" ng-if="items.length > 0">
+        <div ng-repeat="item in items | orderBy:'-created_at'" ng-if="items.length > 0">
             <dzr-item item="item" check-toggle="1" toggle-action="toggleMap(item)" expert="true-min"></dzr-item>
         </div>
     </div>
