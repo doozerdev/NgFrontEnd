@@ -56,6 +56,10 @@ angular.module('webClientApp')
             performance: {
                 url: doozerURL + 'solutions/:id/performance',
                 method: 'GET'
+            },
+            for_user: {
+                url: doozerURL + 'solutions/for_user/:last_sync',
+                method: 'GET'
             }
         });
     });

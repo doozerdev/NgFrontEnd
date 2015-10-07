@@ -11,10 +11,12 @@
 
 
 angular.module('webClientApp')
-    .controller('MainCtrl', function($scope, $cookies, $resource, $http, $facebook, 
-        Session, Item, doozerURL) {
-        
+    .controller('MainCtrl', function($scope, $cookies, $resource, $http, $facebook, Session, Item, doozerURL, Solution) {
         $scope.refresh = function() {
+            Solution.for_user({
+                last_sync: "1443931652"
+            });
+
             // Item.items({
             //     last_sync: "1433740362" 
             // },
