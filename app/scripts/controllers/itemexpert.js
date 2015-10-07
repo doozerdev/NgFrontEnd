@@ -51,7 +51,7 @@ angular.module('webClientApp')
                     item_id: $routeParams.id
                 }, function (response) {
                     solution.item_state = response;
-                    
+
                     if (solution.item_state.like > 0) {
                         solution.item_state.current = "Liked";
                     }
@@ -63,6 +63,14 @@ angular.module('webClientApp')
                     }
                     else {
                         solution.item_state.current = "Unseen";
+                    }
+                }, function (error) {
+                    if (error.status == 404) {
+                        solution.item_state = {};
+                        solution.item_state.current = "Unseen";
+                        solution.item_state.like = 0;
+                        solution.item_state.clicks = 0;
+                        solution.item_state.views = 0;
                     }
                 }
             );

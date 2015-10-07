@@ -61,6 +61,14 @@ angular.module('webClientApp')
                     else {
                         item.solution_state.current = "Unseen";
                     }
+                }, function (error) {
+                    if (error.status == 404) {
+                        item.solution_state = {};
+                        item.solution_state.current = "Unseen";
+                        item.solution_state.like = 0;
+                        item.solution_state.clicks = 0;
+                        item.solution_state.views = 0;
+                    }
                 }
             );
         };

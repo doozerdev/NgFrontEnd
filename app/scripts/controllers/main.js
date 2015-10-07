@@ -11,34 +11,43 @@
 
 
 angular.module('webClientApp')
-    .controller('MainCtrl', function($scope, $cookies, $resource, $http, $facebook, 
-        Session, Item, doozerURL) {
-
+    .controller('MainCtrl', function($scope, $cookies, $resource, $http, $facebook, Session, Item, doozerURL, Solution) {
         $scope.refresh = function() {
+            Solution.for_user({
+                last_sync: "1443931652"
+            });
+
             // Item.items({
             //     last_sync: "1433740362" 
             // },
 
             Item.lists(
                 function(listData) {
-                var lists = listData.items;
-                if (lists) {
-                    $scope.username = $cookies.get('username');
-                    $scope.loggedIn = true;
-                    $scope.lists = lists;
-                    $scope.sessionId = $cookies.get('doozerSession');
-                    $http.defaults.headers.common.sessionId = $cookies.get('doozerSession');
-                } else {
-                    $scope.loggedIn = false;
-                    $cookies.remove('doozerSession');
-                    console.log('else, not logged in'); //TODO: the else never gets called? because if not logged in, Item.lists doesn't call return function. fix this
+                    var lists = listData.items;
+                    if (lists) { //TODO: is this if-statement really needed? what gets returned in listdata if user has 0 lists?
+                        $scope.username = $cookies.get('username');
+                        $scope.loggedIn = true;
+                        $scope.lists = lists;
+                        $scope.sessionId = $cookies.get('doozerSession');
+                        $http.defaults.headers.common.sessionId = $cookies.get('doozerSession');
+                    }
+                }, function (error) {
+                    if (error.status == 401) {
+                        $scope.loggedIn = false;
+                        $cookies.remove('doozerSession');
+                        console.log('not logged in');
+                    }
                 }
-            });
+            );
         };
-
+        
         if ($cookies.get('doozerSession')) {
             $scope.refresh();
+        } else {
+            $scope.loggedIn = false;
+            console.log('no session in the cookies!');
         }
+
 
         $scope.login = function() {
             $facebook.login().then(function(response) {
@@ -51,8 +60,10 @@ angular.module('webClientApp')
                     $facebook.api('/me').then(function(response) {
                         $scope.username = response.name;
                         $cookies.put('username', response.name);
+                        //TODO: can we get the fb profile pic out of the response and set that for expert profile??
                     });
 
+                    //TODO: refactor below to use same code as in refresh above (use the Item service!)
                     var items = $resource(doozerURL+'/lists', null, {
                         query: {
                             headers: {

@@ -13,7 +13,7 @@
         <div ng-show='solutions.length < 1'>
                 No tips linked to this task
         </div>
-        <div ng-repeat="solution in solutions | orderBy:'-created_at'">
+        <div ng-repeat="solution in solutions | orderBy:'-date_associated'">
             <dzr-solution solution="solution" check-toggle="1" toggle-action="toggleMap(solution)" expert="true-min"></dzr-solution>
         </div>
     </div>
