@@ -21,8 +21,8 @@ angular.module('webClientApp', [
     ])
     .config(function($routeProvider, $facebookProvider) {
         //$facebookProvider.setAppId(1474823829455959); //prod
-        //$facebookProvider.setAppId(1637385519866455); //beta
-        $facebookProvider.setAppId(1637385749866432); //test
+        $facebookProvider.setAppId(1637385519866455); //beta
+        //$facebookProvider.setAppId(1637385749866432); //test
         //$facebookProvider.setAppId(1615408935397447); //dev
 
         $routeProvider
@@ -74,8 +74,8 @@ angular.module('webClientApp', [
             });
     })
 //.constant('doozerURL','https://api.doozer.tips/api/')
-//.constant('doozerURL','http://api.beta.doozer.tips/api/')
-.constant('doozerURL','http://api.test.doozer.tips/api/')
+.constant('doozerURL','http://api.beta.doozer.tips/api/')
+//.constant('doozerURL','http://api.test.doozer.tips/api/')
 //.constant('doozerURL','http://localhost:3000/api/')
 
 .run(function() {

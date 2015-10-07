@@ -14,7 +14,7 @@ angular.module('webClientApp')
     .controller('MainCtrl', function($scope, $cookies, $resource, $http, $facebook, Session, Item, doozerURL, Solution) {
         $scope.refresh = function() {
             Solution.for_user({
-                last_sync: "1443931652"
+                last_sync: "1433740362"
             });
 
             // Item.items({
