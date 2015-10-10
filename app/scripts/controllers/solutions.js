@@ -11,38 +11,41 @@ angular.module('webClientApp')
     .controller('SolutionsCtrl', function($scope, $routeParams, Solution, Search, Item, User) {
         $scope.solutions = [];
         $scope.users = [];
-        $scope.beta_uids = [4614807584795, 10100716370439739, 10103069913924734]; //dan = 888679437823595, rebecca = 10153226353173625
+        $scope.beta_uids = [10206549132149223, 10100937175140396, 4614807584795, 10100716370439739, 10103069913924734]; //dan = 888679437823595, rebecca = 10153226353173625
         $scope.active_items = [];
         $scope.active_beta_items = [];
         $scope.all_items = []; //TODO - unused for now
         $scope.show_beta = true;
 
-        Solution.query(function(solutionData) {
-            $scope.solutions = solutionData;
-            
-            angular.forEach($scope.solutions, function(solution){
-                Solution.performance({
-                        id: solution.id
-                    }, function (response) {
-                        solution.performance = response;
-                    }
-                );
-            });
-        });
-        
-        User.query(function(userData) {
-            $scope.users = userData;
-                       
-            angular.forEach($scope.users, function(user) {
-                Item.listsForUser({
-                    userId: user.uid
-                    }, function(listData) {
-                        //$scope.lists = listData.items;
-                        var tempbeta = $scope.checkBetaUser(user.uid);
-                        $scope.getItemsFromList(listData.items, user, tempbeta);  
+        $scope.refresh = function () {
+            Solution.query(function(solutionData) {
+                $scope.solutions = solutionData;
+                
+                angular.forEach($scope.solutions, function(solution){
+                    Solution.performance({
+                            id: solution.id
+                        }, function (response) {
+                            solution.performance = response;
+                        }
+                    );
                 });
-            });            
-        });
+            });
+            
+            User.query(function(userData) {
+                $scope.users = userData;
+                        
+                angular.forEach($scope.users, function(user) {
+                    Item.listsForUser({
+                        userId: user.uid
+                        }, function(listData) {
+                            //$scope.lists = listData.items;
+                            var tempbeta = $scope.checkBetaUser(user.uid);
+                            $scope.getItemsFromList(listData.items, user, tempbeta);  
+                    });
+                });            
+            });
+        }
+        
         
         $scope.getItemsFromList = function (lists, user, beta) {
             var tempitems = [];

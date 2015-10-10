@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('webClientApp')
-    .controller('SolutionInterCtrl', function($scope, $routeParams, Solution, Search, Item) {
+    .controller('SolutionInterCtrl', function($scope, $routeParams, Solution) {
 
         $scope.likeSolution = function(sol){
             Solution.like({

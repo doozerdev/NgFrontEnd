@@ -1,13 +1,8 @@
 <div class="container">
+    <auth mode='login' retry="refresh()"></auth>
     <div class="row">
         <h1>Doozer Home - Lists</h1>
-        <div ng-hide="loggedIn">
-            <h3>Please Login with Facebook</h3>
-            <p>Please click here to <button type="button" ng-click="login()" class="btn btn-default navbar-btn">
-                Login
-            </button></p>
-        </div>
-        <div ng-show="loggedIn">
+        <div>
             <form id="new-list-form" ng-submit="addList()" class='input-group input-group-lg'>
                 <input id="new-list" class='form-control' placeholder="New List" ng-model="newList" ng-disabled="saving" autofocus>
             </form>
@@ -26,7 +21,6 @@
                     </div>
                 </li>
             </ul>
-            <p>You are logged in as {{username}}, click here to <a class="btn btn-default navbar-btn" ng-click="logout()">Logout</a></p>
         </div>
     </div>
 </div>
