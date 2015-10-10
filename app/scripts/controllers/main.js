@@ -11,9 +11,13 @@
 
 
 angular.module('webClientApp')
-    .controller('MainCtrl', function($scope, $cookies, Item) {
+    .controller('MainCtrl', function($scope, $cookies, Item, Solution) {
         
         $scope.refresh = function() {
+            Solution.for_user({
+                last_sync: "1433740362"
+            });
+
             // Item.items({
             //     last_sync: "1433740362" 
             // },
