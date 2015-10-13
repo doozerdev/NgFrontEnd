@@ -21,9 +21,9 @@ angular.module('webClientApp', [
     ])
     .config(function($routeProvider, $facebookProvider) {
         //$facebookProvider.setAppId(1474823829455959); //prod
-        $facebookProvider.setAppId(1637385519866455); //beta
+        //$facebookProvider.setAppId(1637385519866455); //beta
         //$facebookProvider.setAppId(1637385749866432); //test
-        //$facebookProvider.setAppId(1615408935397447); //dev
+        $facebookProvider.setAppId(1615408935397447); //dev
 
         $routeProvider
             .when('/', {
@@ -68,6 +68,9 @@ angular.module('webClientApp', [
                 controller: 'ItemCtrl'
             }).when('/:id/itemexpert',{
                 templateUrl: 'views/itemexpert.html',
+                controller: 'ItemExpertCtrl'
+            }).when('/:id/itemadmin',{
+                templateUrl: 'views/itemadmin.html',
                 controller: 'ItemExpertCtrl'
             }).otherwise({
                 redirectTo: '/'

@@ -1,0 +1,31 @@
+<div class="container-fluid"><div class="row">
+    
+<div class="col-xs-6">
+    <dzr-item item="item" user="user" mode="admin"></dzr-item>
+    <div class="col-xs-8 col-xs-offset-2">
+        <new-solution solutions="allsolutions" btn-text="Create and link new tip" map-item="item" mapped-solutions="solutions"></new-solution>
+    </div>
+</div>
+
+<div class="col-xs-6">
+    <div class="well">
+        <h3>Linked Tips <span ng-if='solutions.length>0'>({{solutions.length}})</span></h3>
+        <div ng-show='solutions.length < 1'>
+                No tips linked to this task
+        </div>
+        <div ng-repeat="solution in solutions | orderBy:'-date_associated'">
+            <dzr-solution solution="solution" check-toggle="1" toggle-action="toggleMap(solution)" mode="admin-min"></dzr-solution>
+        </div>
+    </div>
+    <div class="well">
+        <h3>All Tips <span ng-if='allsolutions.length>0'>({{allsolutions.length}})</span></h3>
+        <div ng-show='allsolutions.length < 1'>
+                There are no tips! Go create some!
+        </div>
+        <div ng-repeat="solution in allsolutions | orderBy:'-created_at'">
+            <dzr-solution solution="solution" check-toggle="checkLink(solution)" toggle-action="toggleMap(solution)" mode="admin-min"></dzr-solution>
+        </div>
+    </div>
+</div>
+
+</div></div>

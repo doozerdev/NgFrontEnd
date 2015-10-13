@@ -1,6 +1,8 @@
-<div class="panel panel-default panel-body no-topbottom-padding">
+<div class="panel panel-default panel-body no-topbottom-padding outline-brand">
     <div class="row">
         <div class="col-xs-12">
+            <h4>{{solution.source}}</h4>
+            <h6>{{solution.notes}}</h6>
             <h5>{{solution.description}}</h5>
         </div>
     </div>
@@ -10,7 +12,7 @@
                 <a ng-href="{{solution.link}}"><img ng-src='{{solution.img_link}}' class="img-responsive"/></a>
             </div>
             <div class="col-xs-8">
-                <h3><a ng-href="{{solution.link}}">{{solution.title}}</a></h3>
+                <h4><a ng-href="{{solution.link}}">{{solution.title}}</a></h5>
                 <h6>{{solution.address}}</h6>
                 <h6>{{solution.phone_number}}</h6>
                 <h6>{{solution.open_hours}}</h6>
@@ -19,14 +21,18 @@
         </div>
     </div>
     <!--thumbs buttons-->
-    <div class="row" ng-if="expert=='false'">
+    <div class="row" ng-if="mode=='user'">
         <div class="col-xs-12 btns-thumbs clearfix">
             <span class="pull-left glyphicon glyphicon-thumbs-up button" ng-click='likeSolution(solution)'></span>
             <span class="pull-right glyphicon glyphicon-thumbs-down button" ng-click='dislikeSolution(solution)'></span>
         </div>
     </div>
     <!--expert info summary-->
-    <div class="row well item-well" ng-if="expert=='true-min'">
+    <div class="row well item-well outline-brand" ng-if="mode=='expert'">
+        <h4 class="col-xs-12">{{solution.item_state.current}}</h4>
+    </div>
+    <!--admin info summary-->
+    <div class="row well item-well" ng-if="mode=='admin-min'">
         <div class="col-xs-3">
             <a ng-click="toggleAction(solution)" ng-if="checkToggle()!=null">
                 <span class="glyphicon glyphicon-check h3-text" ng-if='checkToggle(solution)>=0'></span>
@@ -63,8 +69,8 @@
         </div>
     </div>
 </div><!--/.panel-->
-<!--expert editing properties panel-->
-<div class="panel panel-default" ng-if="expert=='true'">
+<!--admin editing properties panel-->
+<div class="panel panel-default" ng-if="mode=='admin'">
     <div class="panel-heading testoutline">
         <div class="row testoutline">
             <div class="col-xs-8 panel-title">
@@ -130,7 +136,7 @@
         </form>
     </div>
 </div>
-<div class="panel panel-default" ng-if="expert=='true'">
+<div class="panel panel-default" ng-if="mode=='admin'">
     <div class="panel-heading testoutline">
         <div class="row testoutline">
             <h3 class="col-xs-12 panel-title">User-visible tip properties</h3>

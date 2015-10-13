@@ -3,13 +3,24 @@
 angular.module('webClientApp')
     .controller('CreateSolutionCtrl', function($scope, $routeParams, Solution) {
 
-        if (!$scope.btnText){
-            $scope.btnText = "Create tip";
-        }
-        
         var eOV = function(item) {
             return item ? item.trim() : '';
         };
+        
+        $scope.solution = {};
+
+        if (!$scope.btnText){
+            $scope.btnText = "Create tip";
+        }
+        /*DEMO mode sample data
+        if ($scope.mode=="expert") {
+            $scope.solution.source = "Rebecca Deutsch";
+            $scope.solution.notes = "Urban Vegetable Gardener";
+            $scope.solution.phone_number = "Rebecca Deutsch";
+            $scope.solution.open_hours = "Urban Vegetable Gardener";
+        }
+        */
+        
         
         $scope.createSolution = function() {
             var newSolution = new Solution({

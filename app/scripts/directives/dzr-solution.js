@@ -6,7 +6,7 @@
  solution: the solution object to render
 
  [expert]: a string to control expert "modes" - visibility of extra properties/functionality for experts 
- values: 'false', 'true', 'true-min'
+ values: 'user', 'admin', 'admin-min', 'expert'
 
  checkToggle: the function to call to determine whether the checkbox should be checked or unchecked (in context of expert UI, this usually is used for the state of linking between solution & item)
  value of -1 means that it should be unchecked
@@ -23,7 +23,7 @@ angular.module('webClientApp')
             scope: {
                 solution: '=',
                 solutionPerf: '=',
-                expert: '@',
+                mode: '@',
                 checkToggle: '&',
                 toggleAction: '&',
                 saveEdits: '&'

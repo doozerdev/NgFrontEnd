@@ -8,6 +8,8 @@ solutions (optional): the array containing all solutions that this new solutions
 
 btntext (optional): override default button text with custom string
 
+mode (optional): just used to set mode to "expert" for simplifying the creation process for external experts
+
 mapItem (optional): the item to use in calling map with the newly created solution (if applicable)
 
 mappedSolutions (optional): the array containing the solutions mapped to mapItem, to push the new solution into, only if mapItem is provided as well (if applicable)
@@ -20,6 +22,7 @@ angular.module('webClientApp')
         scope: {
           solutions: '=',
           btnText: '@',
+          mode: '@',
           mapItem: '=',
           mappedSolutions: '='
         },
