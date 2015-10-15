@@ -79,6 +79,11 @@ BRANDING
   border-color: #006E80;
 }
 
+.modal-backdrop, .modal-backdrop.in {
+   background-color: rgba(10,203,234,1);
+   opacity: 1;
+}
+
 /*---------------------*/
 
 .item-header, .panel .item-header {

@@ -1,4 +1,5 @@
 <div class="container">
+    <auth mode='login' retry="refresh()"></auth>
     <h1>{{user.uid}}</h1>
     <!--<h4>{{user.email}}</h4>-->
     <h4>{{user.gender}}, {{user.locale}}, <span ng-if="user.role">{{user.role}}</span></h4>

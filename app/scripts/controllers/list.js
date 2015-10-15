@@ -17,41 +17,46 @@ angular.module('webClientApp')
     $scope.editedItem = null;
     $scope.isDoneGroupOpen = false;
     $scope.hasDoneHeader = false;
-     //TODO: fix this (git hub issue #8). toggling isDoneGroupOpen on ng-click has issues (e.g. double-click is taken as 2 clicks).
-    //Instead, I tried to get isDoneGroupOpen toggling to happen on the js events, but it didn't work...
-//    $('.donecollapse').on('shown.bs.collapse', function () {
-//     isDoneGroupOpen = true;
-//     console.log("shown event "+ isDoneGroupOpen);
-//    });
-//    $('.donecollapse').on('hidden.bs.collapse', function () {
-//      isDoneGroupOpen = false;
-//      console.log("hidden event "+ isDoneGroupOpen);
-//    });
-
-    Item.children({item_id: $routeParams.id}, function(listData) {
-        $scope.items = listData.items;
-        $scope.list = Item.get({item_id: $routeParams.id});
-
-        var greatest = -1;
-        angular.forEach($scope.items, function(item) {
-          if(item.order && item.order > greatest){
-            greatest = item.order;
-          }
-          
-          item.duedate = new Date(item.duedate);
-          
-          if(item.type == "completed_header"){
-            console.log("completed header found:");
-            console.log(item);
-            $scope.hasDoneHeader = true;
-          }
+    
+    /*
+    TODO: fix this (git hub issue #8). toggling isDoneGroupOpen on ng-click has issues (e.g. double-click is taken as 2 clicks).
+    Instead, I tried to get isDoneGroupOpen toggling to happen on the js events, but it didn't work...
+      $('.donecollapse').on('shown.bs.collapse', function () {
+         isDoneGroupOpen = true;
+         console.log("shown event "+ isDoneGroupOpen);
         });
+        $('.donecollapse').on('hidden.bs.collapse', function () {
+          isDoneGroupOpen = false;
+          console.log("hidden event "+ isDoneGroupOpen);
+        });
+    */
 
-        //nothing has a sort order
-        if(greatest === -1){
-           Sorting.reorderList($scope.items);
-        }
-    });
+    $scope.refresh = function () {
+      Item.children({item_id: $routeParams.id}, function(listData) {
+          $scope.items = listData.items;
+          $scope.list = Item.get({item_id: $routeParams.id});
+  
+          var greatest = -1;
+          angular.forEach($scope.items, function(item) {
+            if(item.order && item.order > greatest){
+              greatest = item.order;
+            }
+            
+            item.duedate = new Date(item.duedate);
+            
+            if(item.type == "completed_header"){
+              console.log("completed header found:");
+              console.log(item);
+              $scope.hasDoneHeader = true;
+            }
+          });
+  
+          //nothing has a sort order
+          if(greatest === -1){
+            Sorting.reorderList($scope.items);
+          }
+      });
+    };
 
     var Sorting = {
 

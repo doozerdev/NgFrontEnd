@@ -7,13 +7,18 @@ angular.module('webClientApp')
             Session.checkSession().then(function (result) {
                     if (result == true) {
                         $scope.showLogin = false;
-                        $('#loginModal').modal('hide');
+                        $('.modal').modal('hide');
+                        $('.modal-backdrop').remove();
                         $scope.retry();
                         //console.log('in directive, checkSession returned true');
                     } else {
                         //console.log('in directive, checkSession returned not true');
                         $scope.showLogin = true;
-                        $('#loginModal').modal('show');
+                        $('.modal').modal({
+                            backdrop: 'static',
+                            keyboard: false
+                        });
+                        console.log('just tried to show modal');
                     }
                 }, function (error) {
                     console.log("Error: Nothing returned from checkSession!");
@@ -30,14 +35,16 @@ angular.module('webClientApp')
                     $facebook.api('/me').then(function(fbMeResponse) {
                         Session.setupSession(dzrSession.sessionId, fbMeResponse.name);
                         $scope.showLogin = false;
-                        $('#loginModal').modal('hide');
+                        $('.modal').modal('hide');
+                        $('.modal-backdrop').remove();
                         $scope.retry();
                     }, function(error) {
                         console.log("Setting up session without name. Facebook /me call failed with error:");
                         console.log("error");
                         Session.setupSession(dzrSession.sessionId);
                         $scope.showLogin = false;
-                        $('#loginModal').modal('hide');
+                        $('.modal').modal('hide');
+                        $('.modal-backdrop').remove();
                         $scope.retry();
                     });
                 }, function (error) {

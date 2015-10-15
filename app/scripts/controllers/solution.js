@@ -3,35 +3,37 @@
 angular.module('webClientApp')
     .controller('SolutionCtrl', function ($scope, $routeParams, Solution, Search, Item) {
 
-        Solution.get({
-            id: $routeParams.id
-        }, function (solution) {
-            $scope.solution = solution;
-            $scope.solution.expire_date = new Date($scope.solution.expire_date);
-        });
-
-        Solution.items({
-            id: $routeParams.id
-        }, function (response) {
-            if (response.items) {
-                $scope.items = response.items;
-
-                angular.forEach($scope.items, function (item) {
-                    $scope.getParent(item);
-                    $scope.getState(item);
-                });
-            }
-            else {
-                $scope.items = [];
-            }
-        });
-
-        Solution.performance({
+        $scope.refresh = function () {
+            Solution.get({
+                id: $routeParams.id
+            }, function (solution) {
+                $scope.solution = solution;
+                $scope.solution.expire_date = new Date($scope.solution.expire_date);
+            });
+    
+            Solution.items({
                 id: $routeParams.id
             }, function (response) {
-                $scope.solution_performance = response;
-            }
-        );
+                if (response.items) {
+                    $scope.items = response.items;
+    
+                    angular.forEach($scope.items, function (item) {
+                        $scope.getParent(item);
+                        $scope.getState(item);
+                    });
+                }
+                else {
+                    $scope.items = [];
+                }
+            });
+    
+            Solution.performance({
+                    id: $routeParams.id
+                }, function (response) {
+                    $scope.solution_performance = response;
+                }
+            );
+        };
 
         $scope.getParent = function (item) {
             Item.get({

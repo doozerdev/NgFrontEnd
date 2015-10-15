@@ -7,43 +7,44 @@ angular.module('webClientApp')
         $scope.item = null; 
         $scope.user = null;
         
-        Item.get({
-            item_id: $routeParams.id
-        }, function(item) {
-            $scope.item = item;
-                        
+        $scope.refresh = function () {
             Item.get({
-                item_id: $scope.item.parent
-            }, function(parent){
-                $scope.item.parentTitle = parent.title;              
+                item_id: $routeParams.id
+            }, function(item) {
+                $scope.item = item;
+                            
+                Item.get({
+                    item_id: $scope.item.parent
+                }, function(parent){
+                    $scope.item.parentTitle = parent.title;              
+                });
+                
+                User.get({
+                    userId: $scope.item.user_id
+                }, function(userData) {
+                    $scope.user = userData;
+                });
             });
             
-            User.get({
-                userId: $scope.item.user_id
-            }, function(userData) {
-                $scope.user = userData;
+            Item.solutions({
+                item_id: $routeParams.id
+            }, function(solutionsData) {
+                if (solutionsData.items){
+                    $scope.solutions = solutionsData.items;
+                    
+                    angular.forEach($scope.solutions, function (solution) {
+                        $scope.getState(solution);
+                    });
+                }
+                else{
+                    $scope.solutions = [];
+                }
             });
-        });
-        
-        Item.solutions({
-            item_id: $routeParams.id
-        }, function(solutionsData) {
-            if (solutionsData.items){
-                $scope.solutions = solutionsData.items;
-                
-                angular.forEach($scope.solutions, function (solution) {
-                    $scope.getState(solution);
-                });
-            }
-            else{
-                $scope.solutions = [];
-            }
-        });
-        
-        Solution.query(function(solutionsData) {
-            $scope.allsolutions = solutionsData;
-        });
-
+            
+            Solution.query(function(solutionsData) {
+                $scope.allsolutions = solutionsData;
+            });
+        };
 
         $scope.getState = function(solution) {
             Solution.state({
