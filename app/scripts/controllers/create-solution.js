@@ -38,7 +38,7 @@ angular.module('webClientApp')
                 notes: eOV($scope.solution.notes),
             });
 
-            Solution.save(newSolution, function(savedSolution) {
+            Solution.server.save(newSolution, function(savedSolution) {
                 console.log("saved solution: ");
                 console.log(savedSolution);
                 
@@ -55,12 +55,12 @@ angular.module('webClientApp')
         };
         
         $scope.map = function(solution, item){
-            Solution.mapItem({
+            Solution.server.mapItem({
                 id: solution.id,
                 item_id: item.id
             }, function(){
                 
-                Solution.get({
+                Solution.server.get({
                     id: solution.id
                 }, function(updatedSolution) {
                     if($scope.mappedSolutions){

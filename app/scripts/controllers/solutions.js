@@ -11,18 +11,17 @@ angular.module('webClientApp')
     .controller('SolutionsCtrl', function($scope, $routeParams, Solution, Search, Item, User) {
         $scope.solutions = [];
         $scope.users = [];
-        $scope.beta_uids = [10153226353173625]; //10206549132149223, 10100937175140396, 4614807584795, 10100716370439739, 10103069913924734]; //dan = 888679437823595, rebecca = 10153226353173625
         $scope.active_items = [];
         $scope.active_beta_items = [];
         $scope.all_items = []; //TODO - unused for now
         $scope.show_beta = true;
 
         $scope.refresh = function () {
-            Solution.query(function(solutionData) {
+            Solution.server.query(function(solutionData) {
                 $scope.solutions = solutionData;
                 
                 angular.forEach($scope.solutions, function(solution){
-                    Solution.performance({
+                    Solution.server.performance({
                             id: solution.id
                         }, function (response) {
                             solution.performance = response;
@@ -31,30 +30,31 @@ angular.module('webClientApp')
                 });
             });
             
-            User.query(function(userData) {
+            User.server.query(function(userData) {
                 $scope.users = userData;
                         
                 angular.forEach($scope.users, function(user) {
-                    Item.listsForUser({
+                    Item.server.listsForUser({
                         userId: user.uid
                         }, function(listData) {
                             //$scope.lists = listData.items;
-                            var tempbeta = $scope.checkBetaUser(user.uid);
-                            $scope.getItemsFromList(listData.items, user, tempbeta);  
+                            var tempbeta = User.checkBetaUser(user.uid);
+                            $scope.getItemsFromLists(listData.items, user, tempbeta);  
                     });
                 });            
             });
         };
         
         
-        $scope.getItemsFromList = function (lists, user, beta) {
+        $scope.getItemsFromLists = function (lists, user, beta) {
             var tempitems = [];
             angular.forEach(lists, function(list){
-                Item.childrenForUser({
+                Item.server.childrenForUser({
                     item_id: list.id,
                     userId: user.uid
                     }, function(itemData){
-                        tempitems = $scope.getActiveItems(itemData.items);
+                        tempitems = Item.getActiveItems(itemData.items);
+                        console.log("finished getting active items from another list");
                         $scope.active_items = $scope.active_items.concat(tempitems);
                         if (beta){
                             $scope.active_beta_items = $scope.active_beta_items.concat(tempitems);
@@ -62,41 +62,17 @@ angular.module('webClientApp')
                 });
             });
         };
+
         
-        $scope.getActiveItems = function (items) {
-            var tempactive = [];
-            
-            angular.forEach(items, function(item) {
-                if(item.type==undefined || item.type==""){
-                    //TODO:make all items, included done item accessible for analysis
-                    // $scope.all_items.push(item);
-                    
-                    if(item.archive!=true && item.done!=true){
-                        tempactive.push(item);      
-                    }
-                }
-            });
-            console.log("finished getting active items from another list");
-            return tempactive;
-        };
-        
-        $scope.checkBetaUser = function (id) {
-            for (var i = 0; i < $scope.beta_uids.length; i++) {
-                if (id == $scope.beta_uids[i]) {
-                    return true;
-                }
-            };
-            return false;
-        };
 
         $scope.removeSolution = function(solution) {
-            Solution.delete({id: solution.id}, function(){
+            Solution.server.delete({id: solution.id}, function(){
                 $scope.solutions.splice($scope.solutions.indexOf(solution), 1);
             });
         };
         
         $scope.getItemParent = function(item){
-            Item.get({
+            Item.server.get({
                 item_id: item.parent
             }, function(parent){
                 item.parentTitle = parent.title;

@@ -8,25 +8,25 @@ angular.module('webClientApp')
         $scope.user = null;
         
         $scope.refresh = function () {
-            Item.get({
+            Item.server.get({
                 item_id: $routeParams.id
             }, function(item) {
                 $scope.item = item;
                             
-                Item.get({
+                Item.server.get({
                     item_id: $scope.item.parent
                 }, function(parent){
                     $scope.item.parentTitle = parent.title;              
                 });
                 
-                User.get({
+                User.server.get({
                     userId: $scope.item.user_id
                 }, function(userData) {
                     $scope.user = userData;
                 });
             });
             
-            Item.solutions({
+            Item.server.solutions({
                 item_id: $routeParams.id
             }, function(solutionsData) {
                 if (solutionsData.items){
@@ -41,13 +41,13 @@ angular.module('webClientApp')
                 }
             });
             
-            Solution.query(function(solutionsData) {
+            Solution.server.query(function(solutionsData) {
                 $scope.allsolutions = solutionsData;
             });
         };
 
         $scope.getState = function(solution) {
-            Solution.state({
+            Solution.server.state({
                     id: solution.id,
                     item_id: $routeParams.id
                 }, function (response) {
@@ -101,7 +101,7 @@ angular.module('webClientApp')
         };
         
         $scope.map = function(solution){
-            Item.mapSolution({
+            Item.server.mapSolution({
                 solution_id: solution.id,
                 item_id: $routeParams.id
             }, function(){
@@ -110,7 +110,7 @@ angular.module('webClientApp')
         };
         
         $scope.unmap = function(solution, index){
-            Item.unmapSolution({
+            Item.server.unmapSolution({
                 solution_id: solution.id,
                 item_id: $routeParams.id
             }, function(){

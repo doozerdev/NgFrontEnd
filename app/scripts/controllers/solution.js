@@ -4,14 +4,14 @@ angular.module('webClientApp')
     .controller('SolutionCtrl', function ($scope, $routeParams, Solution, Search, Item) {
 
         $scope.refresh = function () {
-            Solution.get({
+            Solution.server.get({
                 id: $routeParams.id
             }, function (solution) {
                 $scope.solution = solution;
                 $scope.solution.expire_date = new Date($scope.solution.expire_date);
             });
     
-            Solution.items({
+            Solution.server.items({
                 id: $routeParams.id
             }, function (response) {
                 if (response.items) {
@@ -27,7 +27,7 @@ angular.module('webClientApp')
                 }
             });
     
-            Solution.performance({
+            Solution.server.performance({
                     id: $routeParams.id
                 }, function (response) {
                     $scope.solution_performance = response;
@@ -36,7 +36,7 @@ angular.module('webClientApp')
         };
 
         $scope.getParent = function (item) {
-            Item.get({
+            Item.server.get({
                 item_id: item.parent
             }, function (parent) {
                 item.parentTitle = parent.title;
@@ -45,7 +45,7 @@ angular.module('webClientApp')
         };
 
         $scope.getState = function(item) {
-            Solution.state({
+            Solution.server.state({
                     id: $routeParams.id,
                     item_id: item.id
                 }, function (response) {
@@ -78,14 +78,14 @@ angular.module('webClientApp')
         $scope.toggleMap = function (item) {
             var index = $scope.checkLink(item);
             if (index === -1) {
-                Solution.mapItem({
+                Solution.server.mapItem({
                     id: $routeParams.id,
                     item_id: item.id
                 }, function () {
                     $scope.items.unshift(item);
                 });
             } else {
-                Solution.unmapItem({
+                Solution.server.unmapItem({
                     id: $routeParams.id,
                     item_id: item.id
                 }, function () {
@@ -142,7 +142,7 @@ angular.module('webClientApp')
 
         //TODO: move this to solution-interaction.js and then no need to pass it as an attribute to the directive
         $scope.saveSolutionEdits = function (sol) {
-            Solution.get({id: sol.id}, function (toUpdate) {
+            Solution.server.get({id: sol.id}, function (toUpdate) {
                 toUpdate.tags = sol.tags;
                 toUpdate.link = sol.link;
                 toUpdate.img_link = sol.img_link;

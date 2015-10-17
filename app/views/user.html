@@ -1,14 +1,29 @@
-<div class="container">
+<div class="container-fluid">
     <auth mode='login' retry="refresh()"></auth>
-    <h1>{{user.uid}}</h1>
-    <!--<h4>{{user.email}}</h4>-->
-    <h4>{{user.gender}}, {{user.locale}}, <span ng-if="user.role">{{user.role}}</span></h4>
-    <ul class='list-group'>
-        <li class='list-group-item item' ng-repeat="item in lists | orderBy:'order'">
-            <div>
-                <label>{{item.title}}</label>
-                ({{item.children_undone}})
-            </div>
-        </li>
-    </ul>
+    <div class="row">
+        <div class="col-xs-6 col-xs-offset-3">
+            <h1>{{user.uid}}</h1>
+            <h4>{{user.gender}}, {{user.locale}}, <span ng-if="user.role">{{user.role}}</span></h4>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-6">
+            <div class="well">
+                <h3>TASKS ({{items.length}})</h3>
+                <div ng-repeat="item in items | orderBy:'-updated_at'">
+                    <dzr-item item="item" mode="admin-min"></dzr-item>
+                </div>
+            </div><!--/.well-->
+        </div><!--/.col-->
+        <div class="col-xs-6">
+            <div class="well">
+                <h3>TIPS</h3>
+                <h5>Total available tips: {{solutions.length}}</h5>
+                <div ng-repeat="solution in solutions | orderBy:'-date_link_updated'">
+                    <dzr-solution solution="solution" mode="admin-min"></dzr-solution>
+                </div>
+            </div><!--/.well-->
+        </div><!--/.col-->
+    </div><!--/.row-->
 </div>

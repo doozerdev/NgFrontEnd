@@ -14,15 +14,12 @@ angular.module('webClientApp')
     .controller('MainCtrl', function($scope, $cookies, Item, Solution) {
         
         $scope.refresh = function() {
-            Solution.for_user({
-                last_sync: "1433740362"
-            });
 
-            // Item.items({
+            // Item.server.items({
             //     last_sync: "1433740362" 
             // },
 
-            Item.lists(
+            Item.server.lists(
                 function(listData) {
                     $scope.lists = listData.items;
                     $scope.username = $cookies.get('username');
@@ -50,31 +47,31 @@ angular.module('webClientApp')
             item.title = newList.title;
             item.archive = newList.archive;    
 
-            Item.save(item, function(savedList) {
+            Item.server.save(item, function(savedList) {
                 $scope.lists.push(savedList);
                 $scope.newList = '';
             });
         };
 
         $scope.removeList = function(item) {
-            Item.archive({item_id: item.id}, function(){
+            Item.server.archive({item_id: item.id}, function(){
                 $scope.lists.splice($scope.lists.indexOf(item), 1);
             });
 
             // console.log('removeList');
-            // Item.get({
+            // Item.server.get({
             //     item_id: item.id
             // }, function(toUpdate) {
             //     toUpdate.archive = true;
             //     toUpdate.$update({
             //         item_id: item.id
             //     });
-            //     Item.children({
+            //     Item.server.children({
             //         item_id: item.id
             //     }, function(listData) {
             //         var children = listData.items;
             //         angular.forEach(children, function(child) {
-            //             Item.get({
+            //             Item.server.get({
             //                 item_id: child.id
             //             }, function(toArchive) {
             //                 toArchive.archive = true;
@@ -95,7 +92,7 @@ angular.module('webClientApp')
         };
 
         $scope.saveEdits = function(item) {
-            Item.get({
+            Item.server.get({
                 item_id: item.id
             }, function(toUpdate) {
                 toUpdate.title = item.title;

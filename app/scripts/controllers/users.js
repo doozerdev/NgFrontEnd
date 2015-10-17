@@ -2,10 +2,35 @@
 
 angular.module('webClientApp')
     .controller('UsersCtrl', function($scope, $routeParams, User) {
+        $scope.betaUsers = [];
+        $scope.otherUsers = [];
         
         $scope.refresh = function () {
-            User.query(function(userData) {
-                $scope.users = userData;
+            User.server.query(function(userData) {
+                $scope.otherUsers = userData;
+                
+                var tempBetaIds = User.getBetaUsers();
+                var a = 0;
+                var b = null;
+                while (tempBetaIds.length > 0) {
+                    b = $scope.sortHelper($scope.otherUsers[a].uid, tempBetaIds);
+                    if (b == -1){
+                        a++;
+                    } else {
+                        $scope.betaUsers.push($scope.otherUsers[a]);
+                        $scope.otherUsers.splice(a, 1);
+                        tempBetaIds.splice(b, 1);
+                    }
+                }
             });
-        };        
+        };
+        
+        $scope.sortHelper = function (checkId, checkList)  {
+            for(var b = 0; b < checkList.length; b++){
+                if(checkId == checkList[b]){
+                    return b;
+                }
+            };
+            return -1;
+        }      
     });

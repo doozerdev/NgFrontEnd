@@ -28,7 +28,7 @@ angular.module('webClientApp')
                 
                 if (loggedIn == null){
                     if ($cookies.get('doozerSession')) {
-                        Item.lists(function(data){
+                        Item.server.lists(function(data){
                             loggedIn = true;
                             $http.defaults.headers.common.sessionId = $cookies.get('doozerSession');
                             console.log('checkSession: cookies have session and server call succeeded');
@@ -41,7 +41,7 @@ angular.module('webClientApp')
                                 console.log('checkSession: cookies had session but server 401');
                                 deferred.resolve(loggedIn);
                             }
-                        })
+                        });
                     } else {
                         loggedIn = false;
                         console.log('checkSession: no session in the cookies!');
