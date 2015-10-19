@@ -15,9 +15,6 @@
             </form>
             <br/>
         </div>
-        <div class="col-xs-2 col-xs-offset-1">
-            <new-solution solutions="solutions"></new-solution>
-        </div><!--/.col-->
     </div><!--/.row-->
     <div class="row">
         <div class="col-xs-6">
@@ -60,6 +57,7 @@
         <div class="col-xs-6">
             <div class="well">
                 <h3>TIPS</h3>
+                <new-solution solutions="solutions"></new-solution>
                 <div class='row'>
                     <div class="col-sm-12" ng-show="!solution_results">
                         <h5>Total available tips: {{solutions.length}}</h5>

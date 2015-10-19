@@ -1,73 +1,67 @@
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#newSolModal">{{btnText}}</button>
-
-<!-- Modal -->
-<div class="modal fade" id="newSolModal" tabindex="-1" role="dialog" aria-labelledby="Create new solution dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header bg-brand">
-                <button type="button" class="close bg-brand" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">{{btnText}}</h4>
+<div class="panel panel-default">
+<!--Panel Header = Button-->
+    <div class="panel-heading bg-brand text-center cursor-hand" data-toggle="collapse" data-target="#newSolution" aria-expanded="false" aria-controls="newSolution">
+        <h4 class="panel-title">{{btnText}}</h4>
+    </div>
+    
+<!--Collapsed Panel Body-->
+    <div class="panel-body collapse outline-brand" id="newSolution">
+        <div class="row">
+            <div class="col-xs-12">
+                <h4>Preview:</h4>
+                <dzr-solution solution="solution"></dzr-solution>
             </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <h4>Preview:</h4>
-                        <dzr-solution solution="solution"></dzr-solution>
-                    </div>
+        </div>
+        <form class="form-horizontal" id="newSolForm" ng-submit="createSolution()">
+            <div class="form-group">
+                <label for="inputDescrip" class="col-xs-2 control-label">Tip</label>
+                <div class="col-xs-10">
+                    <textarea class="form-control" rows="3" id="inputDescrip" placeholder="Tell them why this helps their task" ng-model='solution.description' required></textarea>
                 </div>
-                <form class="form-horizontal" id="newSolForm" ng-submit="createSolution()">
-                    <div class="form-group">
-                        <label for="inputDescrip" class="col-xs-2 control-label">Tip</label>
-                        <div class="col-xs-10">
-                            <textarea class="form-control" rows="3" id="inputDescrip" placeholder="Tell them why this helps their task" ng-model='solution.description' required></textarea>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputTitle" class="col-xs-2 control-label">Title</label>
-                        <div class="col-xs-10">
-                            <input type="text" class="form-control" id="inputTitle" placeholder="Title for the webpage" ng-model='solution.title' required />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputLink" class="col-xs-2 control-label">Link</label>
-                        <div class="col-xs-10">
-                            <input type="text" class="form-control" id="inputLink" placeholder="URL (include http)" ng-model='solution.link' required />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputImage" class="col-xs-2 control-label">Image</label>
-                        <div class="col-xs-10">
-                            <input type="text" class="form-control" id="inputImage" placeholder="Image URL (include http)" ng-model='solution.img_link'>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputTags" class="col-xs-2 control-label">Tags</label>
-                        <div class="col-xs-10">
-                            <input type="text" class="form-control" id="inputTags" placeholder="Areas of expertise (comma separated)" ng-model='solution.tags'>
-                        </div>
-                    </div>
-                    
-                    <div class="row">
-                        <div class="col-xs-12" ng-if="mode!='expert'">
-                            <textarea class="form-control" placeholder="Internal notes for experts" ng-model='solution.notes'></textarea>
-                            <input type="date" class="form-control" placeholder="Expiration Date" ng-model='solution.expire_date'>
-                            <input type="text" class="form-control" placeholder="Source (name of site/service linked to)" ng-model='solution.source'>
-                        </div>
-                        <div class="col-xs-12" ng-if="mode!='expert'">
-                            <h4>Contact info and location:</h4>
-                            <input type="text" class="form-control" placeholder="Phone Number" ng-model='solution.phone_number'>
-                            <input type="text" class="form-control" placeholder="Open Hours" ng-model='solution.open_hours'>
-                            <input type="text" class="form-control" placeholder="Address" ng-model='solution.address'>
-                        </div>
-                        <div class="col-xs-12 create-button">
-                            <br/>
-                            <button type="submit" class="btn btn-primary btn-lg pull-right clearfix">Create tip!</button>
-                            <br/>
-                        </div>
-                    </div>
-                </form>
-            </div><!-- /.modal-body -->
-        </div><!-- /.modal-content-->
-    </div><!-- /.modal-dialog-->
-</div><!-- /.modal-->
+            </div>
+            <div class="form-group">
+                <label for="inputTitle" class="col-xs-2 control-label">Title</label>
+                <div class="col-xs-10">
+                    <input type="text" class="form-control" id="inputTitle" placeholder="Title for the webpage" ng-model='solution.title' required />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputLink" class="col-xs-2 control-label">Link</label>
+                <div class="col-xs-10">
+                    <input type="text" class="form-control" id="inputLink" placeholder="URL (include http)" ng-model='solution.link' required />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputImage" class="col-xs-2 control-label">Image</label>
+                <div class="col-xs-10">
+                    <input type="text" class="form-control" id="inputImage" placeholder="Image URL (include http)" ng-model='solution.img_link'>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputTags" class="col-xs-2 control-label">Tags</label>
+                <div class="col-xs-10">
+                    <input type="text" class="form-control" id="inputTags" placeholder="Areas of expertise (comma separated)" ng-model='solution.tags'>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-xs-12" ng-if="mode!='expert'">
+                    <textarea class="form-control" placeholder="Internal notes for experts" ng-model='solution.notes'></textarea>
+                    <input type="date" class="form-control" placeholder="Expiration Date" ng-model='solution.expire_date'>
+                    <input type="text" class="form-control" placeholder="Source (name of site/service linked to)" ng-model='solution.source'>
+                </div>
+                <div class="col-xs-12" ng-if="mode!='expert'">
+                    <h4>Contact info and location:</h4>
+                    <input type="text" class="form-control" placeholder="Phone Number" ng-model='solution.phone_number'>
+                    <input type="text" class="form-control" placeholder="Open Hours" ng-model='solution.open_hours'>
+                    <input type="text" class="form-control" placeholder="Address" ng-model='solution.address'>
+                </div>
+                <div class="col-xs-12 create-button">
+                    <br/>
+                    <button type="submit" class="btn btn-primary btn-lg pull-right clearfix">Create tip!</button>
+                    <br/>
+                </div>
+            </div>
+        </form>
+    </div><!-- /.panel-body -->
+</div><!-- /.panel-->

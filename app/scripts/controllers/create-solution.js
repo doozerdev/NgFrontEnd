@@ -23,7 +23,7 @@ angular.module('webClientApp')
         
         
         $scope.createSolution = function() {
-            var newSolution = new Solution({
+            var newSolution = new Solution.server({
                 title: eOV($scope.solution.title),
                 source: eOV($scope.solution.source),
                 price: eOV($scope.solution.price),
@@ -49,7 +49,7 @@ angular.module('webClientApp')
                     $scope.solutions.push(savedSolution);
                 }
 
-                $('#newSolModal').modal('hide');
+                $('#newSolution').collapse('hide');
                 $scope.solution = angular.copy({});
             });
         };

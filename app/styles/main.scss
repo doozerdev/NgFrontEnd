@@ -48,7 +48,7 @@ BRANDING
   border-radius: 0;
 }
 
-.bg-brand {
+.bg-brand, .bg-brand.panel-heading {
   background-color: #0acbea;
   color: #fff;
 }
@@ -138,6 +138,10 @@ BRANDING
   padding-top: 0;
   padding-bottom: 15px;
   padding-right: 30px;
+}
+
+.cursor-hand {
+  cursor: pointer;
 }
 /*---------------------*/
   
