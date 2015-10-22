@@ -54,7 +54,7 @@ angular.module('webClientApp')
                         Item.server.listsForUser({
                             userId: user.uid
                             }, function(listData) {
-                                $scope.getItemsFromLists(listData.items, user, false, false);  
+                                $scope.getItemsFromLists(listData.items, user, false, false, true);  
                         });
                     } else {
                         console.log("skipping test user");
@@ -63,7 +63,7 @@ angular.module('webClientApp')
             });
         };        
         
-        $scope.getItemsFromLists = function (lists, user, beta, activeOnly) {
+        $scope.getItemsFromLists = function (lists, user, beta, activeOnly, getparent) {
             var tempitems = [];
             angular.forEach(lists, function(list){
                 Item.server.childrenForUser({
@@ -73,12 +73,23 @@ angular.module('webClientApp')
                         if(activeOnly){
                             tempitems = Item.getActiveItems(itemData.items);
                             console.log("finished getting active items from another list");
+                            if(getparent){
+                                angular.forEach(tempitems, function(item){
+                                    item.parentTitle = list.title;
+                                });
+                            }
                             $scope.active_items = $scope.active_items.concat(tempitems);
                             if (beta){
                                 $scope.active_beta_items = $scope.active_beta_items.concat(tempitems);
                             }                            
                         } else {
-                            $scope.all_items = $scope.all_items.concat(itemData.items);
+                            tempitems = itemData.items;
+                            if(getparent){
+                                angular.forEach(tempitems, function(item){
+                                    item.parentTitle = list.title;
+                                });
+                            }
+                            $scope.all_items = $scope.all_items.concat(tempitems);
                             console.log("finished getting ALL items from another list");
                         }
                 });

@@ -5,6 +5,7 @@
         <thead>
             <tr>
                 <th>Task title</th>
+                <th>Parent List title</th>
                 <th>Date created</th>
                 <th>Date updated</th>
                 <th>Completed</th>
@@ -15,6 +16,7 @@
         <tbody>
             <tr ng-repeat="item in all_items | orderBy:'-created_at'">
                 <td>{{item.title}}</td>
+                <td>{{item.parentTitle}}</td>
                 <td>{{item.created_at | date:'shortDate'}}</td>
                 <td>{{item.updated_at | date:'shortDate'}}</td>
                 <td>{{item.done}}</td>
