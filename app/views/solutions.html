@@ -21,23 +21,14 @@
             <div class="well">
                 <h3>TASKS</h3>
                 <div class='row'>
+                    <div class="col-xs-12 col-sm-6">
+                        <h5>All active tasks across {{users.length}} BETA users: {{active_beta_items.length}}</h5>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <a href="#/alltasks" class="pull-right clearfix">View all tasks across all users</a>
+                    </div>
                     <div class="col-xs-12" ng-if='!item_results'>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="itemSetToggle" id="allActiveItems" ng-model="show_beta" ng-value="false" />
-                                All active tasks across users: {{active_items.length}}
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="itemSetToggle" id="betaActiveItems" ng-model="show_beta" ng-value="true" />
-                                All active tasks across BETA users: {{active_beta_items.length}}
-                            </label>
-                        </div>
-                        <div ng-if="show_beta" ng-repeat="item in active_beta_items | orderBy:'-updated_at'">
-                            <dzr-item item="item" mode="admin-min"></dzr-item>
-                        </div>
-                        <div ng-if="!show_beta" ng-repeat="item in active_items | orderBy:'-created_at'">
+                        <div ng-repeat="item in active_beta_items | orderBy:'-updated_at'">
                             <dzr-item item="item" mode="admin-min"></dzr-item>
                         </div>
                     </div>

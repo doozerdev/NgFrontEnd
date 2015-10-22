@@ -51,6 +51,10 @@ angular.module('webClientApp', [
                 templateUrl: 'views/solutions.html',
                 controller: 'SolutionsCtrl'
             })
+            .when('/alltasks', {
+                templateUrl: 'views/alltasks.html',
+                controller: 'SolutionsCtrl'
+            })
             .when('/solution/:id', {
                 templateUrl: 'views/solution.html',
                 controller: 'SolutionCtrl'

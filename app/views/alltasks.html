@@ -1,0 +1,26 @@
+<div class="container-fluid">
+    <auth mode='login' retry="refreshAllTasks()"></auth>
+    <h3>Total tasks across all non-test users: {{all_items.length}}</h3>
+    <table width="100%">
+        <thead>
+            <tr>
+                <th>Task title</th>
+                <th>Date created</th>
+                <th>Date updated</th>
+                <th>Completed</th>
+                <th>Archived</th>
+                <th>Notes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in all_items | orderBy:'-created_at'">
+                <td>{{item.title}}</td>
+                <td>{{item.created_at | date:'shortDate'}}</td>
+                <td>{{item.updated_at | date:'shortDate'}}</td>
+                <td>{{item.done}}</td>
+                <td>{{item.archive}}</td>
+                <td>{{item.notes}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

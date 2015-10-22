@@ -9,7 +9,7 @@ angular.module('webClientApp')
             User.server.query(function(userData) {
                 $scope.otherUsers = userData;
                 
-                var tempBetaIds = User.getBetaUsers();
+                var tempBetaIds = User.getBetaIds();
                 var a = 0;
                 var b = null;
                 while (tempBetaIds.length > 0) {
@@ -23,6 +23,8 @@ angular.module('webClientApp')
                     }
                 }
             });
+            
+            //User.server.updateAdmin({userId: 10205054111251934}, function(response){console.log(response);});
         };
         
         $scope.sortHelper = function (checkId, checkList)  {

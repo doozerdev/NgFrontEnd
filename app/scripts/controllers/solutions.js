@@ -11,9 +11,9 @@ angular.module('webClientApp')
     .controller('SolutionsCtrl', function($scope, $routeParams, Solution, Search, Item, User) {
         $scope.solutions = [];
         $scope.users = [];
-        $scope.active_items = [];
+        $scope.active_items = []; //TODO: unused for now
         $scope.active_beta_items = [];
-        $scope.all_items = []; //TODO - unused for now
+        $scope.all_items = [];
         $scope.show_beta = true;
 
         $scope.refresh = function () {
@@ -30,34 +30,56 @@ angular.module('webClientApp')
                 });
             });
             
-            User.server.query(function(userData) {
-                $scope.users = userData;
-                        
-                angular.forEach($scope.users, function(user) {
+            $scope.users = User.getBetaIds();
+            angular.forEach($scope.users, function(user, index) {
+                User.server.get({
+                    userId: user
+                }, function(response){
+                    $scope.users[index] = response;
                     Item.server.listsForUser({
-                        userId: user.uid
+                        userId: $scope.users[index].uid
                         }, function(listData) {
-                            //$scope.lists = listData.items;
-                            var tempbeta = User.checkBetaUser(user.uid);
-                            $scope.getItemsFromLists(listData.items, user, tempbeta);  
-                    });
-                });            
+                            $scope.getItemsFromLists(listData.items, $scope.users[index], true, true);  
+                    }); 
+                });
             });
         };
+
+        $scope.refreshAllTasks = function () {            
+            User.server.query(function(userData) {
+                $scope.users = userData;
+                console.log($scope.users.length);
+                angular.forEach($scope.users, function(user) {
+                    if(!User.checkTestUser(user.uid)){
+                        Item.server.listsForUser({
+                            userId: user.uid
+                            }, function(listData) {
+                                $scope.getItemsFromLists(listData.items, user, false, false);  
+                        });
+                    } else {
+                        console.log("skipping test user");
+                    }
+                });            
+            });
+        };        
         
-        
-        $scope.getItemsFromLists = function (lists, user, beta) {
+        $scope.getItemsFromLists = function (lists, user, beta, activeOnly) {
             var tempitems = [];
             angular.forEach(lists, function(list){
                 Item.server.childrenForUser({
                     item_id: list.id,
                     userId: user.uid
                     }, function(itemData){
-                        tempitems = Item.getActiveItems(itemData.items);
-                        console.log("finished getting active items from another list");
-                        $scope.active_items = $scope.active_items.concat(tempitems);
-                        if (beta){
-                            $scope.active_beta_items = $scope.active_beta_items.concat(tempitems);
+                        if(activeOnly){
+                            tempitems = Item.getActiveItems(itemData.items);
+                            console.log("finished getting active items from another list");
+                            $scope.active_items = $scope.active_items.concat(tempitems);
+                            if (beta){
+                                $scope.active_beta_items = $scope.active_beta_items.concat(tempitems);
+                            }                            
+                        } else {
+                            $scope.all_items = $scope.all_items.concat(itemData.items);
+                            console.log("finished getting ALL items from another list");
                         }
                 });
             });
