@@ -101,6 +101,14 @@ angular.module('webClientApp')
                 });
                 
                 return deferred.promise; 
-            }
+            },
+            opengraph: $resource('http://opengraph.io/api/1.0/site/' + ':url', {
+                url: '@url'
+                }, {
+                    get: {
+                        // TODO: for some reason this needs to be here, leave for now, debug later
+                    }
+                }
+            )
         };
     });

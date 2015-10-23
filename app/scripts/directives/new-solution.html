@@ -9,32 +9,30 @@
         <div class="row">
             <div class="col-xs-12">
                 <h4>Preview:</h4>
+                <nav ng-if="imageOptions.length > 1">
+                    <h5>Switch image for tip: </h5>
+                    <ul class="pagination">
+                        <li><span ng-click="cycleImage('prev')" aria-label="Previous" aria-hidden="true">&laquo;</span></li>
+                        <li ng-repeat="image in imageOptions" ng-class="currentImageIndex==$index ? 'active' : ''"><span ng-click="cycleImage($index)">{{$index}}</span></li>
+                        <li><span ng-click="cycleImage('next')" aria-label="Next" aria-hidden="true">&raquo;</span></li>
+                    </ul>
+                </nav>
                 <dzr-solution solution="solution"></dzr-solution>
             </div>
         </div>
         <form class="form-horizontal" id="newSolForm" ng-submit="createSolution()">
             <div class="form-group">
+                <label for="inputLink" class="col-xs-2 control-label">Link</label>
+                <div class="col-xs-10">
+                    <input type="text" class="form-control" id="inputLink" placeholder="URL (include http)" ng-model='solution.link'
+                           ng-change="fillPreview(solution.link)" ng-model-options="{updateOn: 'default blur', debounce:{default:2000, blur:0}}"
+                           ng-trim="true" required />
+                </div>
+            </div>
+            <div class="form-group">
                 <label for="inputDescrip" class="col-xs-2 control-label">Tip</label>
                 <div class="col-xs-10">
                     <textarea class="form-control" rows="3" id="inputDescrip" placeholder="Tell them why this helps their task" ng-model='solution.description' required></textarea>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="inputTitle" class="col-xs-2 control-label">Title</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" id="inputTitle" placeholder="Title for the webpage" ng-model='solution.title' required />
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="inputLink" class="col-xs-2 control-label">Link</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" id="inputLink" placeholder="URL (include http)" ng-model='solution.link' required />
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="inputImage" class="col-xs-2 control-label">Image</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" id="inputImage" placeholder="Image URL (include http)" ng-model='solution.img_link'>
                 </div>
             </div>
             <div class="form-group">
@@ -43,18 +41,41 @@
                     <input type="text" class="form-control" id="inputTags" placeholder="Areas of expertise (comma separated)" ng-model='solution.tags'>
                 </div>
             </div>
-            
+            <div class="row">
+                <div class="col-xs-12" ng-if="solution.link">
+                    <a href="" data-toggle="collapse" data-target="#metadata"><h5>&rsaquo; Edit webpage metadata:</h5></a>
+                    <div class="collapse" id="metadata">
+                        <div class="form-group">
+                            <label for="inputTitle" class="col-xs-2 control-label">Title</label>
+                            <div class="col-xs-10">
+                                <input type="text" class="form-control" id="inputTitle" placeholder="Title for the webpage" ng-model='solution.title' required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputImage" class="col-xs-2 control-label">Image</label>
+                            <div class="col-xs-10">
+                                <input type="text" class="form-control" id="inputImage" placeholder="Image URL (include http)" ng-model='solution.img_link'>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-xs-12" ng-if="mode!='expert'">
-                    <textarea class="form-control" placeholder="Internal notes for experts" ng-model='solution.notes'></textarea>
-                    <input type="date" class="form-control" placeholder="Expiration Date" ng-model='solution.expire_date'>
-                    <input type="text" class="form-control" placeholder="Source (name of site/service linked to)" ng-model='solution.source'>
+                    <a href="" data-toggle="collapse" data-target="#admin"><h5>&rsaquo; Admin fields:</h5></a>
+                    <div class="collapse" id="admin">
+                        <textarea class="form-control" placeholder="Internal notes for experts" ng-model='solution.notes'></textarea>
+                        <input type="date" class="form-control" placeholder="Expiration Date" ng-model='solution.expire_date'>
+                        <input type="text" class="form-control" placeholder="Source (name of site/service linked to)" ng-model='solution.source'>
+                    </div>
                 </div>
                 <div class="col-xs-12" ng-if="mode!='expert'">
-                    <h4>Contact info and location:</h4>
-                    <input type="text" class="form-control" placeholder="Phone Number" ng-model='solution.phone_number'>
-                    <input type="text" class="form-control" placeholder="Open Hours" ng-model='solution.open_hours'>
-                    <input type="text" class="form-control" placeholder="Address" ng-model='solution.address'>
+                    <a href="" data-toggle="collapse" data-target="#place"><h5>&rsaquo; Contact info and location (optional):</h5></a>
+                    <div class="collapse" id="place">
+                        <input type="text" class="form-control" placeholder="Phone Number" ng-model='solution.phone_number'>
+                        <input type="text" class="form-control" placeholder="Open Hours" ng-model='solution.open_hours'>
+                        <input type="text" class="form-control" placeholder="Address" ng-model='solution.address'>
+                    </div>
                 </div>
                 <div class="col-xs-12 create-button">
                     <br/>

@@ -8,6 +8,8 @@ angular.module('webClientApp')
         };
         
         $scope.solution = {};
+        $scope.imageOptions = [];
+        $scope.currentImageIndex = null;
 
         if (!$scope.btnText){
             $scope.btnText = "Create tip";
@@ -70,8 +72,54 @@ angular.module('webClientApp')
                         $scope.solutions.push(updatedSolution);
                     }
                 });
-                
             });
-        }
-
+        };
+        
+        $scope.fillPreview = function(url) {
+            Solution.opengraph.get({
+                url: url
+            }, function(response) {
+                console.log(response);
+                if (response.hybridGraph){
+                    if (response.hybridGraph.title){
+                        $scope.solution.title = response.hybridGraph.title;
+                    }
+                    if (response.hybridGraph.image){
+                        $scope.solution.img_link = response.hybridGraph.image;
+                    }
+                    if (response.htmlInferred){
+                        $scope.imageOptions = response.htmlInferred.images;
+                        if($scope.imageOptions.length > 0){
+                            $scope.currentImageIndex = 0;
+                        }
+                    }
+                }
+            });
+        };
+        
+        $scope.cycleImage = function (dest) {
+          if($scope.currentImageIndex != null){
+              if(dest=="next") {
+                  if($scope.currentImageIndex < $scope.imageOptions.length-1){
+                      $scope.currentImageIndex++;
+                      $scope.solution.img_link = $scope.imageOptions[$scope.currentImageIndex];
+                  }else {
+                      $scope.currentImageIndex = 0;
+                      $scope.solution.img_link = $scope.imageOptions[0];
+                  }
+              }else if(dest=="prev") {
+                  if($scope.currentImageIndex > 0){
+                      $scope.currentImageIndex--;
+                      $scope.solution.img_link = $scope.imageOptions[$scope.currentImageIndex];
+                  }else {
+                      $scope.currentImageIndex = $scope.imageOptions.length-1;
+                      $scope.solution.img_link = $scope.imageOptions[$scope.currentImageIndex];
+                  }
+              }else if(dest >= 0 && dest < $scope.imageOptions.length) {
+                  $scope.currentImageIndex = dest;
+                  $scope.solution.img_link = $scope.imageOptions[dest];
+              }
+          }
+          
+        };
     });

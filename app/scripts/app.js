@@ -58,7 +58,8 @@ angular.module('webClientApp', [
             .when('/solution/:id', {
                 templateUrl: 'views/solution.html',
                 controller: 'SolutionCtrl'
-            }).when('/users', {
+            })
+            .when('/users', {
                 templateUrl: 'views/users.html',
                 controller: 'UsersCtrl'
             }).when('/user/:id', {
