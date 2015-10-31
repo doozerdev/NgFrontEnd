@@ -43,7 +43,7 @@ angular.module('webClientApp')
                 return;
             }
 
-            var item = new Item();
+            var item = new Item.server();
             item.title = newList.title;
             item.archive = newList.archive;    
 
