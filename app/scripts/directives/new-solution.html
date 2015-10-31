@@ -41,6 +41,7 @@
                     <input type="text" class="form-control" id="inputTags" placeholder="Areas of expertise (comma separated)" ng-model='solution.tags'>
                 </div>
             </div>
+            <!--Link Metadata (Advanced)-->
             <div class="row">
                 <div class="col-xs-12" ng-if="solution.link">
                     <a href="" data-toggle="collapse" data-target="#metadata"><h5>&rsaquo; Edit webpage metadata:</h5></a>
@@ -60,15 +61,32 @@
                     </div>
                 </div>
             </div>
+            <!--Admin fields-->
             <div class="row">
                 <div class="col-xs-12" ng-if="mode!='expert'">
                     <a href="" data-toggle="collapse" data-target="#admin"><h5>&rsaquo; Admin fields:</h5></a>
                     <div class="collapse" id="admin">
-                        <textarea class="form-control" placeholder="Internal notes for experts" ng-model='solution.notes'></textarea>
-                        <input type="date" class="form-control" placeholder="Expiration Date" ng-model='solution.expire_date'>
-                        <input type="text" class="form-control" placeholder="Source (name of site/service linked to)" ng-model='solution.source'>
+                        <div class="form-group">
+                            <label for="inputSource" class="col-xs-2 control-label">Expert</label>
+                            <div class="col-xs-10">
+                                <input type="text" class="form-control" id="inputSource" placeholder="Name of expert (aka source property)" ng-model='solution.source'>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputNotes" class="col-xs-2 control-label">Bio-line</label>
+                            <div class="col-xs-10">
+                                <textarea class="form-control" id="inputNotes" placeholder="One-line bio of expert (aka notes property)" ng-model='solution.notes'></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputExpire" class="col-xs-2 control-label">Expires</label>
+                            <div class="col-xs-4">
+                                <input type="date" class="form-control" id="inputExpire" placeholder="Expiration Date" ng-model='solution.expire_date'>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <!--Location / place / contact fields-->
                 <div class="col-xs-12" ng-if="mode!='expert'">
                     <a href="" data-toggle="collapse" data-target="#place"><h5>&rsaquo; Contact info and location (optional):</h5></a>
                     <div class="collapse" id="place">

@@ -88,7 +88,6 @@
         <form class="form-horizontal">
             <div class="form-group">
                 <label class="control-label col-xs-2" for="tagsinput"><b>Tags: </b></label>
-
                 <div class="col-xs-10">
                     <input type="text" class="form-control" ng-trim="true" placeholder="Tags (comma separated)"
                            ng-model="solution.tags" id="tagsinput" name="tagsinput" ng-change="saveEdits(solution)"
@@ -97,7 +96,6 @@
             </div>
             <div class="form-group">
                 <label class="control-label col-xs-2" for="linkinput"><b>Link: </b></label>
-
                 <div class="col-xs-10">
                     <input type="text" class="form-control" ng-trim="true" placeholder="Link (include http)"
                            ng-model="solution.link" id="linkinput" name="linkinput" ng-change="saveEdits(solution)"
@@ -106,31 +104,37 @@
             </div>
             <div class="form-group">
                 <label class="control-label col-xs-2" for="imginput"><b>Image Link: </b></label>
-
                 <div class="col-xs-10">
                     <input type="text" class="form-control" ng-trim="true" placeholder="Image Link (include http)"
                            ng-model="solution.img_link" id="imginput" name="imginput" ng-change="saveEdits(solution)"
                            ng-model-options="{updateOn: 'default blur submit', debounce:{default:2000, blur:0}}">
                 </div>
-            </div>
+            </div>           
             <div class="form-group">
-                <label class="control-label col-xs-2" for="expireinput"><b>Expiration date: </b></label>
-
-                <div class="col-xs-4">
-                    <input type="date" class="form-control" ng-trim="true" placeholder="Expiration date"
-                           ng-model="solution.expire_date" id="expireinput" name="expireinput"
-                           ng-change="saveEdits(solution)"
-                           ng-model-options="{updateOn: 'default blur submit', debounce:{default:2000, blur:0}}">
+                <label for="inputSource" class="col-xs-2 control-label">Expert</label>
+                <div class="col-xs-10">
+                    <input type="text" class="form-control" id="inputSource" name="inputSource" ng-trim="true" placeholder="Name of expert (aka source property)" 
+                            ng-model='solution.source'
+                            ng-change="saveEdits(solution)"
+                            ng-model-options="{updateOn: 'default blur submit', debounce:{default:2000, blur:0}}">
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-xs-2" for="notesinput"><b>Notes for experts: </b></label>
-
+                <label for="inputNotes" class="col-xs-2 control-label">Bio-line</label>
                 <div class="col-xs-10">
-                    <textarea class="form-control" ng-trim="true" placeholder="Internal notes for experts"
-                              ng-model="solution.notes" id="notesinput" name="notesinput"
-                              ng-change="saveEdits(solution)"
-                              ng-model-options="{updateOn: 'default blur submit', debounce:{default:2000, blur:0}}"></textarea>
+                    <textarea class="form-control" id="inputNotes" name="inputNotes" ng-trim="true" placeholder="One-line bio of expert (aka notes property)" 
+                            ng-model='solution.notes'
+                            ng-change="saveEdits(solution)"
+                            ng-model-options="{updateOn: 'default blur submit', debounce:{default:2000, blur:0}}"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputExpire" class="col-xs-2 control-label">Expires</label>
+                <div class="col-xs-4">
+                    <input type="date" class="form-control" id="inputExpire" name="inputExpire" ng-trim="true" placeholder="Expiration Date" 
+                            ng-model='solution.expire_date'
+                            ng-change="saveEdits(solution)"
+                            ng-model-options="{updateOn: 'default blur submit', debounce:{default:2000, blur:0}}">
                 </div>
             </div>
         </form>
@@ -146,7 +150,6 @@
         <form class="form-horizontal">
             <div class="form-group">
                 <label class="control-label col-xs-2" for="titleinput"><b>Title: </b></label>
-
                 <div class="col-xs-10">
                     <input type="text" class="form-control" ng-trim="true" placeholder="Title" ng-model="solution.title"
                            id="titleinput" name="titleinput" ng-change="saveEdits(solution)"
@@ -154,18 +157,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-xs-2" for="sourceinput"><b>Source: </b></label>
-
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" ng-trim="true"
-                           placeholder="Source (name of site/service linked to)" ng-model="solution.source"
-                           id="sourceinput" name="sourceinput" ng-change="saveEdits(solution)"
-                           ng-model-options="{updateOn: 'default blur submit', debounce:{default:2000, blur:0}}">
-                </div>
-            </div>
-            <div class="form-group">
                 <label class="control-label col-xs-2" for="priceinput"><b>Price: </b></label>
-
                 <div class="col-xs-10">
                     <input type="text" class="form-control" ng-trim="true"
                            placeholder="Price (don't include currency sign)" ng-model="solution.price" id="priceinput"
@@ -175,7 +167,6 @@
             </div>
             <div class="form-group">
                 <label class="control-label col-xs-2" for="phoneinput"><b>Phone number: </b></label>
-
                 <div class="col-xs-10">
                     <input type="text" class="form-control" ng-trim="true" placeholder="Phone number"
                            ng-model="solution.phone_number" id="phoneinput" name="phoneinput"
@@ -185,7 +176,6 @@
             </div>
             <div class="form-group">
                 <label class="control-label col-xs-2" for="hoursinput"><b>Open hours: </b></label>
-
                 <div class="col-xs-10">
                     <input type="text" class="form-control" ng-trim="true" placeholder="Open hours"
                            ng-model="solution.open_hours" id="hoursinput" name="hoursinput"
@@ -195,7 +185,6 @@
             </div>
             <div class="form-group">
                 <label class="control-label col-xs-2" for="addressinput"><b>Address: </b></label>
-
                 <div class="col-xs-10">
                     <input type="text" class="form-control" ng-trim="true" placeholder="Address"
                            ng-model="solution.address" id="addressinput" name="addressinput"
@@ -205,7 +194,6 @@
             </div>
             <div class="form-group">
                 <label class="control-label col-xs-2" for="descripinput"><b>Description: </b></label>
-
                 <div class="col-xs-10">
                     <textarea class="form-control" ng-trim="true" rows="4" placeholder="Description"
                               ng-model="solution.description" id="descripinput" name="descripinput"
