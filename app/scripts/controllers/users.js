@@ -3,25 +3,34 @@
 angular.module('webClientApp')
     .controller('UsersCtrl', function($scope, $routeParams, User) {
         $scope.betaUsers = [];
-        $scope.otherUsers = [];
+        $scope.testUsers = [];
         
         $scope.refresh = function () {
             User.server.query(function(userData) {
-                $scope.otherUsers = userData;
+                $scope.betaUsers = userData;
+                console.log("total number of users returned from server: "+ $scope.betaUsers.length);
                 
-                var tempBetaIds = User.getBetaIds();
-                var a = 0;
-                var b = null;
-                while (tempBetaIds.length > 0) {
-                    b = $scope.sortHelper($scope.otherUsers[a].uid, tempBetaIds);
-                    if (b == -1){
-                        a++;
-                    } else {
-                        $scope.betaUsers.push($scope.otherUsers[a]);
-                        $scope.otherUsers.splice(a, 1);
-                        tempBetaIds.splice(b, 1);
+                User.getTestIds().then(function (response) {
+                    var tempTestIds = [];
+                    tempTestIds = tempTestIds.concat(response);
+                    var a = 0;
+                    var b = null;
+                    while (tempTestIds.length > 0 && a < $scope.betaUsers.length) {
+                        b = $scope.sortHelper($scope.betaUsers[a].uid, tempTestIds);
+                        if (b == -1){
+                            a++;
+                        } else {
+                            $scope.testUsers.push($scope.betaUsers[a]);
+                            $scope.betaUsers.splice(a, 1);
+                            tempTestIds.splice(b, 1);
+                        }
                     }
-                }
+                    
+                    if (tempTestIds.length != 0){
+                        console.log("couldn't find these test users:");
+                        console.log(tempTestIds);
+                    }
+                });
             });
             
             //User.server.updateAdmin({userId: 10205054111251934}, function(response){console.log(response);});
@@ -34,5 +43,6 @@ angular.module('webClientApp')
                 }
             };
             return -1;
-        }      
+        };
+              
     });

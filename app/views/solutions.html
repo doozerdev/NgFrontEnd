@@ -22,10 +22,10 @@
                 <h3>TASKS</h3>
                 <div class='row'>
                     <div class="col-xs-12 col-sm-6">
-                        <h5>All active tasks across {{users.length}} BETA users: {{active_beta_items.length}}</h5>
+                        <h5>All active tasks across {{users.length}} (non-test) users: {{active_beta_items.length}}</h5>
                     </div>
                     <div class="col-xs-12 col-sm-6">
-                        <a href="#/alltasks" class="pull-right clearfix">View all tasks across all users</a>
+                        <a href="#/alltasks" class="pull-right clearfix">View active and completed tasks</a>
                     </div>
                     <div class="col-xs-12" ng-if='!item_results'>
                         <div ng-repeat="item in active_beta_items | orderBy:'-updated_at'">

@@ -30,6 +30,42 @@ angular.module('webClientApp')
                 });
             });
             
+            User.server.query(function(userData) {
+                var tempusers = userData;
+                console.log("total users including test accounts: "+tempusers.length);
+                
+                User.getTestIds().then(function (response) {
+                    var tempTestIds = [];
+                    tempTestIds = tempTestIds.concat(response);
+                    var b = null;
+                    
+                    angular.forEach(tempusers, function(user) {
+                        if(tempTestIds.length > 0){
+                            b = $scope.sortHelper(user.uid, tempTestIds);
+                            if (b == -1){
+                                $scope.users.push(user);
+                                Item.server.listsForUser({
+                                    userId: user.uid
+                                    }, function(listData) {
+                                        $scope.getItemsFromLists(listData.items, user, true, true, false);  
+                                });
+                            } else {
+                                tempTestIds.splice(b, 1);
+                                console.log("skipping test user");
+                            }
+                        } else {
+                            $scope.users.push(user);
+                            Item.server.listsForUser({
+                                userId: user.uid
+                                }, function(listData) {
+                                    $scope.getItemsFromLists(listData.items, user, true, true, false);  
+                            });
+                        }
+                    });
+                });
+            });
+            
+            /*TODO: remove OLD functionality when sure no longer needed: this is for only getting a subset of hardcoded 'beta users'
             $scope.users = User.getBetaIds();
             angular.forEach($scope.users, function(user, index) {
                 User.server.get({
@@ -43,6 +79,8 @@ angular.module('webClientApp')
                     }); 
                 });
             });
+            */
+            
         };
 
         $scope.refreshAllTasks = function () {            
@@ -61,7 +99,16 @@ angular.module('webClientApp')
                     }
                 });            
             });
-        };        
+        };
+
+        $scope.sortHelper = function (checkId, checkList)  {
+            for(var b = 0; b < checkList.length; b++){
+                if(checkId == checkList[b]){
+                    return b;
+                }
+            };
+            return -1;
+        };
         
         $scope.getItemsFromLists = function (lists, user, beta, activeOnly, getparent) {
             var tempitems = [];
