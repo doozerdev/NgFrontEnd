@@ -7,13 +7,13 @@
         </div>
     </div>
     <div class="row">
-        <new-solution class="col-xs-12" btn-text="Create a new tip" map-item="item" mapped-solutions="solutions" mode="expert"></new-solution>
+        <dzr-solution-edit class="col-xs-12" btn-text="Create a new tip" map-item="item" mapped-solutions="solutions" mode="expert"></dzr-solution-edit>
         <div class="col-xs-12" ng-if="solutions.length > 0">
             <h3>Tips matched to this task <span ng-if='solutions.length>0'>({{solutions.length}})</span></h3>
             <div ng-show='solutions.length < 1'>
                     No tips linked to this task
             </div>
-            <div ng-repeat="solution in solutions | orderBy:'-date_associated'">
+            <div ng-repeat="solution in solutions | orderBy:'-date_link_updated'">
                 <dzr-solution solution="solution" mode="expert"></dzr-solution>
             </div>
         </div>

@@ -1,13 +1,16 @@
 'use strict';
 
 angular.module('webClientApp')
-    .controller('CreateSolutionCtrl', function($scope, $routeParams, Solution) {
+    .controller('EditSolutionCtrl', function($scope, $routeParams, Solution) {
 
         var eOV = function(item) {
             return item ? item.trim() : '';
         };
         
-        $scope.solution = {};
+        if ($scope.mode!="edit") {
+            $scope.solution = {};
+        }
+        
         $scope.imageOptions = [];
         $scope.currentImageIndex = null;
 
@@ -25,36 +28,74 @@ angular.module('webClientApp')
         
         
         $scope.createSolution = function() {
-            var newSolution = new Solution.server({
-                title: eOV($scope.solution.title),
-                source: eOV($scope.solution.source),
-                price: eOV($scope.solution.price),
-                phone_number: eOV($scope.solution.phone_number),
-                open_hours: eOV($scope.solution.open_hours),
-                link: eOV($scope.solution.link),
-                tags: eOV($scope.solution.tags),
-                expire_date: $scope.solution.expire_date,
-                img_link: eOV($scope.solution.img_link),
-                description: eOV($scope.solution.description),
-                address: eOV($scope.solution.address),
-                notes: eOV($scope.solution.notes),
-            });
-
-            Solution.server.save(newSolution, function(savedSolution) {
-                console.log("saved solution: ");
-                console.log(savedSolution);
-                
-                if($scope.mapItem){
-                    $scope.map(savedSolution, $scope.mapItem);
-                }
-                else if($scope.solutions){
-                    $scope.solutions.push(savedSolution);
-                }
-
-                $('#newSolution').collapse('hide');
-                $scope.solution = angular.copy({});
-            });
+            if ($scope.mode!="edit"){
+                var newSolution = new Solution.server({
+                    title: eOV($scope.solution.title),
+                    source: eOV($scope.solution.source),
+                    price: eOV($scope.solution.price),
+                    phone_number: eOV($scope.solution.phone_number),
+                    open_hours: eOV($scope.solution.open_hours),
+                    link: eOV($scope.solution.link),
+                    tags: eOV($scope.solution.tags),
+                    expire_date: $scope.solution.expire_date,
+                    img_link: eOV($scope.solution.img_link),
+                    description: eOV($scope.solution.description),
+                    address: eOV($scope.solution.address),
+                    notes: eOV($scope.solution.notes),
+                });
+    
+                Solution.server.save(newSolution, function(savedSolution) {
+                    console.log("created solution: ");
+                    console.log(savedSolution);
+                    
+                    if($scope.mapItem){
+                        //don't check to push savedsolution to all solutions; map already does it
+                        $scope.map(savedSolution, $scope.mapItem);
+                    }
+                    else if($scope.solutions){
+                        $scope.solutions.push(savedSolution);
+                    }
+    
+                    $('#newSolution').collapse('hide');
+                    $scope.solution = angular.copy({});
+                });
+            } else {
+                console.log("createSolution called when in Edit mode");
+            }
         };
+        
+        $scope.saveEdits = function () {
+            if ($scope.mode=="edit") {
+                Solution.server.get({
+                    id: $scope.solution.id
+                }, function (toUpdate) {
+                    toUpdate.tags = $scope.solution.tags;
+                    toUpdate.link = $scope.solution.link;
+                    toUpdate.img_link = $scope.solution.img_link;
+                    toUpdate.expire_date = $scope.solution.expire_date;
+                    toUpdate.notes = $scope.solution.notes;
+                    toUpdate.title = $scope.solution.title;
+                    toUpdate.source = $scope.solution.source;
+                    toUpdate.price = $scope.solution.price;
+                    toUpdate.phone_number = $scope.solution.phone_number;
+                    toUpdate.open_hours = $scope.solution.open_hours;
+                    toUpdate.address = $scope.solution.address;
+                    toUpdate.description = $scope.solution.description;
+                    
+                    toUpdate.$update({
+                        id: $scope.solution.id
+                    }, function (updated) {
+                        console.log("solution saved: ");
+                        console.log(updated);
+                    });
+                });
+            } else {
+                //console.log("saveEdits called without being in edit mode")
+            } 
+        };
+        
+        
+        
         
         $scope.map = function(solution, item){
             Solution.server.mapItem({
@@ -76,6 +117,9 @@ angular.module('webClientApp')
         };
         
         $scope.fillPreview = function(url) {
+            if ($scope.mode=="edit") {
+                console.log("fillpreview called while in edit mode!");
+            }
             Solution.opengraph.get({
                 url: url
             }, function(response) {

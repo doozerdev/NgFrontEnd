@@ -180,7 +180,7 @@ angular.module('webClientApp')
         return;
       }
 
-      var item = new Item();
+      var item = new Item.server();
       item.title = newItem.title;
       item.parent = newItem.parent;
       item.done = newItem.done;
