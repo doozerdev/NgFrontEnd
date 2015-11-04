@@ -13,6 +13,7 @@ angular.module('webClientApp')
         
         $scope.imageOptions = [];
         $scope.currentImageIndex = null;
+        $scope.triedGetImages = false;
 
         if (!$scope.btnText){
             $scope.btnText = "Create tip";
@@ -117,24 +118,35 @@ angular.module('webClientApp')
         };
         
         $scope.fillPreview = function(url) {
-            if ($scope.mode=="edit") {
-                console.log("fillpreview called while in edit mode!");
-            }
+
             Solution.opengraph.get({
                 url: url
             }, function(response) {
                 console.log(response);
                 if (response.hybridGraph){
-                    if (response.hybridGraph.title){
+                    if (response.hybridGraph.title && $scope.mode!="edit"){
                         $scope.solution.title = response.hybridGraph.title;
                     }
+                    
+                    $scope.imageOptions = [];
+                    $scope.triedGetImages = true;
+                    
                     if (response.hybridGraph.image){
-                        $scope.solution.img_link = response.hybridGraph.image;
+                        if ($scope.mode=="edit" && $scope.solution.img_link!="") {
+                            $scope.imageOptions.push($scope.solution.img_link);
+                        }
+                        $scope.imageOptions.push(response.hybridGraph.image);
+                        $scope.currentImageIndex = 0;
+                        $scope.solution.img_link = $scope.imageOptions[0];
                     }
                     if (response.htmlInferred){
-                        $scope.imageOptions = response.htmlInferred.images;
+                        if ($scope.imageOptions.length < 1 && $scope.mode=="edit" && $scope.solution.img_link!=""){
+                            $scope.imageOptions.push($scope.solution.img_link);
+                        }
+                        $scope.imageOptions = $scope.imageOptions.concat(response.htmlInferred.images);
                         if($scope.imageOptions.length > 0){
                             $scope.currentImageIndex = 0;
+                            $scope.solution.img_link = $scope.imageOptions[0];
                         }
                     }
                 }
@@ -163,6 +175,7 @@ angular.module('webClientApp')
                   $scope.currentImageIndex = dest;
                   $scope.solution.img_link = $scope.imageOptions[dest];
               }
+              $scope.saveEdits();
           }
           
         };

@@ -7,16 +7,22 @@
 <!--Collapsed Panel Body-->
     <div class="panel-body collapse outline-brand" id="newSolution">
         <div class="row">
+            <h4 class="col-xs-3">Preview:</h4>
+            <div class="col-xs-6" ng-if="imageOptions.length > 0">
+                <ul class="pagination center-block dzr-pagination">
+                    <li><span ng-click="cycleImage('prev')" aria-label="Previous" aria-hidden="true">&laquo;</span></li>
+                    <li><span>{{currentImageIndex + 1}} of {{imageOptions.length}} total images</span></li>
+                    <li><span ng-click="cycleImage('next')" aria-label="Next" aria-hidden="true">&raquo;</span></li>
+                </ul>
+            </div>
+            <div class="col-xs-6 text-center dzr-pagination" ng-if="mode!='edit' && imageOptions.length < 1">
+                No images available
+            </div>
+            <div class="col-xs6 center-block dzr-pagination" ng-if="mode=='edit' && imageOptions.length < 1">
+                <button type="button" class="btn" ng-click="fillPreview(solution.link)">Get images from URL</button>
+                <span ng-if="triedGetImages">No images found</span>
+            </div>
             <div class="col-xs-12" ng-if="mode!='edit'">
-                <h4>Preview:</h4>
-                <nav ng-if="imageOptions.length > 1">
-                    <h5>Switch image for tip: </h5>
-                    <ul class="pagination">
-                        <li><span ng-click="cycleImage('prev')" aria-label="Previous" aria-hidden="true">&laquo;</span></li>
-                        <li ng-repeat="image in imageOptions" ng-class="currentImageIndex==$index ? 'active' : ''"><span ng-click="cycleImage($index)">{{$index}}</span></li>
-                        <li><span ng-click="cycleImage('next')" aria-label="Next" aria-hidden="true">&raquo;</span></li>
-                    </ul>
-                </nav>
                 <dzr-solution solution="solution"></dzr-solution>
             </div>
         </div>
@@ -27,7 +33,6 @@
                     <input ng-if="mode!='edit'" type="text" class="form-control" id="inputLink" ng-trim="true" placeholder="URL (include http)" 
                            ng-model="solution.link" required
                            ng-change="fillPreview(solution.link)" ng-model-options="{updateOn: 'default blur', debounce:{default:2000, blur:0}}" />
-                           
                     <input ng-if="mode=='edit'" type="text" class="form-control" id="inputLink" ng-trim="true" placeholder="URL (include http)"
                            ng-model="solution.link" 
                            ng-change="saveEdits()" ng-model-options="{updateOn: 'default blur submit', debounce:{default:2000, blur:0}}" />
