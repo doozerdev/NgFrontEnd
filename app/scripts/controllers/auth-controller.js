@@ -2,29 +2,15 @@
 
 angular.module('webClientApp')
     .controller('AuthCtrl', function($scope, $route, $facebook, Session) {
-        
-        //if ($scope.mode=='login'){
-            Session.checkSession().then(function (result) {
-                    if (result == true) {
-                        $scope.showLogin = false;
-                        $('.modal').modal('hide');
-                        $('.modal-backdrop').remove();
-                        $scope.retry();
-                        //console.log('in directive, checkSession returned true');
-                    } else {
-                        //console.log('in directive, checkSession returned not true');
-                        $scope.showLogin = true;
-                        $('.modal').modal({
-                            backdrop: 'static',
-                            keyboard: false
-                        });
-                        console.log('just tried to show modal');
-                    }
-                }, function (error) {
-                    console.log("Error: Nothing returned from checkSession!");
-                    console.log(error);
-            });            
-       // }
+
+
+        $scope.$on("dzr-loginRequired", function() {
+            $scope.showLogin = true;
+            $('.modal').modal({
+                backdrop: 'static',
+                keyboard: false
+            });
+        });
 
 
         $scope.login = function() {
@@ -37,15 +23,16 @@ angular.module('webClientApp')
                         $scope.showLogin = false;
                         $('.modal').modal('hide');
                         $('.modal-backdrop').remove();
-                        $scope.retry();
+                        Session.retryAllHttp();
                     }, function(error) {
                         console.log("Setting up session without name. Facebook /me call failed with error:");
-                        console.log("error");
+                        console.log(error);
+                        
                         Session.setupSession(dzrSession.sessionId);
                         $scope.showLogin = false;
                         $('.modal').modal('hide');
                         $('.modal-backdrop').remove();
-                        $scope.retry();
+                        Session.retryAllHttp();
                     });
                 }, function (error) {
                     console.log("Session login to Doozer server failed with error:");

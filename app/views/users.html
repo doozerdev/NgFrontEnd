@@ -1,5 +1,5 @@
 <div class="container">
-    <auth mode='login' retry="refresh()"></auth>
+    <auth mode='login'></auth>
     <h1>Beta Users List ({{betaUsers.length}})</h1>
     <ul>
         <li ng-repeat="user in betaUsers"><a ng-href='#user/{{user.uid}}'>{{user.uid}} {{user.gender}} - {{user.locale}}<span ng-if="user.role">; {{user.role}}</span></a></li>

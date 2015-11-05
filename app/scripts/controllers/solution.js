@@ -3,37 +3,36 @@
 angular.module('webClientApp')
     .controller('SolutionCtrl', function ($scope, $routeParams, Solution, Search, Item) {
 
-        $scope.refresh = function () {
-            Solution.server.get({
-                id: $routeParams.id
-            }, function (solution) {
-                $scope.solution = solution;
-                $scope.solution.expire_date = new Date($scope.solution.expire_date);
-                
-                Solution.server.performance({
-                        id: solution.id
-                    }, function (response) {
-                        $scope.solution.performance = response;
-                    }
-                );
-            });
-    
-            Solution.server.items({
-                id: $routeParams.id
-            }, function (response) {
-                if (response.items) {
-                    $scope.items = response.items;
-    
-                    angular.forEach($scope.items, function (item) {
-                        $scope.getParent(item);
-                        $scope.getState(item);
-                    });
+        Solution.server.get({
+            id: $routeParams.id
+        }, function (solution) {
+            $scope.solution = solution;
+            $scope.solution.expire_date = new Date($scope.solution.expire_date);
+            
+            Solution.server.performance({
+                    id: solution.id
+                }, function (response) {
+                    $scope.solution.performance = response;
                 }
-                else {
-                    $scope.items = [];
-                }
-            });
-        };
+            );
+        });
+
+        Solution.server.items({
+            id: $routeParams.id
+        }, function (response) {
+            if (response.items) {
+                $scope.items = response.items;
+
+                angular.forEach($scope.items, function (item) {
+                    $scope.getParent(item);
+                    $scope.getState(item);
+                });
+            }
+            else {
+                $scope.items = [];
+            }
+        });
+
 
         $scope.getParent = function (item) {
             Item.server.get({

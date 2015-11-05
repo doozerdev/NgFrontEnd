@@ -31,32 +31,32 @@ angular.module('webClientApp')
         });
     */
 
-    $scope.refresh = function () {
-      Item.server.children({item_id: $routeParams.id}, function(listData) {
-          $scope.items = listData.items;
-          $scope.list = Item.server.get({item_id: $routeParams.id});
-  
-          var greatest = -1;
-          angular.forEach($scope.items, function(item) {
-            if(item.order && item.order > greatest){
-              greatest = item.order;
-            }
-            
-            item.duedate = new Date(item.duedate);
-            
-            if(item.type == "completed_header"){
-              console.log("completed header found:");
-              console.log(item);
-              $scope.hasDoneHeader = true;
-            }
-          });
-  
-          //nothing has a sort order
-          if(greatest === -1){
-            Sorting.reorderList($scope.items);
+
+    Item.server.children({item_id: $routeParams.id}, function(listData) {
+        $scope.items = listData.items;
+        $scope.list = Item.server.get({item_id: $routeParams.id});
+
+        var greatest = -1;
+        angular.forEach($scope.items, function(item) {
+          if(item.order && item.order > greatest){
+            greatest = item.order;
           }
-      });
-    };
+          
+          item.duedate = new Date(item.duedate);
+          
+          if(item.type == "completed_header"){
+            console.log("completed header found:");
+            console.log(item);
+            $scope.hasDoneHeader = true;
+          }
+        });
+
+        //nothing has a sort order
+        if(greatest === -1){
+          Sorting.reorderList($scope.items);
+        }
+    });
+
 
     var Sorting = {
 

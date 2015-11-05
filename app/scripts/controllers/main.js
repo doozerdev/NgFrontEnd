@@ -12,25 +12,23 @@
 
 angular.module('webClientApp')
     .controller('MainCtrl', function($scope, $cookies, Item, Solution) {
-        
-        $scope.refresh = function() {
+
 
             // Item.server.items({
             //     last_sync: "1433740362" 
             // },
 
-            Item.server.lists(
-                function(listData) {
-                    $scope.lists = listData.items;
-                    $scope.username = $cookies.get('username');
-                }, function (error) {
-                    if (error.status == 401) {
-                        //TODO replace this with a logout/cleanup call?? or remove entirely? 
-                        console.log('got a 401 on refresh - should have already been caught by checkSession!!');
-                    }
+        Item.server.lists(
+            function(listData) {
+                $scope.lists = listData.items;
+                $scope.username = $cookies.get('username');
+            }, function (error) {
+                if (error.status == 401) {
+                    //TODO replace this with a logout/cleanup call?? or remove entirely? 
+                    console.log('got a 401 on loading page data - should have already been caught by http interceptor!!');
                 }
-            );
-        };
+            }
+        );
 
 
         $scope.addList = function() {

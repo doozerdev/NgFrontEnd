@@ -1,12 +1,22 @@
 'use strict';
 
 angular.module('webClientApp')
-    .factory('Session', function($resource, $cookies, $http, $q, doozerURL, Item) {
+    .factory('Session', function($rootScope, $resource, $cookies, $http, $q, doozerURL, Item) {
 
         //var doozerURL = 'https://warm-atoll-6588.herokuapp.com/api/';
     //var doozerURL = 'http://localhost:3000/api/'
 
         var loggedIn = null;
+        
+        var retryHttpRequest = function(config, deferred) {
+            config.headers.sessionId = $http.defaults.headers.common.sessionId;
+
+            $http(config).then(function(success){
+                deferred.resolve(success);
+            }, function(error){
+                deferred.reject(error);
+            });
+        };
         
         return { 
             server: $resource(doozerURL + 'login/:token', {
@@ -69,6 +79,26 @@ angular.module('webClientApp')
                 loggedIn = false;
                 $cookies.remove('doozerSession');
                 $cookies.remove('username');
+            },
+            /**
+            * Abandon or reject (if reason provided) all the buffered http requests.
+            */
+            rejectAllHttp: function(reason) {
+                if (reason) {
+                    for (var i = 0; i < $rootScope.httpRetryBuffer.length; i++) {
+                        $rootScope.httpRetryBuffer[i].deferred.reject(reason);
+                    }
+                }
+                $rootScope.httpRetryBuffer = [];
+            },
+            /**
+            * Retry all the buffered http requests, and then clears the buffer
+            */
+            retryAllHttp: function() {
+                for (var i = 0; i < $rootScope.httpRetryBuffer.length; i++) {
+                    retryHttpRequest($rootScope.httpRetryBuffer[i].config, $rootScope.httpRetryBuffer[i].deferred);
+                }
+                $rootScope.httpRetryBuffer = [];
             }
         };
     });

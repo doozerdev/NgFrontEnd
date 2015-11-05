@@ -8,7 +8,7 @@
  * Controller of the webClientApp
  */
 angular.module('webClientApp')
-    .controller('SolutionsCtrl', function($scope, $routeParams, Solution, Search, Item, User) {
+    .controller('SolutionsCtrl', function($scope, $location, Solution, Search, Item, User) {
         $scope.solutions = [];
         $scope.users = [];
         $scope.active_items = []; //TODO: unused for now
@@ -16,7 +16,7 @@ angular.module('webClientApp')
         $scope.all_items = [];
         $scope.show_beta = true;
 
-        $scope.refresh = function () {
+        if ($location.path() != "/alltasks") {
             Solution.server.query(function(solutionData) {
                 $scope.solutions = solutionData;
                 
@@ -64,7 +64,7 @@ angular.module('webClientApp')
                     });
                 });
             });
-            
+        }
             /*TODO: remove OLD functionality when sure no longer needed: this is for only getting a subset of hardcoded 'beta users'
             $scope.users = User.getBetaIds();
             angular.forEach($scope.users, function(user, index) {
@@ -81,9 +81,9 @@ angular.module('webClientApp')
             });
             */
             
-        };
 
-        $scope.refreshAllTasks = function () {            
+
+        if ($location.path() == "/alltasks") {            
             User.server.query(function(userData) {
                 $scope.users = userData;
                 console.log($scope.users.length);
@@ -99,7 +99,8 @@ angular.module('webClientApp')
                     }
                 });            
             });
-        };
+        }
+
 
         $scope.sortHelper = function (checkId, checkList)  {
             for(var b = 0; b < checkList.length; b++){
