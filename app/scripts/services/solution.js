@@ -106,7 +106,9 @@ angular.module('webClientApp')
                 url: '@url'
                 }, {
                     get: {
-                        // TODO: for some reason this needs to be here, leave for now, debug later
+                         headers: {
+                          'sessionId': undefined
+                        }
                     }
                 }
             )
