@@ -10,7 +10,7 @@ angular.module('webClientApp')
         if ($scope.mode!="edit") {
             $scope.solution = {};
         }
-        
+         
         $scope.imageOptions = [];
         $scope.currentImageIndex = null;
         $scope.triedGetImages = false;
@@ -50,7 +50,7 @@ angular.module('webClientApp')
                     console.log(savedSolution);
                     
                     if($scope.mapItem){
-                        //don't check to push savedsolution to all solutions; map already does it
+                        //don't check to push savedsolution to all solutions ($scope.solutions); map already does it
                         $scope.map(savedSolution, $scope.mapItem);
                     }
                     else if($scope.solutions){
@@ -151,6 +151,11 @@ angular.module('webClientApp')
                     }
                 }
             });
+            
+            //TODO: populate expert source if known URL
+            if ($scope.mode!="edit") {
+                console.log("TODO: populate the expert name/bio for known urls here.");
+            }
         };
         
         $scope.cycleImage = function (dest) {

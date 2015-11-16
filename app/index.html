@@ -45,7 +45,7 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="header">
+    <div class="header" ng-if="location.path() != '/createtip'">
       <div class="navbar navbar-default" role="navigation">
         <div class="container-fluid">
           <div class="navbar-header">
@@ -67,6 +67,7 @@
               <li><a ng-href="#/search">Search</a></li>-->
               <li><a ng-href="#/solution">Expert Tips</a></li>
               <li><a ng-href="#/users">Admin</a></li>
+              <li><a ng-href="#/createtip">Create Tip</a></li>
             </ul>
           </div>
         </div>
@@ -77,7 +78,7 @@
     <div ng-view=""></div>
     
     
-   <div class="footer">
+   <div class="footer" ng-if="location.path() != '/createtip'">
       <div class="container">
 <!--TODO: FIX THIS-        <auth mode="logout"></auth>-->
         <p>Doozer loves you</p>

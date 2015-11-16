@@ -13,6 +13,9 @@ btntext (optional): override default button text with custom string
 mode (optional): used to specify the following behavior differences: 
     "expert" mode simplifies the creation process for external experts creating a new solution
     "edit" sets to editing an existing solution (not creating new) - must include solution as well
+    "simple" is the bare bones, used for external seeding with mechanical turk
+    
+collapsed (optional) - if "false", the form is kept always open and cannot be collapsed
 
 solutions (optional): the array containing all solutions that this new solutions should be added to, if new solution being created
 
@@ -30,6 +33,7 @@ angular.module('webClientApp')
           solution: '=',
           btnText: '@',
           mode: '@',
+          collapsed: '@',
           solutions: '=',
           mapItem: '=',
           mappedSolutions: '='

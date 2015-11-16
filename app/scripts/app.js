@@ -22,8 +22,8 @@ angular.module('webClientApp', [
     .config(function($routeProvider, $facebookProvider, $httpProvider) {
         //$facebookProvider.setAppId(1474823829455959); //prod
         //$facebookProvider.setAppId(1637385519866455); //beta
-        $facebookProvider.setAppId(1637385749866432); //test
-        //$facebookProvider.setAppId(1615408935397447); //dev
+        //$facebookProvider.setAppId(1637385749866432); //test
+        $facebookProvider.setAppId(1615408935397447); //dev
 
         $routeProvider
             .when('/', {
@@ -65,6 +65,11 @@ angular.module('webClientApp', [
             }).when('/user/:id', {
                 templateUrl: 'views/user.html',
                 controller: 'UserCtrl'
+           }).when('/createtip',{
+                templateUrl: 'views/newsolution.html',
+                controller: function ($scope, $rootScope) {
+                        $scope.result = [];
+                    }
             }).when('/:id', {
                 templateUrl: 'views/list.html',
                 controller: 'ListCtrl'
@@ -103,14 +108,17 @@ angular.module('webClientApp', [
         
     })
 //.constant('doozerURL','https://api.doozer.tips/api/')
-.constant('doozerURL','http://api.beta.doozer.tips/api/')
-//.constant('doozerURL','http://api.test.doozer.tips/api/')
+//.constant('doozerURL','http://api.beta.doozer.tips/api/')
+.constant('doozerURL','http://api.test.doozer.tips/api/')
 //.constant('doozerURL','http://localhost:3000/api/')
 
-.run(function($rootScope) {
+.run(function($rootScope, $location) {
     
     //Initialize the http retry buffer for future failed-401 calls that we want to retry
     $rootScope.httpRetryBuffer = [];
+    
+    //allow location to be available at rootscope, so the header & footer html can get the current URL path
+    $rootScope.location = $location;
 
     // Load the SDK asynchronously
     (function(d, s, id) {
