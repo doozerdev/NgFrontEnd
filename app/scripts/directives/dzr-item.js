@@ -29,6 +29,19 @@ angular.module('webClientApp')
           toggleAction: '&',
           //clickAction: '&'
         },
-        templateUrl: 'scripts/directives/dzr-item.html'
+        templateUrl: 'scripts/directives/dzr-item.html',
+        controller: function ($scope, Item) {
+          
+          $scope.saveEdits = function () {
+            Item.server.get({item_id: $scope.item.id}, function(toUpdate) {
+              toUpdate.tags = $scope.item.tags;      
+              toUpdate.$update({item_id: $scope.item.id}, function(updated){
+                console.log('saved item tags: ');
+                console.log(updated);                
+              });
+            });
+            
+          };
+        }
       };
   });

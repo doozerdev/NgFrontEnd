@@ -50,7 +50,10 @@
             <div class="col-xs-6">
                 <h4 ng-if="item.parentTitle">List: {{item.parentTitle}}</h4>
                 <div ng-if="user" class="h5-text"><strong>{{user.gender}}</strong>, {{user.locale}}<span ng-if="user.role">, {{user.role}}</span></div>
-                <div class="h5-text">Tags: {{item.tags}}</div>
+                <div class="h5-text">Tags:</div>
+                <input type="text" class="form-control" ng-trim="true" id="inputTags" placeholder="Tags (comma separated)" 
+                            ng-model="item.tags"
+                            ng-change="saveEdits()" ng-model-options="{updateOn: 'default blur submit', debounce:{default:2000, blur:0}}" />
             </div>
         </div>
         
