@@ -1,57 +1,59 @@
-<div class="panel panel-default panel-body item-panel">
-
-<div class="row">
-    <div class="col-xs-12">
-        <h3 ng-if="item.done==true"><s>{{item.title}} <span ng-if="item.archive==true">(archived)</span></s></h3>
-        <h3 ng-if="item.done!=true">{{item.title}} <span ng-if="item.archive==true">(archived)</span></h3>
-        <h5><span class="text-muted">Due <span ng-if="!item.duedate">someday</span></span><strong>{{item.duedate | date:'EEEE, MMM d, y'}}</strong></h5>
-        <div class="panel panel-default panel-body">
-            <span class="text-muted">Notes: </span>{{item.notes}}
-        </div>
+<div class="panel panel-default item-panel">
+    <div class="panel-heading item-header text-uppercase" ng-if="mode=='expert'">
+        <h5 ng-if="item.parentTitle">{{item.parentTitle}}</h5>
     </div>
-</div>
-<!--user list link-->
-<a class="pull-right" ng-href='#/{{item.parent}}' target="_blank" ng-if="expert=='false'">List: {{item.parentTitle}}
-    <span class="glyphicon glyphicon-menu-right"></span>
-</a>
-
-<!--expert info summary-->
-<div class="row well item-well" ng-if="expert!='false'">
-    <div class="col-xs-3">
-        <a ng-click="toggleAction(item)" ng-if="checkToggle()!=null">
-            <span class="glyphicon glyphicon-check h3-text" ng-if='checkToggle(item)>=0'></span>
-            <span class="glyphicon glyphicon-unchecked h3-text" ng-if='checkToggle(item)==-1'></span>
-            <span class="h5-text">Link to this tip</span>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-xs-12">
+                <h3 ng-if="item.done==true" class="no-top-margin"><s>{{item.title}} <span ng-if="item.archive==true">(archived)</span></s></h3>
+                <h3 ng-if="item.done!=true" class="no-top-margin">{{item.title}} <span ng-if="item.archive==true">(archived)</span></h3>
+                <h5><span class="text-muted">Due <span ng-if="!item.duedate">someday</span></span><strong>{{item.duedate | date:'EEEE, MMM d, y'}}</strong></h5>
+                <h5><span class="text-muted" class="no-bottom-margin">Notes: </span>{{item.notes}}</h5>
+            </div>
+        </div>
+        <!--user list link-->
+        <a class="pull-right" ng-href='#/{{item.parent}}' target="_blank" ng-if="mode=='user'">List: {{item.parentTitle}}
+            <span class="glyphicon glyphicon-menu-right"></span>
         </a>
-        <br/>
-        <br/>
-        <a ng-if="expert=='true-min'" class="btn btn-primary" ng-href="#/{{item.id}}/itemexpert">Edit Task</a>
-    </div>
-    <div class="col-xs-3">
-        <div ng-if="item.solution_state">
-            <h4>{{item.solution_state.current}}</h4>
-            Rating value: {{item.solution_state.like}}
-            <br/>
-            Clicks: {{item.solution_state.clicks}}
-            <br/>
-            Views: {{item.solution_state.views}}
-            <br/>
+        
+        <!--expert info summary-->
+        <div class="row well item-well" ng-if="mode=='admin' || mode=='admin-min'">
+            <div class="col-xs-3">
+                <a ng-click="toggleAction(item)" ng-if="checkToggle()!=null">
+                    <span class="glyphicon glyphicon-check h3-text" ng-if='checkToggle(item)>=0'></span>
+                    <span class="glyphicon glyphicon-unchecked h3-text" ng-if='checkToggle(item)==-1'></span>
+                    <span class="h5-text">Link to this tip</span>
+                </a>
+                <br/>
+                <br/>
+                <a ng-if="mode=='admin-min'" class="btn btn-primary" ng-href="#/{{item.id}}/itemadmin">Edit Task</a>
+                <a ng-if="mode=='admin'" class="btn btn-primary" ng-href="#/{{item.id}}/itemexpert">Send to experts</a>
+            </div>
+            <div class="col-xs-3">
+                <div ng-if="item.solution_state">
+                    <h4>{{item.solution_state.current}}</h4>
+                    Rating value: {{item.solution_state.like}}
+                    <br/>
+                    Clicks: {{item.solution_state.clicks}}
+                    <br/>
+                    Views: {{item.solution_state.views}}
+                    <br/>
+                </div>
+                <h4 ng-if="mode=='admin-min'">
+                    (Total: {{item.solutions_count}}
+                    <span ng-if="item.solutions_count===1"> tip)</span>
+                    <span ng-if="item.solutions_count!=1"> tips)</span>
+                </h4>
+                <div class="h5-text">Created: {{item.created_at | date:'shortDate'}}</div>
+                <div class="h5-text">Updated: {{item.updated_at | date:'shortDate'}}</div>
+            </div>
+            <div class="col-xs-6">
+                <h4 ng-if="item.parentTitle">List: {{item.parentTitle}}</h4>
+                <div ng-if="user" class="h5-text"><strong>{{user.gender}}</strong>, {{user.locale}}<span ng-if="user.role">, {{user.role}}</span></div>
+                <div class="h5-text">Tags: {{item.tags}}</div>
+            </div>
         </div>
-        <h4 ng-if="expert=='true-min'">
-            (Total: {{item.solutions_count}}
-            <span ng-if="item.solutions_count===1"> tip)</span>
-            <span ng-if="item.solutions_count!=1"> tips)</span>
-        </h4>
-        <div class="h5-text">Created: {{item.created_at | date:'shortDate'}}</div>
-        <div class="h5-text">Updated: {{item.updated_at | date:'shortDate'}}</div>
-    </div>
-    <div class="col-xs-6">
-        <h4 ng-if="item.parentTitle">List: {{item.parentTitle}}</h4>
-        <div ng-if="user" class="h5-text"><strong>{{user.gender}}</strong>, {{user.locale}}<span ng-if="user.role">, {{user.role}}</span></div>
-        <div class="h5-text">Tags: {{item.tags}}</div>
-    </div>
-</div>
-
-
-
+        
+        
+    </div>        
 </div>

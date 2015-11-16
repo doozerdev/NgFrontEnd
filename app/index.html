@@ -27,6 +27,10 @@
     <meta name="msapplication-TileImage" content="/icons/mstile-144x144.png">
     <meta name="theme-color" content="#0acbea">
     
+    <!-- TypeKit Fonts -->
+    <script src="//use.typekit.net/hpk3kbw.js"></script>
+    <script>try{Typekit.load();}catch(e){}</script>
+    
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <!-- endbower -->
@@ -43,7 +47,7 @@
     <!-- Add your site or application content here -->
     <div class="header">
       <div class="navbar navbar-default" role="navigation">
-        <div class="container">
+        <div class="container-fluid">
           <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
               <span class="sr-only">Toggle navigation</span>
@@ -51,17 +55,18 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-
-            <a class="navbar-brand" href="#/">Doozer</a>
+            <div class="navbar-brand">
+              <a href="#/"><img class="img-responsive brand-img" src="/icons/apple-touch-icon-precomposed.png" /> </a>
+            </div>
           </div>
 
           <div class="collapse navbar-collapse" id="js-navbar-collapse">
 
             <ul class="nav navbar-nav">
-              <li><a href="#/">Home</a></li>
-              <li><a ng-href="#/search">Search</a></li>
-              <li><a ng-href="#/solution">Solutions</a></li>
-              <li><a ng-href="#/users">Users</a></li>
+              <!--<li><a href="#/">Home</a></li>
+              <li><a ng-href="#/search">Search</a></li>-->
+              <li><a ng-href="#/solution">Expert Tips</a></li>
+              <li><a ng-href="#/users">Admin</a></li>
             </ul>
           </div>
         </div>
@@ -72,11 +77,12 @@
     <div ng-view=""></div>
     
     
-    <div class="footer">
+   <div class="footer">
       <div class="container">
+<!--TODO: FIX THIS-        <auth mode="logout"></auth>-->
         <p>Doozer loves you</p>
       </div>
-    </div>
+    </div> 
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
@@ -107,7 +113,8 @@
         <script src="scripts/controllers/item.js"></script>
         <script src="scripts/controllers/index.js"></script>
         <script src="scripts/controllers/itemexpert.js"></script>
-        <script src="scripts/controllers/create-solution.js"></script>
+        <script src="scripts/controllers/solution-edit.js"></script>
+        <script src="scripts/controllers/auth-controller.js"></script>
         <script src="scripts/services/session.js"></script>
         <script src="scripts/services/doozerList.js"></script>
         <script src="scripts/services/Item.js"></script>
@@ -119,7 +126,8 @@
         <script src="scripts/directives/sortable.js"></script>
         <script src="scripts/directives/dzr-solution.js"></script>
         <script src="scripts/directives/dzr-item.js"></script>
-        <script src="scripts/directives/new-solution.js"></script>
+        <script src="scripts/directives/dzr-solution-edit.js"></script>
+        <script src="scripts/directives/auth.js"></script>
         <!-- endbuild -->
 </body>
 </html>

@@ -17,20 +17,24 @@ angular.module('webClientApp')
     $scope.editedItem = null;
     $scope.isDoneGroupOpen = false;
     $scope.hasDoneHeader = false;
-     //TODO: fix this (git hub issue #8). toggling isDoneGroupOpen on ng-click has issues (e.g. double-click is taken as 2 clicks).
-    //Instead, I tried to get isDoneGroupOpen toggling to happen on the js events, but it didn't work...
-//    $('.donecollapse').on('shown.bs.collapse', function () {
-//     isDoneGroupOpen = true;
-//     console.log("shown event "+ isDoneGroupOpen);
-//    });
-//    $('.donecollapse').on('hidden.bs.collapse', function () {
-//      isDoneGroupOpen = false;
-//      console.log("hidden event "+ isDoneGroupOpen);
-//    });
+    
+    /*
+    TODO: fix this (git hub issue #8). toggling isDoneGroupOpen on ng-click has issues (e.g. double-click is taken as 2 clicks).
+    Instead, I tried to get isDoneGroupOpen toggling to happen on the js events, but it didn't work...
+      $('.donecollapse').on('shown.bs.collapse', function () {
+         isDoneGroupOpen = true;
+         console.log("shown event "+ isDoneGroupOpen);
+        });
+        $('.donecollapse').on('hidden.bs.collapse', function () {
+          isDoneGroupOpen = false;
+          console.log("hidden event "+ isDoneGroupOpen);
+        });
+    */
 
-    Item.children({item_id: $routeParams.id}, function(listData) {
+
+    Item.server.children({item_id: $routeParams.id}, function(listData) {
         $scope.items = listData.items;
-        $scope.list = Item.get({item_id: $routeParams.id});
+        $scope.list = Item.server.get({item_id: $routeParams.id});
 
         var greatest = -1;
         angular.forEach($scope.items, function(item) {
@@ -49,9 +53,10 @@ angular.module('webClientApp')
 
         //nothing has a sort order
         if(greatest === -1){
-           Sorting.reorderList($scope.items);
+          Sorting.reorderList($scope.items);
         }
     });
+
 
     var Sorting = {
 
@@ -175,13 +180,13 @@ angular.module('webClientApp')
         return;
       }
 
-      var item = new Item();
+      var item = new Item.server();
       item.title = newItem.title;
       item.parent = newItem.parent;
       item.done = newItem.done;
       item.archive = newItem.archive;
 
-      Item.save(item, function(savedItem){
+      Item.server.save(item, function(savedItem){
         $scope.items.unshift(savedItem);
         $scope.newItem = '';
         Sorting.move($scope.items, 0);
@@ -189,7 +194,7 @@ angular.module('webClientApp')
     };
 
     $scope.removeItem = function(item) {
-      Item.archive({item_id: item.id}, function(){
+      Item.server.archive({item_id: item.id}, function(){
           $scope.items.splice($scope.items.indexOf(item), 1);
       });
         //toUpdate.archive = true;
@@ -201,7 +206,7 @@ angular.module('webClientApp')
     };
 
     $scope.toggle = function(item) {
-      Item.get({item_id: item.id}, function(toUpdate) {
+      Item.server.get({item_id: item.id}, function(toUpdate) {
         console.log(item);
         var newIndex;
         
@@ -240,7 +245,7 @@ angular.module('webClientApp')
     };
 
     $scope.saveEdits = function(item) {
-      Item.get({item_id: item.id}, function(toUpdate) {
+      Item.server.get({item_id: item.id}, function(toUpdate) {
         toUpdate.title = item.title;
         toUpdate.type = item.type;
         toUpdate.order = item.order;

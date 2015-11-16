@@ -1,6 +1,11 @@
 <div class="container">
-    <h1>Users List</h1>
+    <auth mode='login'></auth>
+    <h1>Beta Users List ({{betaUsers.length}})</h1>
     <ul>
-        <li ng-repeat="user in users"><a ng-href='#user/{{user.uid}}'>{{user.uid}} {{user.gender}} - {{user.locale}}</a></li>
+        <li ng-repeat="user in betaUsers"><a ng-href='#user/{{user.uid}}'>{{user.uid}} {{user.gender}} - {{user.locale}}<span ng-if="user.role">; {{user.role}}</span></a></li>
+    </ul>
+    <h1>Test Users List ({{testUsers.length}})</h1>
+    <ul>
+        <li ng-repeat="user in testUsers"><a ng-href='#user/{{user.uid}}'>{{user.email}} - {{user.uid}} {{user.gender}} - {{user.locale}}<span ng-if="user.role">; {{user.role}}</span></a></li>
     </ul>
 </div>

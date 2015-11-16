@@ -1,4 +1,5 @@
 <div class="container-fluid">
+    <auth mode='login'></auth>
     <div class="row">
         <div class="col-xs-6 col-xs-offset-3">
             <h3>Search for tasks and tips</h3>
@@ -14,33 +15,21 @@
             </form>
             <br/>
         </div>
-        <div class="col-xs-2 col-xs-offset-1">
-            <new-solution solutions="solutions"></new-solution>
-        </div><!--/.col-->
     </div><!--/.row-->
     <div class="row">
         <div class="col-xs-6">
             <div class="well">
                 <h3>TASKS</h3>
                 <div class='row'>
+                    <div class="col-xs-12 col-sm-6">
+                        <h5>All active tasks across {{users.length}} (non-test) users: {{active_beta_items.length}}</h5>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <a href="#/alltasks" class="pull-right clearfix">View active and completed tasks</a>
+                    </div>
                     <div class="col-xs-12" ng-if='!item_results'>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="itemSetToggle" id="allActiveItems" ng-model="show_beta" ng-value="false" />
-                                All active tasks across users: {{active_items.length}}
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="itemSetToggle" id="betaActiveItems" ng-model="show_beta" ng-value="true" />
-                                All active tasks across BETA users: {{active_beta_items.length}}
-                            </label>
-                        </div>
-                        <div ng-if="show_beta" ng-repeat="item in active_beta_items | orderBy:'-updated_at'">
-                            <dzr-item item="item" expert="true-min"></dzr-item>
-                        </div>
-                        <div ng-if="!show_beta" ng-repeat="item in active_items | orderBy:'-created_at'">
-                            <dzr-item item="item" expert="true-min"></dzr-item>
+                        <div ng-repeat="item in active_beta_items | orderBy:'-updated_at'">
+                            <dzr-item item="item" mode="admin-min"></dzr-item>
                         </div>
                     </div>
                     <div class="col-xs-12" ng-if='item_results.length < 1'>
@@ -50,7 +39,7 @@
                     <div class="col-xs-12" ng-if='item_results.length > 0'>
                         <p>Search completed in {{item_request_time}}. {{item_results.length}} results.</p>
                         <div ng-repeat="result in item_results" ng-if="result.parent!=''">
-                            <dzr-item item="result" expert="true-min"></dzr-item>
+                            <dzr-item item="result" mode="admin-min"></dzr-item>
                         </div>
                     </div>
                 </div><!--/.row-->
@@ -59,11 +48,12 @@
         <div class="col-xs-6">
             <div class="well">
                 <h3>TIPS</h3>
+                <dzr-solution-edit solutions="solutions"></dzr-solution-edit>
                 <div class='row'>
                     <div class="col-sm-12" ng-show="!solution_results">
                         <h5>Total available tips: {{solutions.length}}</h5>
                         <div ng-repeat="solution in solutions | orderBy:'-created_at'">
-                            <dzr-solution solution="solution" expert="true-min"></dzr-solution>
+                            <dzr-solution solution="solution" mode="admin-min"></dzr-solution>
                         </div>
                     </div>
                     <div class="col-sm-12" ng-show="solution_results">

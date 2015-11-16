@@ -1,6 +1,8 @@
-<div class="panel panel-default panel-body no-topbottom-padding">
+<div class="panel panel-default panel-body no-topbottom-padding outline-brand">
     <div class="row">
         <div class="col-xs-12">
+            <h4>{{solution.source}}</h4>
+            <h6>{{solution.notes}}</h6>
             <h5>{{solution.description}}</h5>
         </div>
     </div>
@@ -10,7 +12,7 @@
                 <a ng-href="{{solution.link}}"><img ng-src='{{solution.img_link}}' class="img-responsive"/></a>
             </div>
             <div class="col-xs-8">
-                <h3><a ng-href="{{solution.link}}">{{solution.title}}</a></h3>
+                <h4><a ng-href="{{solution.link}}">{{solution.title}}</a></h5>
                 <h6>{{solution.address}}</h6>
                 <h6>{{solution.phone_number}}</h6>
                 <h6>{{solution.open_hours}}</h6>
@@ -19,14 +21,18 @@
         </div>
     </div>
     <!--thumbs buttons-->
-    <div class="row" ng-if="expert=='false'">
+    <div class="row" ng-if="mode=='user'">
         <div class="col-xs-12 btns-thumbs clearfix">
             <span class="pull-left glyphicon glyphicon-thumbs-up button" ng-click='likeSolution(solution)'></span>
             <span class="pull-right glyphicon glyphicon-thumbs-down button" ng-click='dislikeSolution(solution)'></span>
         </div>
     </div>
     <!--expert info summary-->
-    <div class="row well item-well" ng-if="expert=='true-min'">
+    <div class="row well item-well outline-brand" ng-if="mode=='expert'">
+        <h4 class="col-xs-12">{{solution.item_state.current}}</h4>
+    </div>
+    <!--admin-minimal info summary + toggling -->
+    <div class="row well item-well" ng-if="mode=='admin-min'">
         <div class="col-xs-3">
             <a ng-click="toggleAction(solution)" ng-if="checkToggle()!=null">
                 <span class="glyphicon glyphicon-check h3-text" ng-if='checkToggle(solution)>=0'></span>
@@ -62,151 +68,16 @@
             <div class="h5-text">Tags: {{solution.tags}}</div>
         </div>
     </div>
+    <!--admin info summary-->
+    <div class="row well item-well" ng-if="mode=='admin'">
+        <div class="col-xs-8">
+            <h4>Tip #{{solution.id}}</h4>
+            <div class="h5-text">Created: {{solution.created_at | date}}</div>
+        </div>
+        <div class="col-xs-4" ng-if="solution.performance">
+            <h4>Likes: {{solution.performance.likes}} / Dislikes: {{solution.performance.dislikes}}</h4>
+            Clicks: {{solution.performance.clicks}}<br/>
+            Views: {{solution.performance.views}}
+        </div>
+    </div>
 </div><!--/.panel-->
-<!--expert editing properties panel-->
-<div class="panel panel-default" ng-if="expert=='true'">
-    <div class="panel-heading testoutline">
-        <div class="row testoutline">
-            <div class="col-xs-8 panel-title">
-                <h4>Tip #{{solution.id}}</h4>
-                Created: {{solution.created_at | date}}
-            </div>
-            <div class="col-xs-4">
-                <h4>Likes: {{solutionPerf.likes}} / Dislikes: {{solutionPerf.dislikes}}</h4>
-                Clicks: {{solutionPerf.clicks}}<br/>
-                Views: {{solutionPerf.views}}
-            </div>
-        </div>
-    </div>
-    <div class="panel-body testoutline">
-        <form class="form-horizontal">
-            <div class="form-group">
-                <label class="control-label col-xs-2" for="tagsinput"><b>Tags: </b></label>
-
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" ng-trim="true" placeholder="Tags (comma separated)"
-                           ng-model="solution.tags" id="tagsinput" name="tagsinput" ng-change="saveEdits(solution)"
-                           ng-model-options="{updateOn: 'default blur submit', debounce:{default:2000, blur:0}}">
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-xs-2" for="linkinput"><b>Link: </b></label>
-
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" ng-trim="true" placeholder="Link (include http)"
-                           ng-model="solution.link" id="linkinput" name="linkinput" ng-change="saveEdits(solution)"
-                           ng-model-options="{updateOn: 'default blur submit', debounce:{default:2000, blur:0}}">
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-xs-2" for="imginput"><b>Image Link: </b></label>
-
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" ng-trim="true" placeholder="Image Link (include http)"
-                           ng-model="solution.img_link" id="imginput" name="imginput" ng-change="saveEdits(solution)"
-                           ng-model-options="{updateOn: 'default blur submit', debounce:{default:2000, blur:0}}">
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-xs-2" for="expireinput"><b>Expiration date: </b></label>
-
-                <div class="col-xs-4">
-                    <input type="date" class="form-control" ng-trim="true" placeholder="Expiration date"
-                           ng-model="solution.expire_date" id="expireinput" name="expireinput"
-                           ng-change="saveEdits(solution)"
-                           ng-model-options="{updateOn: 'default blur submit', debounce:{default:2000, blur:0}}">
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-xs-2" for="notesinput"><b>Notes for experts: </b></label>
-
-                <div class="col-xs-10">
-                    <textarea class="form-control" ng-trim="true" placeholder="Internal notes for experts"
-                              ng-model="solution.notes" id="notesinput" name="notesinput"
-                              ng-change="saveEdits(solution)"
-                              ng-model-options="{updateOn: 'default blur submit', debounce:{default:2000, blur:0}}"></textarea>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
-<div class="panel panel-default" ng-if="expert=='true'">
-    <div class="panel-heading testoutline">
-        <div class="row testoutline">
-            <h3 class="col-xs-12 panel-title">User-visible tip properties</h3>
-        </div>
-    </div>
-    <div class="panel-body testoutline">
-        <form class="form-horizontal">
-            <div class="form-group">
-                <label class="control-label col-xs-2" for="titleinput"><b>Title: </b></label>
-
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" ng-trim="true" placeholder="Title" ng-model="solution.title"
-                           id="titleinput" name="titleinput" ng-change="saveEdits(solution)"
-                           ng-model-options="{updateOn: 'default blur submit', debounce:{default:2000, blur:0}}">
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-xs-2" for="sourceinput"><b>Source: </b></label>
-
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" ng-trim="true"
-                           placeholder="Source (name of site/service linked to)" ng-model="solution.source"
-                           id="sourceinput" name="sourceinput" ng-change="saveEdits(solution)"
-                           ng-model-options="{updateOn: 'default blur submit', debounce:{default:2000, blur:0}}">
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-xs-2" for="priceinput"><b>Price: </b></label>
-
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" ng-trim="true"
-                           placeholder="Price (don't include currency sign)" ng-model="solution.price" id="priceinput"
-                           name="priceinput" ng-change="saveEdits(solution)"
-                           ng-model-options="{updateOn: 'default blur submit', debounce:{default:2000, blur:0}}">
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-xs-2" for="phoneinput"><b>Phone number: </b></label>
-
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" ng-trim="true" placeholder="Phone number"
-                           ng-model="solution.phone_number" id="phoneinput" name="phoneinput"
-                           ng-change="saveEdits(solution)"
-                           ng-model-options="{updateOn: 'default blur submit', debounce:{default:2000, blur:0}}">
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-xs-2" for="hoursinput"><b>Open hours: </b></label>
-
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" ng-trim="true" placeholder="Open hours"
-                           ng-model="solution.open_hours" id="hoursinput" name="hoursinput"
-                           ng-change="saveEdits(solution)"
-                           ng-model-options="{updateOn: 'default blur submit', debounce:{default:2000, blur:0}}">
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-xs-2" for="addressinput"><b>Address: </b></label>
-
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" ng-trim="true" placeholder="Address"
-                           ng-model="solution.address" id="addressinput" name="addressinput"
-                           ng-change="saveEdits(solution)"
-                           ng-model-options="{updateOn: 'default blur submit', debounce:{default:2000, blur:0}}">
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-xs-2" for="descripinput"><b>Description: </b></label>
-
-                <div class="col-xs-10">
-                    <textarea class="form-control" ng-trim="true" rows="4" placeholder="Description"
-                              ng-model="solution.description" id="descripinput" name="descripinput"
-                              ng-change="saveEdits(solution)"
-                              ng-model-options="{updateOn: 'default blur submit', debounce:{default:2000, blur:0}}"></textarea>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>

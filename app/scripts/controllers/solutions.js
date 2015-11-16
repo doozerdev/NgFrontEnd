@@ -8,92 +8,152 @@
  * Controller of the webClientApp
  */
 angular.module('webClientApp')
-    .controller('SolutionsCtrl', function($scope, $routeParams, Solution, Search, Item, User) {
+    .controller('SolutionsCtrl', function($scope, $location, Solution, Search, Item, User) {
         $scope.solutions = [];
         $scope.users = [];
-        $scope.beta_uids = [4614807584795, 10100716370439739, 10103069913924734]; //dan = 888679437823595, rebecca = 10153226353173625
-        $scope.active_items = [];
+        $scope.active_items = []; //TODO: unused for now
         $scope.active_beta_items = [];
-        $scope.all_items = []; //TODO - unused for now
+        $scope.all_items = [];
         $scope.show_beta = true;
 
-        Solution.query(function(solutionData) {
-            $scope.solutions = solutionData;
-            
-            angular.forEach($scope.solutions, function(solution){
-                Solution.performance({
-                        id: solution.id
-                    }, function (response) {
-                        solution.performance = response;
-                    }
-                );
-            });
-        });
-        
-        User.query(function(userData) {
-            $scope.users = userData;
-                       
-            angular.forEach($scope.users, function(user) {
-                Item.listsForUser({
-                    userId: user.uid
-                    }, function(listData) {
-                        //$scope.lists = listData.items;
-                        var tempbeta = $scope.checkBetaUser(user.uid);
-                        $scope.getItemsFromList(listData.items, user, tempbeta);  
+        if ($location.path() != "/alltasks") {
+            Solution.server.query(function(solutionData) {
+                $scope.solutions = solutionData;
+                
+                angular.forEach($scope.solutions, function(solution){
+                    Solution.server.performance({
+                            id: solution.id
+                        }, function (response) {
+                            solution.performance = response;
+                        }
+                    );
                 });
-            });            
-        });
+            });
+            
+            User.server.query(function(userData) {
+                var tempusers = userData;
+                console.log("total users including test accounts: "+tempusers.length);
+                
+                User.getTestIds().then(function (response) {
+                    var tempTestIds = [];
+                    tempTestIds = tempTestIds.concat(response);
+                    var b = null;
+                    
+                    angular.forEach(tempusers, function(user) {
+                        if(tempTestIds.length > 0){
+                            b = $scope.sortHelper(user.uid, tempTestIds);
+                            if (b == -1){
+                                $scope.users.push(user);
+                                Item.server.listsForUser({
+                                    userId: user.uid
+                                    }, function(listData) {
+                                        $scope.getItemsFromLists(listData.items, user, true, true, false);  
+                                });
+                            } else {
+                                tempTestIds.splice(b, 1);
+                                console.log("skipping test user");
+                            }
+                        } else {
+                            $scope.users.push(user);
+                            Item.server.listsForUser({
+                                userId: user.uid
+                                }, function(listData) {
+                                    $scope.getItemsFromLists(listData.items, user, true, true, false);  
+                            });
+                        }
+                    });
+                });
+            });
+        }
+            /*TODO: remove OLD functionality when sure no longer needed: this is for only getting a subset of hardcoded 'beta users'
+            $scope.users = User.getBetaIds();
+            angular.forEach($scope.users, function(user, index) {
+                User.server.get({
+                    userId: user
+                }, function(response){
+                    $scope.users[index] = response;
+                    Item.server.listsForUser({
+                        userId: $scope.users[index].uid
+                        }, function(listData) {
+                            $scope.getItemsFromLists(listData.items, $scope.users[index], true, true);  
+                    }); 
+                });
+            });
+            */
+            
+
+
+        if ($location.path() == "/alltasks") {            
+            User.server.query(function(userData) {
+                $scope.users = userData;
+                console.log($scope.users.length);
+                angular.forEach($scope.users, function(user) {
+                    if(!User.checkTestUser(user.uid)){
+                        Item.server.listsForUser({
+                            userId: user.uid
+                            }, function(listData) {
+                                $scope.getItemsFromLists(listData.items, user, false, false, true);  
+                        });
+                    } else {
+                        console.log("skipping test user");
+                    }
+                });            
+            });
+        }
+
+
+        $scope.sortHelper = function (checkId, checkList)  {
+            for(var b = 0; b < checkList.length; b++){
+                if(checkId == checkList[b]){
+                    return b;
+                }
+            };
+            return -1;
+        };
         
-        $scope.getItemsFromList = function (lists, user, beta) {
+        $scope.getItemsFromLists = function (lists, user, beta, activeOnly, getparent) {
             var tempitems = [];
             angular.forEach(lists, function(list){
-                Item.childrenForUser({
+                Item.server.childrenForUser({
                     item_id: list.id,
                     userId: user.uid
                     }, function(itemData){
-                        tempitems = $scope.getActiveItems(itemData.items);
-                        $scope.active_items = $scope.active_items.concat(tempitems);
-                        if (beta){
-                            $scope.active_beta_items = $scope.active_beta_items.concat(tempitems);
+                        if(activeOnly){
+                            tempitems = Item.getActiveItems(itemData.items);
+                            console.log("finished getting active items from another list");
+                            if(getparent){
+                                angular.forEach(tempitems, function(item){
+                                    item.parentTitle = list.title;
+                                });
+                            }
+                            $scope.active_items = $scope.active_items.concat(tempitems);
+                            if (beta){
+                                $scope.active_beta_items = $scope.active_beta_items.concat(tempitems);
+                            }                            
+                        } else {
+                            tempitems = itemData.items;
+                            if(getparent){
+                                angular.forEach(tempitems, function(item){
+                                    item.parentTitle = list.title;
+                                });
+                            }
+                            $scope.all_items = $scope.all_items.concat(tempitems);
+                            console.log("finished getting ALL items from another list");
                         }
                 });
             });
         };
+
         
-        $scope.getActiveItems = function (items) {
-            var tempactive = [];
-            
-            angular.forEach(items, function(item) {
-                if(item.type==undefined || item.type==""){
-                    //TODO:make all items, included done item accessible for analysis
-                    // $scope.all_items.push(item);
-                    
-                    if(item.archive!=true && item.done!=true){
-                        tempactive.push(item);      
-                    }
-                }
-            });
-            console.log("finished getting active items from another list");
-            return tempactive;
-        };
-        
-        $scope.checkBetaUser = function (id) {
-            for (var i = 0; i < $scope.beta_uids.length; i++) {
-                if (id == $scope.beta_uids[i]) {
-                    return true;
-                }
-            };
-            return false;
-        };
 
         $scope.removeSolution = function(solution) {
-            Solution.delete({id: solution.id}, function(){
+            Solution.server.delete({id: solution.id}, function(){
                 $scope.solutions.splice($scope.solutions.indexOf(solution), 1);
             });
         };
         
         $scope.getItemParent = function(item){
-            Item.get({
+            Item.server.get({
                 item_id: item.parent
             }, function(parent){
                 item.parentTitle = parent.title;

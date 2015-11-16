@@ -7,8 +7,8 @@ item: the item object to render
 
 user (optional): the user object for this item
 
-expert: a string to control expert "modes" - visibility of extra properties/functionality for experts 
-           values: 'false', 'true', 'true-min'
+mode: a string to control "modes" - visibility of extra properties/functionality for experts or admins
+           values: 'user', 'admin-min', 'admin', 'expert'
   
  checkToggle (optional): the function to call to determine whether the checkbox should be checked or unchecked (in context of expert UI, this usually is used for the state of linking between solution & this item)
               value of -1 means that it should be unchecked
@@ -24,7 +24,7 @@ angular.module('webClientApp')
         scope: {
           item: '=',
           user: '=',
-          expert: '@',
+          mode: '@',
           checkToggle: '&',
           toggleAction: '&',
           //clickAction: '&'

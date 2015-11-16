@@ -1,101 +1,102 @@
 <div class="container">
+        <auth mode='login'></auth>
 
-<h1 ng-hide='list.archive'>{{list.title}}</h1>
-<h1 ng-show='list.archive'><strike>{{list.title}}</strike> (Archived)</h1>
-<div ng-hide='list.archive'>
-    <form id="new-item-form" class='form-horizontal form-group'>
-        <div class="row">
-            <div class="col-xs-6 col-xs-offset-1">
-                <input type="text" class='form-control' id="new-item" placeholder="New task" ng-trim="false" ng-model="newItem" ng-change="addItem()" ng-model-options="{updateOn: 'blur submit'}" ng-disabled="saving" autofocus />
-            </div>
-        </div>
-    </form>
-</div>
-<div ng-show='items.length === 0'>
-    <h2>No Items</h2>
-    <p>There are no items in this list, please add one from above.</p>
-</div>
-<ul class="list-group" id="itemsparent" ui-sortable="sortableOptions" ng-model="items">
-    <li class="row panel panel-row-override list-group-item item" ng-class="item.type ? 'header-type-test' : ''" ng-repeat="item in items | limitTo:lengthOfUndone()">
-        <span class="glyphicon glyphicon-check col-xs-1 col-override" ng-if='item.done' ng-click='toggle(item)'></span>
-        <span class="glyphicon glyphicon-unchecked col-xs-1 col-override testoutline" ng-if='!item.done' ng-click='toggle(item)'></span>
-        <div class="col-xs-10 col-override testoutline" data-toggle="collapse" data-parent="#itemsparent" data-target="{{'#item-' + item.id}}">
-            <div ng-class="item == editedItem  ? 'hidden' : 'show'">
-                <label ng-click="editItem(item)">{{item.title}}</label>
-                <div ng-if="item.solutions_count > 0">
-                    <a ng-href='#/{{item.id}}/item'>View Solutions! ({{item.solutions_count}})</a>
+        <h1 ng-hide='list.archive'>{{list.title}}</h1>
+        <h1 ng-show='list.archive'><strike>{{list.title}}</strike> (Archived)</h1>
+        <div ng-hide='list.archive'>
+            <form id="new-item-form" class='form-horizontal form-group'>
+                <div class="row">
+                    <div class="col-xs-6 col-xs-offset-1">
+                        <input type="text" class='form-control' id="new-item" placeholder="New task" ng-trim="false" ng-model="newItem" ng-change="addItem()" ng-model-options="{updateOn: 'blur submit'}" ng-disabled="saving" autofocus />
+                    </div>
                 </div>
-            </div>
-            <div ng-class="item == editedItem  ? 'show' : 'hidden'" class="unsortable testoutline">
-                <form class="form-horizontal form-group" name="titleform">
-                    <div class="row">
-                        <div class="col-xs-6">
-                            <input type="text" class="edit form-control" ng-trim="false" ng-model="item.title" name="titleinput" item-escape="revertEdits(item)" ng-change="saveEdits(item)" ng-model-options="{updateOn: 'blur submit'}" ng-blur="editItem(null)" item-focus="item == editedItem" />
+            </form>
+        </div>
+        <div ng-show='items.length === 0'>
+            <h2>No Items</h2>
+            <p>There are no items in this list, please add one from above.</p>
+        </div>
+        <ul class="list-group" id="itemsparent" ui-sortable="sortableOptions" ng-model="items">
+            <li class="row panel panel-row-override list-group-item item" ng-class="item.type ? 'header-type-test' : ''" ng-repeat="item in items | limitTo:lengthOfUndone()">
+                <span class="glyphicon glyphicon-check col-xs-1 col-override" ng-if='item.done' ng-click='toggle(item)'></span>
+                <span class="glyphicon glyphicon-unchecked col-xs-1 col-override testoutline" ng-if='!item.done' ng-click='toggle(item)'></span>
+                <div class="col-xs-10 col-override testoutline" data-toggle="collapse" data-parent="#itemsparent" data-target="{{'#item-' + item.id}}">
+                    <div ng-class="item == editedItem  ? 'hidden' : 'show'">
+                        <label ng-click="editItem(item)">{{item.title}}</label>
+                        <div ng-if="item.solutions_count > 0">
+                            <a ng-href='#/{{item.id}}/item'>View Solutions! ({{item.solutions_count}})</a>
                         </div>
                     </div>
-                </form>
-            </div>
-        </div>
-        <span class='col-xs-1 col-override'>
-          <span class="glyphicon glyphicon-remove testoutline button" ng-click='removeItem(item)'></span>
-        </span>
-        <div class="collapse col-xs-11 col-xs-offset-1 no-padding task-details testoutline" id="{{'item-' + item.id}}">
-            <form class="form-inline form-group">
-                <div class="col-xs-12 col-override testoutline">
-                    <label for="typeinput">Header type: </label>
-                    <input type="text" id='typeinput' name='typeinput' class="form-control unsortable testoutline" ng-model='item.type' ng-change="saveEdits(item)" ng-model-options="{updateOn:'default blur submit', debounce:{default:750, blur:0}}" placeholder="leave blank unless header" />
+                    <div ng-class="item == editedItem  ? 'show' : 'hidden'" class="unsortable testoutline">
+                        <form class="form-horizontal form-group" name="titleform">
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <input type="text" class="edit form-control" ng-trim="false" ng-model="item.title" name="titleinput" item-escape="revertEdits(item)" ng-change="saveEdits(item)" ng-model-options="{updateOn: 'blur submit'}" ng-blur="editItem(null)" item-focus="item == editedItem" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-            </form>
-            <form class="form-inline form-group">
-                <div class="col-xs-12 col-override testoutline">
-                    <label for="duedateinput">Due: {{item.duedate | date:'EEEE'}}</label>
-                    <input type="date" class="form-control unsortable testoutline" id="duedateinput" name="duedateinput" ng-model="item.duedate" ng-change="saveEdits(item)" ng-model-options="{updateOn:'default blur submit', debounce:{default:750, blur:0}}" placeholder="MM-dd-yyyy" />
+                <span class='col-xs-1 col-override'>
+                    <span class="glyphicon glyphicon-remove testoutline button" ng-click='removeItem(item)'></span>
+                </span>
+                <div class="collapse col-xs-11 col-xs-offset-1 no-padding task-details testoutline" id="{{'item-' + item.id}}">
+                    <form class="form-inline form-group">
+                        <div class="col-xs-12 col-override testoutline">
+                            <label for="typeinput">Header type: </label>
+                            <input type="text" id='typeinput' name='typeinput' class="form-control unsortable testoutline" ng-model='item.type' ng-change="saveEdits(item)" ng-model-options="{updateOn:'default blur submit', debounce:{default:750, blur:0}}" placeholder="leave blank unless header" />
+                        </div>
+                    </form>
+                    <form class="form-inline form-group">
+                        <div class="col-xs-12 col-override testoutline">
+                            <label for="duedateinput">Due: {{item.duedate | date:'EEEE'}}</label>
+                            <input type="date" class="form-control unsortable testoutline" id="duedateinput" name="duedateinput" ng-model="item.duedate" ng-change="saveEdits(item)" ng-model-options="{updateOn:'default blur submit', debounce:{default:750, blur:0}}" placeholder="MM-dd-yyyy" />
+                        </div>
+                    </form>
+                    <form class="form-horizontal form-group">
+                        <div class="col-xs-10 col-override unsortable testoutline">
+                            <label class="sr-only" for="notesinput">Notes:</label>
+                            <textarea class="form-control testoutline" rows="3" id="notesinput" name="notesinput" placeholder="(add some notes...)" ng-trim="false" ng-model="item.notes" ng-change="saveEdits(item)" ng-model-options="{updateOn: 'default blur submit', debounce:{default:2000, blur:0}}"></textarea>
+                        </div>
+                    </form>
                 </div>
-            </form>
-            <form class="form-horizontal form-group">
-                <div class="col-xs-10 col-override unsortable testoutline">
-                    <label class="sr-only" for="notesinput">Notes:</label>
-                    <textarea class="form-control testoutline" rows="3" id="notesinput" name="notesinput" placeholder="(add some notes...)" ng-trim="false" ng-model="item.notes" ng-change="saveEdits(item)" ng-model-options="{updateOn: 'default blur submit', debounce:{default:2000, blur:0}}"></textarea>
-                </div>
-            </form>
-        </div>
-    </li>
-</ul>
-<ul class="list-group group-header-group" ng-model="items">
-    <li class='row panel panel-row-override list-group-item group-header' ng-class="{'group-header-with-list': isDoneGroupOpen}" data-toggle="collapse" data-target=".donecollapse" ng-click="isDoneGroupOpen=!isDoneGroupOpen" ng-dblclick="isDoneGroupOpen=!isDoneGroupOpen">
-        <span class="glyphicon glyphicon-chevron-right col-xs-1 col-override testoutline" ng-if="!isDoneGroupOpen" data-toggle="collapse" data-target=".donecollapse"></span>
-        <span class="glyphicon glyphicon-chevron-down col-xs-1 col-override" ng-if="isDoneGroupOpen" data-toggle="collapse" data-target=".donecollapse"></span>
-        <span class="col-xs-6 col-override testoutline">Completed ({{items.length - indexOfFirstDone()}})</span>
-    </li>
-</ul>
-<ul class="list-group collapse donecollapse" ng-model="items">
-    <li class='row panel panel-row-override list-group-item item list-with-group-header' ng-class="item.type ? 'header-type-test' : ''" ng-repeat="item in items | limitTo:-items.length+indexOfFirstDone()">
-        <span class="glyphicon glyphicon-check col-xs-1 col-override testoutline" ng-if='item.done' ng-click='toggle(item)'></span>
-        <span class="glyphicon glyphicon-unchecked col-xs-1 col-override" ng-if='!item.done' ng-click='toggle(item)'></span>
-        <div class="col-xs-10 col-override testoutline" data-toggle="collapse" data-parent=".donecollapse" data-target="{{'#item-' + item.id}}">
-            <div ng-class="item == editedItem  ? 'hidden' : 'show'">
-                <label ng-click="editItem(item)">{{item.title}}</label>
-                <div ng-if="item.solutions_count > 0">
-                    <a ng-href='#/{{item.id}}/item'>View Tips! ({{item.solutions_count}})</a>
-                </div>
-            </div>
-            <div ng-class="item == editedItem  ? 'show' : 'hidden'">
-                <form class='form-horizontal form-group'>
-                    <div class="row">
-                        <div class="col-xs-6">
-                            <input type="text" class="edit form-control" ng-trim="false" ng-model="item.title" item-escape="revertEdits(item)" ng-change="saveEdits(item)" ng-model-options="{updateOn: 'blur submit'}" ng-blur="editItem(null)" item-focus="item == editedItem" />
+            </li>
+        </ul>
+        <ul class="list-group group-header-group" ng-model="items">
+            <li class='row panel panel-row-override list-group-item group-header' ng-class="{'group-header-with-list': isDoneGroupOpen}" data-toggle="collapse" data-target=".donecollapse" ng-click="isDoneGroupOpen=!isDoneGroupOpen" ng-dblclick="isDoneGroupOpen=!isDoneGroupOpen">
+                <span class="glyphicon glyphicon-chevron-right col-xs-1 col-override testoutline" ng-if="!isDoneGroupOpen" data-toggle="collapse" data-target=".donecollapse"></span>
+                <span class="glyphicon glyphicon-chevron-down col-xs-1 col-override" ng-if="isDoneGroupOpen" data-toggle="collapse" data-target=".donecollapse"></span>
+                <span class="col-xs-6 col-override testoutline">Completed ({{items.length - indexOfFirstDone()}})</span>
+            </li>
+        </ul>
+        <ul class="list-group collapse donecollapse" ng-model="items">
+            <li class='row panel panel-row-override list-group-item item list-with-group-header' ng-class="item.type ? 'header-type-test' : ''" ng-repeat="item in items | limitTo:-items.length+indexOfFirstDone()">
+                <span class="glyphicon glyphicon-check col-xs-1 col-override testoutline" ng-if='item.done' ng-click='toggle(item)'></span>
+                <span class="glyphicon glyphicon-unchecked col-xs-1 col-override" ng-if='!item.done' ng-click='toggle(item)'></span>
+                <div class="col-xs-10 col-override testoutline" data-toggle="collapse" data-parent=".donecollapse" data-target="{{'#item-' + item.id}}">
+                    <div ng-class="item == editedItem  ? 'hidden' : 'show'">
+                        <label ng-click="editItem(item)">{{item.title}}</label>
+                        <div ng-if="item.solutions_count > 0">
+                            <a ng-href='#/{{item.id}}/item'>View Tips! ({{item.solutions_count}})</a>
                         </div>
                     </div>
-                </form>
-            </div>
-        </div>
-        <span class="glyphicon glyphicon-remove col-xs-1 col-override testoutline" ng-click='removeItem(item)'></span>
-        <div class="collapse col-xs-11 col-xs-offset-1 no-padding task-details testoutline" id="{{'item-' + item.id}}">
-            <div class="col-xs-12 col-override testoutline">Header type: {{item.type}}</div>
-            <div class="col-xs-12 col-override testoutline">Due: {{item.duedate | date:'EEEE, MMM d, y'}}</div>
-            <div class="col-xs-12 col-override testoutline">Notes: {{item.notes}}</div>
-        </div>
-    </li>
-</ul>
+                    <div ng-class="item == editedItem  ? 'show' : 'hidden'">
+                        <form class='form-horizontal form-group'>
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <input type="text" class="edit form-control" ng-trim="false" ng-model="item.title" item-escape="revertEdits(item)" ng-change="saveEdits(item)" ng-model-options="{updateOn: 'blur submit'}" ng-blur="editItem(null)" item-focus="item == editedItem" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <span class="glyphicon glyphicon-remove col-xs-1 col-override testoutline" ng-click='removeItem(item)'></span>
+                <div class="collapse col-xs-11 col-xs-offset-1 no-padding task-details testoutline" id="{{'item-' + item.id}}">
+                    <div class="col-xs-12 col-override testoutline">Header type: {{item.type}}</div>
+                    <div class="col-xs-12 col-override testoutline">Due: {{item.duedate | date:'EEEE, MMM d, y'}}</div>
+                    <div class="col-xs-12 col-override testoutline">Notes: {{item.notes}}</div>
+                </div>
+            </li>
+        </ul>
 
 </div>

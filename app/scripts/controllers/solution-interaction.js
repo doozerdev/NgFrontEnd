@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('webClientApp')
-    .controller('SolutionInterCtrl', function($scope, $routeParams, Solution, Search, Item) {
+    .controller('SolutionInterCtrl', function($scope, $routeParams, Solution) {
 
         $scope.likeSolution = function(sol){
-            Solution.like({
+            Solution.server.like({
               id: sol.id,
               item_id: $routeParams.id
             }, function() {
@@ -13,7 +13,7 @@ angular.module('webClientApp')
         };
 
         $scope.dislikeSolution = function(sol){
-            Solution.dislike({
+            Solution.server.dislike({
               id: sol.id,
               item_id: $routeParams.id
             }, function() {

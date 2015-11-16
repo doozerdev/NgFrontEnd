@@ -6,6 +6,12 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 /*-------------------------------------
 TYPOGRAPHY
 ------------------------------------------*/
+body {
+	font-family: "proxima-nova-n4", "proxima-nova", sans-serif;
+	font-weight: 400;
+	font-style: normal;
+}
+
 .h1-text{
   font-size: 36px;
 }
@@ -24,6 +30,125 @@ TYPOGRAPHY
 .h6-text{
   font-size: 12px;
 }
+
+
+/*-------------------------------------
+BRANDING
+------------------------------------------*/
+
+.outline-brand {
+  border-color: #0acbea;
+  border-width: medium;
+  border-radius: 0;
+}
+
+.outline-yellow {
+  border-color: #EBB600;
+  border-width: medium;
+  border-radius: 0;
+}
+
+.bg-brand, .bg-brand.panel-heading {
+  background-color: #0acbea;
+  color: #fff;
+}
+.bg-yellow {
+  background-color: #EBB600;
+  //color: #fff;
+}
+
+.dzr-brand {color: #0acbea;}
+.dzr-brand-shadow {color: #006E80;}
+.dzr-brand-hover {color: #EBB600;}
+.dzr-lighttext {color: #e6f9fc;}
+.dzr-darktext {color: #003340;}
+.dzr-green {color: #88c048;}
+.dzr-blue {color: #0acbea;}
+.dzr-red {color: #FD6C6E;}
+.dzr-purple {color: #C066AE;}
+.dzr-yellow {color: #ebb600;}
+
+
+.btn-primary {
+  background-color: #0acbea;
+  border-color: #0acbea;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+  background-color: #006E80;
+  border-color: #006E80;
+}
+
+.modal-backdrop, .modal-backdrop.in {
+   background-color: rgba(10,203,234,1);
+   opacity: 1;
+}
+
+/*---------------------*/
+
+.item-header, .panel .item-header {
+  background-color: #C066AE;
+  color: #fff;
+}
+
+.expert-title {
+  padding-bottom: 30px;
+  font-weight: 200;
+  color: #212121;
+}
+.expert-button {
+  padding-bottom: 30px;
+  padding-top: 30px;
+}
+
+.close, .close:hover, .close:focus {
+  color: #000;
+  background: #0acbea;
+}
+
+.navbar-brand {
+  display: block;
+  padding: 0;
+}
+
+.no-top-margin{
+  margin-top: 0;
+}
+
+.no-bottom-margin{
+  margin-bottom: 0;
+}
+
+.brand-img {
+  height: 50px;
+  width: auto;
+}
+
+.header {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.navbar.navbar-default {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.create-button{
+  padding-top: 0;
+  padding-bottom: 15px;
+  padding-right: 30px;
+}
+
+.cursor-hand {
+  cursor: pointer;
+}
+
+.dzr-pagination {
+  margin: 10px 0 5px 0;
+}
+/*---------------------*/
+  
 
 
 .panel-row-override {
@@ -100,7 +225,7 @@ TYPOGRAPHY
   margin-bottom: 0;
   padding-left: 0;
   padding-right: 0;
-  background-color: #F7FEFF;
+  //background-color: #F7FEFF;
 }
 
 .item-panel{
