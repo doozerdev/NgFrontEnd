@@ -62,7 +62,7 @@ angular.module('webClientApp')
                 angular.forEach(items, function(item) {
                     if(item.type==undefined || item.type==""){
                         if(item.archive!=true && item.done!=true){
-                            tempactive.push(item);      
+                            tempactive.push(item);
                         }
                     }
                 });

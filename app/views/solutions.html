@@ -28,8 +28,35 @@
                         <a href="#/alltasks" class="pull-right clearfix">View active and completed tasks</a>
                     </div>
                     <div class="col-xs-12" ng-if='!item_results'>
-                        <div ng-repeat="item in active_beta_items | orderBy:'-updated_at'">
-                            <dzr-item item="item" mode="admin-min"></dzr-item>
+                        <!--TABS for subsets of items by tags-->
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="" data-target="#DIY" aria-controls="DIYtasks" role="tab" data-toggle="tab">DIY Tasks</a></li>
+                            <li role="presentation"><a href="" data-target="#ignore" aria-controls="IgnoreTasks" role="tab" data-toggle="tab">Ignore Tasks</a></li>
+                            <li role="presentation"><a href="" data-target="#untagged" aria-controls="UntaggedTasks" role="tab" data-toggle="tab">Untagged Tasks</a></li>
+                            <li role="presentation"><a href="" data-target="#all" aria-controls="AllTasks" role="tab" data-toggle="tab">All Tasks</a></li>
+                        </ul>
+                        <!-- TAB panes -->
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane fade in active" id="DIY">
+                                <div ng-repeat="item in active_beta_items | filter:{tags:'DIY'} | orderBy:'-updated_at'">
+                                    <dzr-item item="item" mode="admin-min"></dzr-item>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="ignore">
+                                <div ng-repeat="item in active_beta_items | filter:{tags:'ignore'} | orderBy:'-updated_at'">
+                                    <dzr-item item="item" mode="admin-min"></dzr-item>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="untagged">
+                                <div ng-repeat="item in active_beta_items | filter:{tags:'!DIY'} | filter:{tags:'!ignore'} | orderBy:'-updated_at'">
+                                    <dzr-item item="item" mode="admin-min"></dzr-item>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="all">
+                                <div ng-repeat="item in active_beta_items | orderBy:'-updated_at'">
+                                    <dzr-item item="item" mode="admin-min"></dzr-item>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-xs-12" ng-if='item_results.length < 1'>

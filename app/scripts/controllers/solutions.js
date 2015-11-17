@@ -47,7 +47,7 @@ angular.module('webClientApp')
                                 Item.server.listsForUser({
                                     userId: user.uid
                                     }, function(listData) {
-                                        $scope.getItemsFromLists(listData.items, user, true, true, false);  
+                                        $scope.getItemsFromLists(listData.items, user, true, true, true);  
                                 });
                             } else {
                                 tempTestIds.splice(b, 1);
@@ -58,29 +58,13 @@ angular.module('webClientApp')
                             Item.server.listsForUser({
                                 userId: user.uid
                                 }, function(listData) {
-                                    $scope.getItemsFromLists(listData.items, user, true, true, false);  
+                                    $scope.getItemsFromLists(listData.items, user, true, true, true);  
                             });
                         }
                     });
                 });
             });
         }
-            /*TODO: remove OLD functionality when sure no longer needed: this is for only getting a subset of hardcoded 'beta users'
-            $scope.users = User.getBetaIds();
-            angular.forEach($scope.users, function(user, index) {
-                User.server.get({
-                    userId: user
-                }, function(response){
-                    $scope.users[index] = response;
-                    Item.server.listsForUser({
-                        userId: $scope.users[index].uid
-                        }, function(listData) {
-                            $scope.getItemsFromLists(listData.items, $scope.users[index], true, true);  
-                    }); 
-                });
-            });
-            */
-            
 
 
         if ($location.path() == "/alltasks") {            
