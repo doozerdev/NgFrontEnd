@@ -8,13 +8,24 @@ angular.module('webClientApp')
 
     $http.defaults.headers.common.sessionId= $cookies.get('doozerSession');
 
-    return $resource(doozerURL + 'items/:searchTerm/search', 
-      {searchTerm:'@searchTerm'}, 
-      {
-        query: {
-          method: 'GET'
-          // TODO: for some reason this needs to be here, leave for now, debug later
-        }
-      }
-    );
+    return {
+       items: $resource(doozerURL + 'items/:searchTerm/:field/search', {
+          searchTerm:'@searchTerm',
+          field: '@field'
+        }, {
+          query: {
+            method: 'GET'
+            // TODO: for some reason this needs to be here, leave for now, debug later
+          }
+      }),
+      solutions: $resource(doozerURL + 'solutions/:searchTerm/:field/search', {
+          searchTerm:'@searchTerm',
+          field: '@field'
+        }, {
+          query: {
+            method: 'GET'
+            // TODO: for some reason this needs to be here, leave for now, debug later
+          }
+      })
+    };
 });

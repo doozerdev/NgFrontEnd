@@ -5,10 +5,21 @@
             <h3>Search for tasks and tips</h3>
             <form id="search-form" ng-submit="search()">
                 <div class="input-group">
-                    <input type="text" ng-model='searchTerm' class="form-control" placeholder="enter a search term">
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-default"  ng-click="search()"><span class="glyphicon glyphicon-search"></span>&nbsp;</button>
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{searchField.items}} <span class="glyphicon glyphicon-menu-down"></span>
+                        </button>
+                        <div class="dropdown-menu row">
+                            <a class="dropdown-item col-xs-12" href="" ng-click="setSearchField('titles')">Titles</a>
+                            <a class="dropdown-item col-xs-12" href="" ng-click="setSearchField('notes')">Task Notes / Tip Description</a>
+                            <a class="dropdown-item col-xs-12" href="" ng-click="setSearchField('tags')">Tags</a>
+                        </div>
+                    </div>
+                    <input type="text" ng-model="searchTerm" class="form-control" placeholder="enter a search term" />
                     <span class="input-group-btn">
-                        <button class="btn btn-default" type="button" ng-click="search()">
-                            <span class="glyphicon glyphicon-search"></span>&nbsp;
+                        <button class="btn btn-default" type="button" ng-click="clearSearch()">
+                            <span class="glyphicon glyphicon-remove"></span>&nbsp;
                         </button>
                     </span>
                 </div>
@@ -83,8 +94,15 @@
                             <dzr-solution solution="solution" mode="admin-min"></dzr-solution>
                         </div>
                     </div>
-                    <div class="col-sm-12" ng-show="solution_results">
-                        Placeholder for tip search results
+                    <div class="col-sm-12" ng-show="solution_results.length < 1">
+                        <p>No tip titles match that search term. Please try again.</p>
+                        <p>Search completed in {{solution_request_time}}.</p>
+                    </div>
+                    <div class="col-xs-12" ng-if='solution_results.length > 0'>
+                        <p>Search completed in {{solution_request_time}}. {{solution_results.length}} results.</p>
+                        <div ng-repeat="result in solution_results">
+                            <dzr-solution solution="result" mode="admin-min"></dzr-solution>
+                        </div>
                     </div>
                 </div>
             </div><!--/.well-->

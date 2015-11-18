@@ -120,8 +120,9 @@ angular.module('webClientApp')
                 return;
             }
 
-            Search.query({
-                searchTerm: $scope.searchTerm.trim()
+            Search.items.query({
+                searchTerm: $scope.searchTerm.trim(),
+                field: 'title'
             }, function (results) {
                 $scope.results = results.items;
                 $scope.request_time = results.request_time;

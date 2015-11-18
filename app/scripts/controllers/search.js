@@ -11,8 +11,9 @@ angular.module('webClientApp')
     .controller('SearchCtrl', function($scope, $routeParams, $facebook, $location, Search) {
 
         $scope.search = function() {
-            Search.query({
-                searchTerm: $scope.searchTerm.trim()
+            Search.items.query({
+                searchTerm: $scope.searchTerm.trim(),
+                field: 'title'
             }, function(results) {
                 $scope.results = results.items;
                 $scope.request_time = results.request_time;

@@ -15,6 +15,13 @@ angular.module('webClientApp')
         $scope.active_beta_items = [];
         $scope.all_items = [];
         $scope.show_beta = true;
+        //search related objects:
+        $scope.item_results = undefined;
+        $scope.item_request_time = "";
+        $scope.solution_results = undefined;
+        $scope.solution_request_time = "";
+        $scope.searchField = {items: "title", solutions: "title"};
+        $scope.searchTerm = undefined;
 
         if ($location.path() != "/alltasks") {
             Solution.server.query(function(solutionData) {
@@ -146,21 +153,17 @@ angular.module('webClientApp')
         
         $scope.search = function() {
             if($scope.searchTerm.trim() == ""){
-                $scope.item_results = undefined;
-                $scope.item_request_time = "";
-                $scope.solution_results = undefined;
+                $scope.clearSearch();
                 return;
             }
             
-            Search.query({
-                searchTerm: $scope.searchTerm.trim()
+            Search.items.query({
+                searchTerm: $scope.searchTerm.trim(),
+                field: $scope.searchField.items
             }, function(results) {
                 $scope.item_results = results.items;
                 $scope.item_request_time = results.request_time;
                 
-                $scope.solution_results = true;
-                
-                //TODO: also check here for results belonging to beta users (item.user_id) and build 2 lists for all users vs. beta users
                 for (var i=$scope.item_results.length-1; i >= 0; i--) {
                     if (!$scope.item_results[i].parent){
                         var temp = $scope.item_results.splice(i, 1);
@@ -172,5 +175,34 @@ angular.module('webClientApp')
                     }
                 }
             });
+            
+            Search.solutions.query({
+                searchTerm: $scope.searchTerm.trim(),
+                field: $scope.searchField.solutions
+            }, function (results) {
+                $scope.solution_results = results.solutions;
+                $scope.solution_request_time = results.request_time;
+            });
         };
+        
+        $scope.clearSearch = function () {
+            //console.log("entered clear search");
+            $scope.searchTerm = "";
+            $scope.item_results = undefined;
+            $scope.solution_results = undefined;
+            //console.log("finished clear search");
+        };
+        
+        $scope.setSearchField = function (field) {
+            if (field == "titles") {
+                $scope.searchField = {items: "title", solutions: "title"};
+            } else if (field == "notes") {
+                $scope.searchField = {items: "notes", solutions: "description"};
+            } else if (field == "tags") {
+                $scope.searchField = {items: "tags", solutions: "tags"};
+            } else {
+                console.log("search field set to unknown property name");
+            }
+        };
+
     });
